@@ -16,7 +16,7 @@ This mod includes many new features, such as a new subclass for each class, new 
 The compiled version is available at https://retrodevxp.itch.io/renewed-pixel-dungeon
 The source code is available at https://github.com/RetroDevXP/renewed-pixel-dungeon
 
-This mod is completely free. If you like it, please consider making a donation on the download page of [itchio](https://retrodevxp.itch.io/renewed-pixel-dungeon) or at [BuyMeACoffee](buymeacoffee.com/RetroDevXP)
+This mod is completely free. If you like it, please consider making a donation on the download page of [itchio](https://retrodevxp.itch.io/renewed-pixel-dungeon) or at [BuyMeACoffee](https://www.buymeacoffee.com/RetroDevXP)
 
 Quickstart
 ----------
