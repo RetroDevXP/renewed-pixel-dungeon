@@ -1,0 +1,98 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        mavenLocal()
+        google()
+        gradlePluginPortal()
+        maven { url 'https://github.com/steffenschaefer/gwt-gradle-plugin/raw/maven-repo/' }
+    }
+    dependencies {
+        // classpath 'com.android.tools.build:gradle:0.12.2'
+        // classpath 'com.github.jtakakura:gradle-robovm-plugin:0.0.10'
+        classpath 'org.wisepersist:gwt-gradle-plugin:1.1.19'
+        classpath 'org.gretty:gretty:4.1.6'
+    }
+}
+
+allprojects {
+    apply plugin: "eclipse"
+    apply plugin: "idea"
+
+    // Version is also hardcoded in HtmlLauncher.java
+    // TODO: fix that.
+    version = '1.9.2a-gdx1.1'
+    ext {
+        versionCode = 59
+        appName = 'renewed-pixel-dungeon'
+        appTitle = 'Renewed Pixel Dungeon'
+        appId = 'com.retrodevxp.pixeldungeon'
+        gdxVersion = '1.10.1-SNAPSHOT'
+        roboVMVersion = '2.3.12'
+        // gdxControllersVersion = '2.1.0'
+    }
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        google()
+        gradlePluginPortal()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url "https://oss.sonatype.org/content/repositories/releases/" }
+    }
+}
+
+project(":desktop") {
+    apply plugin: "java"
+
+
+    dependencies {
+        implementation project(":core")
+        implementation "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
+        implementation "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+        // compile "com.badlogicgames.gdx-controllers:gdx-controllers-desktop:$gdxControllersVersion"
+    }
+}
+
+project(":core") {
+    apply plugin: "java"
+
+
+    dependencies {
+	    implementation project(":PD-classes")
+        implementation "com.badlogicgames.gdx:gdx:$gdxVersion"
+        // compile "com.badlogicgames.gdx-controllers:gdx-controllers-core:$gdxControllersVersion"
+    }
+}
+
+project(":PD-classes") {
+    apply plugin: "java"
+
+
+    dependencies {
+        implementation "com.badlogicgames.gdx:gdx:$gdxVersion"
+        // compile "com.badlogicgames.gdx:gdx-controllers:$gdxControllersVersion"
+    }
+}
+
+project(":html") {
+    apply plugin: "java-library"
+    apply plugin: "gwt"
+    apply plugin: "war"
+    apply plugin: "org.gretty"
+
+
+    dependencies {
+        implementation project(":core")
+        api "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion"
+        api "com.badlogicgames.gdx:gdx:$gdxVersion:sources"
+        api "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion:sources"
+        api "com.badlogicgames.gdx:gdx-box2d:$gdxVersion:sources"
+        api "com.badlogicgames.gdx:gdx-box2d-gwt:$gdxVersion:sources"
+        //implementation("org.gwtproject.core:gwt-core:HEAD-SNAPSHOT")
+        implementation("com.google.gwt:gwt-user:2.8.2")
+    }
+}
+
+tasks.eclipse.doLast {
+    delete ".project"
+}
