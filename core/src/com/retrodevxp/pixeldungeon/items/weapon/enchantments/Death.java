@@ -70,4 +70,9 @@ public class Death extends Weapon.Enchantment {
 		return Utils.format( TXT_GRIM, weaponName );
 	}
 
+	@Override
+	public String description(){
+		return "The powerful dark magic in this weapon has a small chance of instantly killing its target.";
+	}
+
 }

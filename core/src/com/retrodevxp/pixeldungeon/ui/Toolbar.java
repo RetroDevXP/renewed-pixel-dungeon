@@ -44,6 +44,7 @@ public class Toolbar extends Component {
 	private Tool btnInventory;
 	private Tool btnQuick1;
 	private Tool btnQuick2;
+	private Tool btnQuick3;
 	
 	private PickedUpItem pickedUp;
 	
@@ -151,8 +152,9 @@ public class Toolbar extends Component {
 		// 		GameScene.selectCell(informer);
 		// 	}
 		// } );
-		add( btnQuick1 = new QuickslotTool( 83, 7, 22, 25, true ) );
-		add( btnQuick2 = new QuickslotTool( 83, 7, 22, 25, false ) );
+		add( btnQuick1 = new QuickslotTool( 83, 7, 22, 25, 1 ) );
+		add( btnQuick2 = new QuickslotTool( 83, 7, 22, 25, 2 ) );
+		add( btnQuick3 = new QuickslotTool( 83, 7, 22, 25, 3 ) );
 		// btnQuick2.visible = (QuickSlot.secondaryValue != null);
 		// btnQuick1.hotKey = GameAction.QUICKSLOT;
 		// btnQuick2.hotKey = GameAction.QUICKSLOT2;
@@ -166,8 +168,9 @@ public class Toolbar extends Component {
 		btnSearch.setPos( btnWait.right(), y );
 		btnInfo.setPos( btnSearch.right(), y );
 		// btnSwap.setPos( width - btnSwap.width(), y - btnSwap.height() );
-		btnQuick1.setPos( width - btnQuick1.width(), y );
-		if (btnQuick2.visible) {
+		btnQuick3.setPos( width - btnQuick3.width(), y );
+		if (btnQuick2.visible && btnQuick3.visible) {
+			btnQuick1.setPos(btnQuick3.left() - btnQuick1.width(), y );
 			btnQuick2.setPos(btnQuick1.left() - btnQuick2.width(), y );
 			btnInventory.setPos( btnQuick2.left() - btnInventory.width(), y );
 		} else {
@@ -285,14 +288,18 @@ public class Toolbar extends Component {
 		
 		private QuickSlot slot;
 		
-		public QuickslotTool( int x, int y, int width, int height, boolean primary ) {
+		public QuickslotTool( int x, int y, int width, int height, int slotnumber ) {
 			super( x, y, width, height, GameAction.UNKNOWN );
-			if (primary) {
+			if (slotnumber == 1) {
 				slot.hotKey = GameAction.QUICKSLOT;
 				slot.primary();
-			} else {
+			} else if (slotnumber == 2) {
 				slot.hotKey = GameAction.QUICKSLOT2;
 				slot.secondary();
+			}
+			else if (slotnumber == 3) {
+				slot.hotKey = GameAction.QUICKSLOT3;
+				slot.tertiary();
 			}
 		}
 		

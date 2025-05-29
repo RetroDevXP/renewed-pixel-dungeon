@@ -104,7 +104,7 @@ public class WandOfFlock extends Wand {
 	@Override
 	public String desc() {
 		return 
-			"A flick of this wand summons a flock of magic sheep, creating temporary impenetrable obstacle.";
+			"A flick of this wand summons a flock of magic sheep, creating temporary impenetrable obstacles.";
 	}
 	
 	public static class Sheep extends NPC {
@@ -149,8 +149,8 @@ public class WandOfFlock extends Wand {
 		@Override
 		public String description() {
 			return 
-				"This large sheep was summoned by magical energy. Despite this, it isn't just an illusion. " +
-				"Its blank stare doesn't give off a tough appearance, but it is completely immune to any damage.";
+				"This large sheep was summoned by magical energy. Despite this, it isn't just an illusion and will physically block anything from passing. " +
+				"Its blank stare doesn't give off a tough appearance, but it is completely immune to any form of damage.";
 		}
 
 		@Override

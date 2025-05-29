@@ -61,7 +61,7 @@ public class MeleeWeapon extends Weapon {
 	}
 	
 	protected int min0() {
-		return tier + bonus_atk;
+		return Math.max(tier, tier + bonus_atk);
 	}
 	
 	protected int max0() {
@@ -159,7 +159,8 @@ public class MeleeWeapon extends Weapon {
 		}
 		
 		if (enchantment != null) {
-			info.append( "It is enchanted." );
+			info.append( "It is enchanted. \n\n" );
+			info.append( enchantment.description() );
 		}
 
 		if (levelKnown) {

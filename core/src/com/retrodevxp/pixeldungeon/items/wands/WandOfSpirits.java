@@ -50,11 +50,11 @@ public class WandOfSpirits extends Wand {
 
 		int level = power();
 		
-		if (Ballistica.distance > level + 5) {
-			cell = Ballistica.trace[level + 3];
-		} else if (Actor.findChar( cell ) != null && Ballistica.distance > 1) {
-			cell = Ballistica.trace[Ballistica.distance - 2];
-		}
+		// if (Ballistica.distance > level + 5) {
+		// 	cell = Ballistica.trace[level + 3];
+		// } else if (Actor.findChar( cell ) != null && Ballistica.distance > 1) {
+		// 	cell = Ballistica.trace[Ballistica.distance - 2];
+		// }
 		
 		// curUser.sprite.visible = true;
 		if (Dungeon.visible[cell]) {
@@ -119,7 +119,7 @@ public class WandOfSpirits extends Wand {
 	@Override
 	public String desc() {
 		return
-			"This wand summons a small yet loyal spirit wolf. " +
-			"The spirit wolf lasts for a limited duration, dealing damage to any enemies.";
+			"This wand summons a small yet loyal spirit wolf. The spirit wolf lasts for a limited duration" +
+			", dealing damage to any enemies it comes across. As the spirit wolf weakens, so does the damage it deals.";
 	}
 }

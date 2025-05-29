@@ -58,4 +58,9 @@ public class Initiliazing extends Weapon.Enchantment {
 		return Utils.format( TXT_PIONEERING, weaponName );
 	}
 
+	@Override
+	public String description(){
+		return "The magic engulfing this weapon grants a powerful opening strike, dealing increased damage to healthy enemies.";
+	}
+
 }

@@ -25,9 +25,11 @@ import com.retrodevxp.pixeldungeon.Dungeon;
 import com.retrodevxp.pixeldungeon.actors.buffs.Blindness;
 import com.retrodevxp.pixeldungeon.actors.buffs.Buff;
 import com.retrodevxp.pixeldungeon.actors.buffs.Invisibility;
+import com.retrodevxp.pixeldungeon.actors.hero.HeroSubClass;
 import com.retrodevxp.pixeldungeon.actors.mobs.Mob;
 import com.retrodevxp.pixeldungeon.levels.Level;
 import com.retrodevxp.pixeldungeon.scenes.GameScene;
+import com.retrodevxp.pixeldungeon.utils.GLog;
 import com.retrodevxp.utils.Random;
 
 public class ScrollOfPsionicBlast extends Scroll {
@@ -50,8 +52,12 @@ public class ScrollOfPsionicBlast extends Scroll {
 				mob.damage( Random.IntRange( 1 + mob.HT * 1 / 7, 2 + mob.HT * 2 / 3 ), this );
 			}
 		}
-		
+		if (Dungeon.hero.subClass == HeroSubClass.SCRIBE){
+			GLog.w("Sensing the power of the scroll, you closed your eyes just in time for the flash of light.");
+		}
+		else{
 		Buff.prolong( curUser, Blindness.class, Random.Int( 3, 6 ) );
+		}
 		Dungeon.observe();
 		
 		setKnown();

@@ -137,6 +137,7 @@ public class Dungeon {
 		
 		QuickSlot.primaryValue = null;
 		QuickSlot.secondaryValue = null;
+		QuickSlot.tertiaryValue = null;
 		
 		hero = new Hero();
 		hero.live();
@@ -285,12 +286,12 @@ public class Dungeon {
 	}
 	
 	public static boolean posNeeded() {
-		int[] quota = {4, 2, 9, 4, 14, 6, 19, 8, 24, 9};
+		int[] quota = {4, 2, 9, 4, 14, 6, 19, 8, 24, 10};
 		return chance( quota, potionOfStrength );
 	}
 	
 	public static boolean souNeeded() {
-		int[] quota = {5, 3, 10, 6, 15, 9, 20, 12, 25, 13};
+		int[] quota = {5, 3, 10, 6, 15, 9, 20, 12, 25, 16};
 		return chance( quota, scrollsOfUpgrade );
 	}
 	
@@ -414,18 +415,27 @@ public class Dungeon {
 			bundle.put( BADGES, badges );
 			
 			Game.instance.writeFile( fileName, Bundle.write(bundle) );
+			System.out.println("Saved successfully");
 			
 		} catch (Exception e) {
+			System.out.println("Exception occured while saving game:" + e.toString());
 
 			GamesInProgress.setUnknown( hero.heroClass );
 		}
 	}
 	
 	public static void saveLevel() throws IOException {
+		try{
 		Bundle bundle = new Bundle();
 		bundle.put( LEVEL, level );
 		
 		Game.instance.writeFile( Utils.format( depthFile( hero.heroClass ), depth ), Bundle.write(bundle) );
+
+		System.out.println("Level saved successfully");
+		}
+		catch(Exception e){
+			System.out.println("Error saving level:" + e.toString());
+		}
 	}
 	
 	public static void saveAll() throws IOException {

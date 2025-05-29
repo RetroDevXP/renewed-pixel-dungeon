@@ -54,9 +54,21 @@ public class Culling extends Weapon.Enchantment {
 		}
 		
 		if ( defender.HP < defender.HT) {
+			//Culling is less powerful on boss depths.
+			try{
+				if (Dungeon.depth % 5 == 0){
+					defender.damage( Random.Int(1, ( 1 + (int)Math.floor((defender.HT - defender.HP)/ (15 - enchantlevel)))  + (int)(Math.floor(Dungeon.depth / 10))), this );
+					defender.sprite.emitter().burst( ShadowParticle.CURSE, enchantlevel + 2 );
+				}
+				else{
+					defender.damage( Random.Int(1, ( 1 + (int)Math.floor((defender.HT - defender.HP)/ (10 - enchantlevel)))  + (int)(Math.floor(Dungeon.depth / 5))), this );
+					defender.sprite.emitter().burst( ShadowParticle.CURSE, enchantlevel + 2 );
+				}
+			}
+			catch(Exception e){
+
+			}
 			
-			defender.damage( Random.Int(((int)Math.floor((defender.HT - defender.HP)/ (10 - enchantlevel))) ) + (int)(Math.floor(Dungeon.depth / 5)), this );
-			defender.sprite.emitter().burst( ShadowParticle.CURSE, enchantlevel + 2 );
 			
 			// if (!defender.isAlive() && attacker instanceof Hero) {
 			// 	Badges.validateGrimWeapon();
@@ -79,6 +91,11 @@ public class Culling extends Weapon.Enchantment {
 	@Override
 	public String name( String weaponName) {
 		return Utils.format( TXT_CULLING, weaponName );
+	}
+
+	@Override
+	public String description(){
+		return "The dark magic in this weapon tugs at its target's soul. The more wounded its target is, the more powerful the damage dealt";
 	}
 
 }

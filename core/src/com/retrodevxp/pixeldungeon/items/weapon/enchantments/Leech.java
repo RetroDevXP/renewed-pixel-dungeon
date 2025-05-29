@@ -68,4 +68,9 @@ public class Leech extends Weapon.Enchantment {
 		return Utils.format( TXT_VAMPIRIC, weaponName );
 	}
 
+	@Override
+	public String description(){
+		return "Upon damaging its target, part of the damage dealt is turned into HP recovery for the owner of this weapon.";
+	}
+
 }

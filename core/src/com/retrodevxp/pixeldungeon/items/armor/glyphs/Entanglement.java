@@ -75,5 +75,10 @@ public class Entanglement extends Glyph {
 	public Glowing glowing() {
 		return GREEN;
 	}
+
+	@Override
+	public String description(){
+		return "This armor can generate herbal armor to protect its wearer, but makes the wearer unable to move.";
+	}
 		
 }

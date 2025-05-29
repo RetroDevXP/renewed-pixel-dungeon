@@ -78,7 +78,7 @@ public class WandOfBlink extends Wand {
 	@Override
 	public String desc() {
 		return
-			"This wand will allow you to teleport in the chosen direction. " +
-			"Creatures and inanimate obstructions will block the teleportation.";
+			"This wand will allow you to teleport in the chosen direction. Creatures and inanimate obstructions will block the teleportation. " +
+			"When this wand is upgraded, the max distance you can teleport increases.";
 	}
 }

@@ -61,4 +61,9 @@ public class Stench extends Glyph {
 		return GREEN;
 	}
 
+	@Override
+	public String description(){
+		return "This armor may unleash a cloud of toxic gas when its wearer is damaged.";
+	}
+
 }

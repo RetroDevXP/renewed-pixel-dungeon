@@ -28,6 +28,7 @@ import com.retrodevxp.pixeldungeon.items.TomeOfMastery;
 import com.retrodevxp.pixeldungeon.items.armor.ClothArmor;
 import com.retrodevxp.pixeldungeon.items.bags.Keyring;
 import com.retrodevxp.pixeldungeon.items.food.Food;
+import com.retrodevxp.pixeldungeon.items.potions.PotionOfHealing;
 import com.retrodevxp.pixeldungeon.items.potions.PotionOfMindVision;
 import com.retrodevxp.pixeldungeon.items.potions.PotionOfParalyticGas;
 import com.retrodevxp.pixeldungeon.items.potions.PotionOfStrength;
@@ -35,9 +36,19 @@ import com.retrodevxp.pixeldungeon.items.rings.RingOfShadows;
 import com.retrodevxp.pixeldungeon.items.scrolls.ScrollOfEnchantment;
 import com.retrodevxp.pixeldungeon.items.scrolls.ScrollOfIdentify;
 import com.retrodevxp.pixeldungeon.items.scrolls.ScrollOfMagicMapping;
+import com.retrodevxp.pixeldungeon.items.scrolls.ScrollOfPsionicBlast;
+import com.retrodevxp.pixeldungeon.items.scrolls.ScrollOfUpgrade;
+import com.retrodevxp.pixeldungeon.items.wands.WandOfAmok;
+import com.retrodevxp.pixeldungeon.items.wands.WandOfAvalanche;
 import com.retrodevxp.pixeldungeon.items.wands.WandOfBlindness;
+import com.retrodevxp.pixeldungeon.items.wands.WandOfBlink;
+import com.retrodevxp.pixeldungeon.items.wands.WandOfDisintegration;
+import com.retrodevxp.pixeldungeon.items.wands.WandOfFirebolt;
 import com.retrodevxp.pixeldungeon.items.wands.WandOfMagicMissile;
+import com.retrodevxp.pixeldungeon.items.wands.WandOfReach;
+import com.retrodevxp.pixeldungeon.items.wands.WandOfRegrowth;
 import com.retrodevxp.pixeldungeon.items.wands.WandOfSpirits;
+import com.retrodevxp.pixeldungeon.items.wands.WandOfTeleportation;
 import com.retrodevxp.pixeldungeon.items.weapon.melee.*;
 import com.retrodevxp.pixeldungeon.items.weapon.missiles.Boomerang;
 import com.retrodevxp.pixeldungeon.items.weapon.missiles.Dart;
@@ -126,17 +137,45 @@ public enum HeroClass {
 		
 		hero.updateAwareness();
 	}
+
+	//Cheat code to test some items during development.
+	private static void initExtra(){
+		new TomeOfMastery().collect();
+		new WandOfAmok().identify().collect();
+		new WandOfDisintegration().identify().collect();
+		// new WandOfFirebolt().identify().collect();
+		// new ScrollOfPsionicBlast().identify().collect();
+		new WandOfSpirits().identify().collect();
+		new WandOfReach().identify().collect();
+		new WandOfTeleportation().identify().collect();
+		// new WandOfBlink().identify().collect();
+		new WandOfRegrowth().identify().collect();
+		// new WandOfAvalanche().identify().collect();
+		new Whip().identify().collect();
+		new Flail().identify().collect();
+		new Brandistock().identify().collect();
+
+		for (int i = 1; i < 100; i++){
+			new PotionOfHealing().identify().collect();
+			new PotionOfMindVision().identify().collect();
+			new PotionOfStrength().identify().collect();
+			new ScrollOfEnchantment().identify().collect();
+			new ScrollOfUpgrade().identify().collect();
+		}
+		// QuickSlot.primaryValue = ArmorKit.class;
+		// for (int i = 1; i < 100; i++){
+		// 	new ScrollOfEnchantment().identify().collect();
+		// }
+	}
 	
 	private static void initCommon( Hero hero ) {
 		(hero.belongings.armor = new ClothArmor()).identify();
 		new Food().identify().collect();
 		new Keyring().collect();
-		// QuickSlot.primaryValue = ArmorKit.class;
-		// for (int i = 1; i < 11; i++){
-		// 	new ScrollOfEnchantment().identify().collect();
-		// }
 
-		// new TomeOfMastery().collect();
+		//Enable this to start with a bunch of items. Used to test stuff during development.
+		// initExtra();
+		
 	}
 	
 	public Badges.Badge masteryBadge() {
@@ -157,22 +196,6 @@ public enum HeroClass {
 		hero.STR = hero.STR + 1;
 		
 		(hero.belongings.weapon = new ShortSword()).identify();
-		//Debug items.
-		// new WoodenDart( 5 ).identify().collect();
-		// new SmokeBomb( 5 ).identify().collect();
-		// new SerratedSpike( 5 ).identify().collect();
-		// new FireBomb().identify().collect();
-		// new WandOfSpirits().identify().collect();
-		// new WandOfBlindness().identify().collect();
-		// new PotionOfMindVision().identify().collect();
-		// WandOfSpirits wand = new WandOfSpirits();
-		// wand.identify().collect();
-		// new Bulbush.Seed().identify().collect();
-		// new Hardthorn.Seed().identify().collect();
-		// new Guandao().identify().collect();
-		// for (int i = 0; i < 50; i++){
-		// 	new ScrollOfEnchantment().identify().collect();
-		// }
 		
 		QuickSlot.secondaryValue = WoodenDart.class;
 		QuickSlot.primaryValue = PotionOfStrength.class;
@@ -201,7 +224,6 @@ public enum HeroClass {
 		
 		hero.belongings.ring1.activate( hero );
 
-		//  new PotionOfMindVision().identify().collect();
 
 		
 		QuickSlot.secondaryValue = Dart.class;

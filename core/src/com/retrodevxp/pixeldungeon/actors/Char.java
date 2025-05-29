@@ -51,6 +51,7 @@ import com.retrodevxp.pixeldungeon.actors.buffs.Vertigo;
 import com.retrodevxp.pixeldungeon.actors.hero.Hero;
 import com.retrodevxp.pixeldungeon.actors.hero.HeroSubClass;
 import com.retrodevxp.pixeldungeon.actors.mobs.Bestiary;
+import com.retrodevxp.pixeldungeon.actors.mobs.Mob;
 import com.retrodevxp.pixeldungeon.effects.CellEmitter;
 import com.retrodevxp.pixeldungeon.effects.particles.PoisonParticle;
 import com.retrodevxp.pixeldungeon.levels.Level;
@@ -145,26 +146,31 @@ public abstract class Char extends Actor {
 			}
 			
 			// FIXME
-			int dr = this instanceof Hero && ((Hero)this).rangedWeapon != null && ((Hero)this).subClass == HeroSubClass.DEADEYE ? 0 :
-				Random.IntRange( 0, enemy.dr() );
+			int dr = Random.IntRange( 0, enemy.dr() );
+			if (this instanceof Hero && ((Hero)this).rangedWeapon != null && ((Hero)this).subClass == HeroSubClass.DEADEYE){
+				dr = 0;
+				enemy.sprite.showStatus(CharSprite.NEGATIVE, "Pierced");
+			}
 			
 			int dmg = damageRoll();
 			int effectiveDamage = Math.max( dmg - dr, 0 );
 			
 			effectiveDamage = attackProc( enemy, effectiveDamage );
 			effectiveDamage = enemy.defenseProc( this, effectiveDamage );
-
+			float multiplyDamage = effectiveDamage;
 			if (enemy == Dungeon.hero) {
 				if(Dungeon.hero.subClass == HeroSubClass.KNIGHT){
-					if (effectiveDamage > enemy.HT / 3) {
-						effectiveDamage *= 0.75f;
+					if (multiplyDamage > enemy.HT / 3f) {
+						multiplyDamage *= 0.75f;
+						enemy.sprite.showStatus( CharSprite.NEUTRAL, "Shielded" );
 					}
-					else if (effectiveDamage > enemy.HT / 5) {
-						effectiveDamage *= 0.9f;
+					else if (multiplyDamage > enemy.HT / 5f) {
+						multiplyDamage *= 0.9f;
+						enemy.sprite.showStatus( CharSprite.NEUTRAL, "Shielded" );
 					}
 				}
 			}
-			enemy.damage( effectiveDamage, this );
+			enemy.damage( (int)Math.round(multiplyDamage), this );
 			
 			if (visibleFight) {
 				Sample.INSTANCE.play( Assets.SND_HIT, 1, 1, Random.Float( 0.8f, 1.25f ) );
@@ -513,7 +519,29 @@ public abstract class Char extends Actor {
 		}
 		
 		if (Dungeon.level.map[pos] == Terrain.OPEN_DOOR) {
+			// System.out.println("Open door" + "!");
+			//FIXED: Crawler gets invisibility when anything is on an open door, not just himself!
 			Door.leave( pos );
+			int countcrawl = 0;
+			try{
+				if(this instanceof Hero){
+				if (Dungeon.hero.subClass == HeroSubClass.CRAWLER){
+					for (Mob mob : Dungeon.level.mobs) {
+						if (Level.fieldOfView[mob.pos]) {
+							countcrawl += 1;
+						}
+					}
+					if (countcrawl == 0){
+						// if (Dungeon.hero.buffs(Invisibility.class) == null){
+						Buff.affect( Dungeon.hero, Invisibility.class, 5 );
+						// }
+					}
+				}
+			}
+		}
+			catch(Exception e){
+				
+			}
 		}
 		
 		pos = step;

@@ -27,10 +27,14 @@ import com.retrodevxp.pixeldungeon.Dungeon;
 import com.retrodevxp.pixeldungeon.actors.Actor;
 import com.retrodevxp.pixeldungeon.actors.Char;
 import com.retrodevxp.pixeldungeon.actors.buffs.Buff;
+import com.retrodevxp.pixeldungeon.actors.buffs.Cripple;
 import com.retrodevxp.pixeldungeon.actors.buffs.Invisibility;
+import com.retrodevxp.pixeldungeon.actors.buffs.Weakness;
 import com.retrodevxp.pixeldungeon.actors.hero.Hero;
 import com.retrodevxp.pixeldungeon.actors.hero.HeroClass;
+import com.retrodevxp.pixeldungeon.actors.hero.HeroSubClass;
 import com.retrodevxp.pixeldungeon.effects.MagicMissile;
+import com.retrodevxp.pixeldungeon.effects.particles.ShadowParticle;
 import com.retrodevxp.pixeldungeon.items.Item;
 import com.retrodevxp.pixeldungeon.items.ItemStatusHandler;
 import com.retrodevxp.pixeldungeon.items.KindOfWeapon;
@@ -427,6 +431,33 @@ public abstract class Wand extends KindOfWeapon {
 		curUser.spendAndNext( TIME_TO_ZAP );
 	}
 	
+	//If the Warlock does not have enough HP for a wand charge, he charges it anyways, but becomes crippled at 1 HP.
+	//However, if he is already at 1 HP when he tries to charge it, it fails. He needs to spend at least some HP.
+	protected boolean wandUseWarlock() {
+			if (Dungeon.hero.HP <= 1){
+				return false;
+			}
+			curCharges++;
+			int cost = (int)(Dungeon.hero.HT / 10f + Random.Float( Dungeon.hero.HT / 15f, 1 + Dungeon.hero.HT / 10f ));
+			if (Dungeon.hero.HP > cost){
+				Dungeon.hero.HP -= cost;
+				Dungeon.hero.sprite.emitter().burst( ShadowParticle.UP, 10 );
+				//Failsafe.
+				if (Dungeon.hero.HP < 1){
+					Dungeon.hero.HP = 1;
+				}
+			}
+			else{
+				Dungeon.hero.HP = 1;
+				Dungeon.hero.sprite.emitter().burst( ShadowParticle.UP, 7 );
+				Buff.prolong( Dungeon.hero, Weakness.class, Random.Float( 3.5f, 9.5f ) );
+				Buff.prolong( Dungeon.hero, Cripple.class, Random.Float( 1.5f, 5.5f ) );
+			}
+
+			updateQuickslot();
+			return true;
+	}
+	
 	@Override
 	public Item random() {
 		if (Random.Float() < 0.5f) {
@@ -508,6 +539,29 @@ public abstract class Wand extends KindOfWeapon {
 					
 					Invisibility.dispel();
 					
+				}else if (Dungeon.hero.subClass == HeroSubClass.WARLOCK) {
+					//Warlocks are able to use out-of-charge wands at a cost of their HP.
+					if(curWand.wandUseWarlock() ){
+					curUser.busy();
+					
+					curWand.fx( cell, new Callback() {
+						@Override
+						public void call() {
+							curWand.onZap( cell );
+							curWand.wandUsed();
+						}
+					} );
+					
+					Invisibility.dispel();
+				}
+				else{
+					curUser.spendAndNext( TIME_TO_ZAP );
+					GLog.w( "You don't have enough energy in your soul to extract for a wand charge." );
+					curWand.levelKnown = true;
+					
+					curWand.updateQuickslot();
+				}
+					
 				} else {
 					
 					curUser.spendAndNext( TIME_TO_ZAP );
@@ -555,6 +609,14 @@ public abstract class Wand extends KindOfWeapon {
 			float time2charge = ((Hero)target).heroClass == HeroClass.MAGE ? 
 				TIME_TO_CHARGE / (float)Math.sqrt( 1 + effectiveLevel() ) : 
 				TIME_TO_CHARGE;
+				try{
+					if (((Hero)target).isStarving()){
+						time2charge *= 1.25f;
+					}
+				}
+				catch(Exception e){
+					
+				}
 			spend( time2charge );
 		}
 	}

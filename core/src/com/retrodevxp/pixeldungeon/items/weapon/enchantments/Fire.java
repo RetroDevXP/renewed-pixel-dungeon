@@ -70,4 +70,9 @@ public class Fire extends Weapon.Enchantment {
 		return Utils.format( TXT_BLAZING, weaponName );
 	}
 
+	@Override
+	public String description(){
+		return "Upon damaging an enemy, this weapon may unleash intense heat, enflaming its target.";
+	}
+
 }

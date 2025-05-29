@@ -64,3 +64,6 @@ build/
 
 ## RoboVM
 ios/robovm.properties
+
+#Other
+*.xcf

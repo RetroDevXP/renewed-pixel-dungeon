@@ -67,4 +67,9 @@ public class Horror extends Weapon.Enchantment {
 		return Utils.format( TXT_ELDRITCH, weaponName );
 	}
 
+	@Override
+	public String description(){
+		return "Eldritch magic in this weapon may overwhelm the enemy, making them flee in terror.";
+	}
+
 }

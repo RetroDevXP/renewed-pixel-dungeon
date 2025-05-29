@@ -37,7 +37,7 @@ public class SeedVaultPainter extends Painter {
 		fill( level, room, Terrain.WALL );
 		fill( level, room, 1, floor );
 		
-		int n = Random.IntRange( 3, 5 );
+		int n = Random.IntRange( 3, 7 );
 		for (int i=0; i < n; i++) {
 			int pos;
 			do {

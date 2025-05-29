@@ -88,4 +88,9 @@ public class Multiplicity extends Glyph {
 	public Glowing glowing() {
 		return PINK;
 	}
+
+	@Override
+	public String description(){
+		return "When the wearer is damaged, this armor sometimes creates illusions of the wearer, at the cost of some HP.";
+	}
 }

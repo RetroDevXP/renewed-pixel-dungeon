@@ -80,6 +80,6 @@ public class Crab extends Mob {
 		return
 			"These huge crabs are at the top of the food chain in the sewers. " +
 			"They are extremely fast and their thick exoskeleton can withstand " +
-			"heavy blows while their claws strike at enemies.";
+			"heavy blows while their powerful claws strike at enemies.";
 	}
 }

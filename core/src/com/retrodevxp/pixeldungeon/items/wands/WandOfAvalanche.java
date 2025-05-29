@@ -117,7 +117,7 @@ public class WandOfAvalanche extends Wand {
 	@Override
 	public String desc() {
 		return
-				"When a discharge of this wand hits a wall (or any other solid obstacle) it causes " +
-						"an avalanche of stones, damaging and stunning all creatures in the affected area.";
+				"When a discharge of this wand hits a wall (or any other solid obstacle) it causes a mighty shake that drops " +
+						"an avalanche of stones, damaging and potentially stunning all creatures in the affected area.";
 	}
 }

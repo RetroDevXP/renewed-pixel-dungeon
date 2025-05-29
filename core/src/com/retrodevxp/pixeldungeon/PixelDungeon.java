@@ -331,4 +331,20 @@ public class PixelDungeon extends Game<GameAction> {
 	public static void reportException( Exception e ) {
 		Gdx.app.error("PD", e.getMessage(), e);
 	}
+
+	// @Override
+	// public void dispose(){
+	// 	super.dispose();
+	// 	try{
+	// 		if(Dungeon.hero != null){
+	// 		System.out.println("Disposing game");
+	// 		Dungeon.saveAll();
+	// 		}
+	// 	}
+	// 	catch(Exception e){
+	// 		System.out.println("Exit:" + e.toString());
+	// 	}
+		
+	// }
+	
 }

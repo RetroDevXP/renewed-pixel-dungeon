@@ -31,4 +31,9 @@ public class Slowness extends Weapon.Enchantment {
     public String name(String weaponName) {
         return Utils.format(TXT_CHILLING, weaponName);
     }
+
+    @Override
+	public String description(){
+		return "Cold to the touch, this weapon limits the speed of its targets.";
+	}
 }

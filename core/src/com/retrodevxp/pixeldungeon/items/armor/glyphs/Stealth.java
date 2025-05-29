@@ -67,4 +67,9 @@ public class Stealth extends Glyph {
 	public Glowing glowing() {
 		return DARK;
 	}
+
+	@Override
+	public String description(){
+		return "When the wearer is damaged, this armor sometimes generates a cloud of smoke that makes the wearer invisible for a short duration.";
+	}
 }

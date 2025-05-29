@@ -57,7 +57,7 @@ public class WandOfSlowness extends Wand {
 	@Override
 	public String desc() {
 		return 
-			"This wand will cause a creature to move and attack " +
-			"at half its ordinary speed until the effect ends";
+			"This wand will cause a creature to move and attack at half its ordinary speed until the effect ends. " +
+			"Upgrading the wand causes its targets to be slowed for longer.";
 	}
 }

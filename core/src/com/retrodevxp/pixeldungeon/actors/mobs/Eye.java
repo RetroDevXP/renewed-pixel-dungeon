@@ -148,8 +148,8 @@ public class Eye extends Mob {
 	@Override
 	public String description() {
 		return
-			"One of this demon's other names is \"orb of hatred\", because when it sees an enemy, " +
-			"it uses its deathgaze recklessly, often ignoring its allies and wounding them.";
+			"One of the many servants of the demon god. This demon efficiently destroys enemies on sight by firing a powerful deathgaze. " +
+			"However, it often ignores its allies, wounding them in the process. It has thus also became known as the \"orb of hatred\".";
 	}
 	
 	private static final HashSet<Class<?>> RESISTANCES = new HashSet<Class<?>>();

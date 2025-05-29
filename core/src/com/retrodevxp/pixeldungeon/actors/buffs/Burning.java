@@ -30,6 +30,8 @@ import com.retrodevxp.pixeldungeon.actors.mobs.Thief;
 import com.retrodevxp.pixeldungeon.effects.particles.ElmoParticle;
 import com.retrodevxp.pixeldungeon.items.Heap;
 import com.retrodevxp.pixeldungeon.items.Item;
+import com.retrodevxp.pixeldungeon.items.food.BulbushFruit;
+import com.retrodevxp.pixeldungeon.items.food.BulbushFruitCooked;
 import com.retrodevxp.pixeldungeon.items.food.ChargrilledMeat;
 import com.retrodevxp.pixeldungeon.items.food.MysteryMeat;
 import com.retrodevxp.pixeldungeon.items.rings.RingOfElements.Resistance;
@@ -93,6 +95,18 @@ public class Burning extends Buff implements Hero.Doom {
 					ChargrilledMeat steak = new ChargrilledMeat(); 
 					if (!steak.collect( ((Hero)target).belongings.backpack )) {
 						Dungeon.level.drop( steak, target.pos ).sprite.drop();
+					}
+					GLog.w( TXT_BURNS_UP, item.toString() );
+					
+					Heap.burnFX( target.pos );
+					
+				}
+				else if (item instanceof BulbushFruit) {
+					
+					item = item.detach( ((Hero)target).belongings.backpack );
+					BulbushFruitCooked cookedfruit = new BulbushFruitCooked(); 
+					if (!cookedfruit.collect( ((Hero)target).belongings.backpack )) {
+						Dungeon.level.drop( cookedfruit, target.pos ).sprite.drop();
 					}
 					GLog.w( TXT_BURNS_UP, item.toString() );
 					

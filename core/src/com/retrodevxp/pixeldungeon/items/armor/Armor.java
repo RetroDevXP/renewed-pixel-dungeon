@@ -270,7 +270,9 @@ public class Armor extends EquipableItem {
 		}
 		
 		if (glyph != null) {
-			info.append( "It is enchanted." );
+			info.append( "It is enchanted. \n \n" );
+			info.append(glyph.description());
+			
 		}
 		
 		if (isEquipped( Dungeon.hero )) {
@@ -373,6 +375,8 @@ public class Armor extends EquipableItem {
 	public ItemSprite.Glowing glowing() {
 		return glyph != null ? glyph.glowing() : null;
 	}
+
+	
 	
 	public static abstract class Glyph implements Bundlable {
 		
@@ -385,6 +389,10 @@ public class Armor extends EquipableItem {
 		// private static final float[] stealthchances = new float[]{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 };
 			
 		public abstract int proc( Armor armor, Char attacker, Char defender, int damage );
+
+		public String description(){
+		return "Awesome enchantment description!";
+	}
 		
 		public String name( String armorName ) {
 			return armorName;

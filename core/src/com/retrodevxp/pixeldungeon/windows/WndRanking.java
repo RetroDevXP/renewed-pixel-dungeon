@@ -55,7 +55,7 @@ public class WndRanking extends WndTabbed {
 	private static final String TXT_BADGES	= "Badges";
 	
 	private static final int WIDTH			= 112;
-	private static final int HEIGHT			= 134;
+	private static final int HEIGHT			= 174;
 	
 	private static final int TAB_WIDTH	= 40;
 	
@@ -252,8 +252,9 @@ public class WndRanking extends WndTabbed {
 			
 			Item primary = getQuickslot( QuickSlot.primaryValue );
 			Item secondary = getQuickslot( QuickSlot.secondaryValue );
+			Item tertiary = getQuickslot( QuickSlot.tertiaryValue );
 			
-			if (count >= 4 && primary != null && secondary != null) {
+			if (count >= 5 && primary != null && secondary != null && tertiary != null) {
 				
 				float size = ItemButton.SIZE;
 				
@@ -264,12 +265,19 @@ public class WndRanking extends WndTabbed {
 				slot = new ItemButton( secondary );
 				slot.setRect( size + 1, pos, size, size );
 				add( slot );
+
+				slot = new ItemButton( tertiary );
+				slot.setRect( size + size + 1, pos, size, size );
+				add( slot );
 			} else {
 				if (primary != null) {
 					addItem( primary );
 				}
 				if (secondary != null) {
 					addItem( secondary );
+				}
+				if (tertiary != null) {
+					addItem( tertiary );
 				}
 			}
 		}

@@ -61,4 +61,9 @@ public class Poison extends Weapon.Enchantment {
 		return Utils.format( TXT_VENOMOUS, weaponName );
 	}
 
+	@Override
+	public String description(){
+		return "Enemies may be poisoned upon the touch of this weapon.";
+	}
+
 }

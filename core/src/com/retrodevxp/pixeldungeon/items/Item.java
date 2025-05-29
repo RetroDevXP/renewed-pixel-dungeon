@@ -492,10 +492,10 @@ public class Item implements Bundlable {
 		
 		if (stackable) {
 			Class<? extends Item> cl = getClass();
-			if (QuickSlot.primaryValue == cl || QuickSlot.secondaryValue == cl) {
+			if (QuickSlot.primaryValue == cl || QuickSlot.secondaryValue == cl || QuickSlot.tertiaryValue == cl) {
 				QuickSlot.refresh();
 			}
-		} else if (QuickSlot.primaryValue == this || QuickSlot.secondaryValue == this) {
+		} else if (QuickSlot.primaryValue == this || QuickSlot.secondaryValue == this || QuickSlot.tertiaryValue == this) {
 			QuickSlot.refresh();
 		}
 	}

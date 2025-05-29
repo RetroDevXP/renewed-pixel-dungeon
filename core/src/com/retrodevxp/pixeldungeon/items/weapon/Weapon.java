@@ -256,6 +256,10 @@ abstract public class Weapon extends KindOfWeapon {
 		public String name( String weaponName ) {
 			return weaponName;
 		}
+
+		public String description(){
+			return "Awesome description for weapon enchantment.";
+		}
 		
 		@Override
 		public void restoreFromBundle( Bundle bundle ) {	

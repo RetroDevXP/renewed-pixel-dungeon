@@ -73,4 +73,9 @@ public class Affection extends Glyph {
 	public Glowing glowing() {
 		return PINK;
 	}
+	
+	@Override
+	public String description(){
+		return "The magical powers of this enchantment has a chance to charm both the wearer and the target.";
+	}
 }

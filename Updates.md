@@ -1,81 +1,11 @@
 Renewed Pixel Dungeon
 =================
 
-Renewed Pixel Dungeon adds or changes many features from Vanilla.
+This file contains the updates for Renewed Pixel Dungeon.
 
 This mod includes many new features, such as a new subclass for each class, new extra item choice mechanic, melee weapons dealing damage when thrown (to different degrees of effectiveness), some thrown weapons are re-usable, changed hunger system, new melee weapons, new thrown weapons, new items, new plants, new wand, new enchants, new enemy, etc.
 
-This file is for the features of 1.0.0 as well as later updates. Please see each version's sections.
 
-# 1.1.0
-
-Classes
-----------
-
-Knights now have indicators when their ability activates. Also has roundings in its formula for a smoother ability strength.
-
-When a Warlock tries to use out-of-charge wands, he can extract energy from his own soul to be converted to a wand charge. This costs significant HP. If he does not have enough HP for it, he charges the wand anyways but becomes crippled at 1 HP. To charge wands this way, he must spend at least some HP. It won't work if he is already at 1 HP when trying to use it.
-
-When the Battlemage charges a wand already at full charges by attacking enemies using that wand as a melee weapon, the excess energy from the wand now has a chance to cause an extra effect. This effect differs for each wand. The higher the wand's level, the more often this effect occurs. Most effects tend to be stronger based on the wand's level as well. 
-
-Scribes are immune to the blindness effect from Scrolls of Psionic Blasts. Might have a complete overhaul for this subclass later.
-
-Crawler has been changed. He now also becomes invisible when going behind a door without any enemies in sight. His invisibility when entering a depth now also only occurs without any enemies in sight as well.
-
-Fixed Deadeye's name in some cases.
-
-Chaser has been changed. Instead of the "thrill of the hunt" buff being obtained upon damaging enemies with a ranged weapon, the buff is now obtained by damaging an already wounded enemy. Using a ranged weapon for this leads to a longer buff duration. The "thrill of the hunt" buff also grants a slight damage increase as well.
-
-Items, Companions, Enchants
-----------
-
-Whip has been changed to reach multiple tiles (currently the only weapon with this effect). It deals less damage but is more accurate.
-
-Added a new weapon: Flail, has the old stats of Whip.
-
-You can actually retract Brandistocks now, trading some damage for speed.
-
-Spirit Wolves are often ignored by enemies already adjacent to the hero, the enemy continues to focus on the Hero. This is so they won't protect the hero too well.
-
-Spirit Wolf deals less damage, have less accuracy, dodges less often, and has less HP. By extension, it also doesn't last as long since its duration is based on HP.
-
-Spirit Wolf's damage output is now partially based on its current HP. Weakened Spirit Wolves deals less damage.
-
-Modified Spirit Wolf's sprite since it was hard to see when it attacks.
-
-Culling enchantment has a changed formula. This enchantment is also weaker on boss depths.
-
-More Scrolls of Upgrades and Potions of Strength generates in the Demon Halls, encouraging you to explore it more.
-
-UI, Lore, Others
-----------
-
-Added a 3rd quickslot. If you already played version 1.0.0, you might need to manually bind the key of this quickslot. Otherwise it defaults to "E".
-
-Slightly modified Tome of Mastery UI size to potentially handle longer subclass descriptions.
-
-There are descriptions for enchantments now.
-
-Changed some more texts.
-
-Enemies
-----------
-
-Gnoll Scouts are less rare deeper into the dungeon. When a Gnoll Socut is damaged, it alerts other Gnolls to your position.
-
-Swarm Of Flies deals slightly more damage.
-
-Hunger
-----------
-
-All wands take longer to charge while starving.
-
-Buffs
-----------
-
-Thrill of the hunt also gives a slight damage increase. The way to obtain this buff is different.
-
-# 1.0.0
 
 Classes
 ----------
@@ -83,23 +13,6 @@ Added a new subclass for each class.
 
 Warrior's subclass, Knight, specializes in duels as well as dealing with strong enemies.
 
-Rogue's subclass, Crawler, utilizes stealth to his advantage.
-
-Mage's subclass, Scribe, specializes in enchants.
-
-Huntress' subclass, Chaser, has the mobility to chase or escape while using ranged weapons.
-
-The Assassin subclass has been changed to Spy.
-
-Spy (formerly Assassin) also senses enemies behind obstacles.
-
-The Sniper subclass has been changed to Deadeye.
-
-Deadeye (formerly Sniper) is more accurate with thrown weapons, including thrown melee weapons.
-
-Wardens have slightly quicker HP Regneration.
-
-Mages are less likely to have their enchantments removed when upgrading an enchanted item.
 
 Rogues start with 15 points of health. However, their subclasses benefits greatly from some mechanic changes in this mod. For example, the abundance of food keeps the Freerunner's ability activated. Rogues also have rather strong extra items.
 
@@ -204,5 +117,3 @@ Buffs
 Blindness also decreases accuracy of attacks.
 
 Added new buff: Thrill of the hunt, exclusive to the Chaser subclass.
-
-

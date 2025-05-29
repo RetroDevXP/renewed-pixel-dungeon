@@ -34,14 +34,14 @@ public enum HeroSubClass {
 		"significantly increasing his damage output." ),
 	KNIGHT( "knight", 
 		"The _Knight_ defends well against strong attacks, receiving reduced damage. " +
-		"The _Knight_ is also stronger in a duel, dealing more damage if there aren't any other enemies surrounding him." ),
+		"He is also stronger in a duel, dealing more damage if there aren't any other enemies surrounding him." ),
 	
 	WARLOCK( "warlock", 
-		"The _Warlock_ extracts energy from the soul of defeated enemies. " +
-		"It heals his wounds and satisfies his hunger." ),
+		"The _Warlock_ extracts energy from the soul of defeated enemies, healing his wounds and satisfying his hunger. " +
+		"When using an out-of-charge wand, the _Warlock_ is able to extract energy from his soul to be converted into wand charges. " ),
 	BATTLEMAGE( "battlemage", 
 		"When fighting with a wand in his hands, the _Battlemage_ inflicts additional damage depending " +
-		"on the current number of charges. Every successful hit restores 1 charge to this wand." ),
+		"on the current number of charges. Every successful hit restores 1 charge to this wand. Excess energy is converted into extra effects." ),
 	SCRIBE( "scribe", 
 		"With his proficiency, the _Scribe_ is more resistant or even immune to most negative effects from enchantments. " +
 		"When he upgrades an enchanted item, the enchantment will never be removed despite the collision of different magic." ),
@@ -54,17 +54,17 @@ public enum HeroSubClass {
 		"is running, the Freerunner is much harder to hit. For that he must be unencumbered and not starving." ),
 	CRAWLER( "crawler", 
 		"The _Crawler_ is stealthier than other classes. When he becomes invisible, he stays invisible longer. " +
-		"The _Cralwer_ stealthily enters each depth, becoming invisible for a duration." ),
+		"When he enters a depth or steps behind a door without enemies in sight, he stealthily moves, becoming invisible for a duration." ),
 		
-	DEADEYE( "sniper", 
+	DEADEYE( "deadeye", 
 		"_Deadeyes_ are able to precisely detect weak points in an enemy's armor, ignoring it completely when using a missile weapon. " +
 		"_Deadeyes_ locks on to a target for a quicker next attack when using a missile weapon." ),
 	WARDEN( "warden", 
 		"Having a strong connection with forces of nature gives _Wardens_ an ability to gather dewdrops and " +
 		"seeds from plants. Also trampling a high grass grants them a temporary armor buff. _Wardens_ also regenerate health slightly quicker." ),
 	CHASER( "chaser", 
-		"The thrill of the hunt grants the _Chaser_ a movement speed boost " +
-		"whenever attacking enemies with a missile weapon." );
+		"When damaging a wounded enemy, the _Chaser_ gets into the thrill of the hunt, moving faster and dealing slightly more damage. " +
+		"This bonus lasts longer when attacking enemies with a missile weapon." );
 		
 	
 	private String title;

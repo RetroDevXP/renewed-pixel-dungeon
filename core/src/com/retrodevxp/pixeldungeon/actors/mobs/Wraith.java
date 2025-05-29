@@ -95,7 +95,7 @@ public class Wraith extends Mob {
 	@Override
 	public String description() {
 		return
-			"A wraith is a vengeful spirit of a sinner, whose grave or tomb was disturbed. " +
+			"This vengeful spirit had their grave or tomb disturbed. " +
 			"Being an ethereal entity, it is very hard to hit with a regular weapon.";
 	}
 	

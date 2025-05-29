@@ -47,9 +47,12 @@ public class ItemSpriteSheet {
 	public static final int GUANDAO			= 134;
 	public static final int SPIKEDKNUCKLES	= 128;
 	public static final int BRANDISTOCK		= 131;
+	public static final int RETRACTED		= 155;
 	public static final int CLUB			= 136;
 	public static final int WHIP			= 137;
 	public static final int DWARVEN_AXE		= 152;
+	public static final int FLAIL			= 154;
+	
 
 
 

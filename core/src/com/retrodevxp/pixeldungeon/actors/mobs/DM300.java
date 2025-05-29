@@ -140,14 +140,13 @@ public class DM300 extends Mob {
 		
 		Badges.validateBossSlain();
 		
-		yell( "Mission failed. Deactivate defense protocol. Shutting down." );
+		yell( "Mission failed. Deactivating defense protocol. Shutting down." );
 	}
 	
 	@Override
 	public void notice() {
 		super.notice();
-		yell( "Unauthorized personnel detected." );
-		yell( "Activate defense protocol." );
+		yell( "Unauthorized personnel detected. Activating defense protocol." );
 	}
 	
 	@Override

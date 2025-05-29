@@ -29,7 +29,7 @@ public class Whip extends MeleeWeapon {
 	}
 	
 	public Whip() {
-		super( 3, 0.50f, 1.5f, -1, 1  );
+		super( 3, 0.75f, 1.5f, -3, 1  );
 	}
 
 	@Override
@@ -49,6 +49,6 @@ public class Whip extends MeleeWeapon {
 	
 	@Override
 	public String desc() {
-		return "This long whip, while powerful, seems excessively hard for anyone inexperienced to accurately use.";
+		return "This long whip, while powerful, seems quite hard for anyone inexperienced to accurately use. This weapon has an longer reach than other weapons.";
 	}
 }

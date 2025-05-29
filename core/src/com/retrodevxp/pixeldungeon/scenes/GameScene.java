@@ -335,7 +335,18 @@ public class GameScene extends PixelScene {
 				Sample.INSTANCE.play( Assets.SND_DESCEND );
 			}
 			if (Dungeon.hero.subClass == HeroSubClass.CRAWLER){
-				Buff.affect( Dungeon.hero, Invisibility.class, Invisibility.DURATION );
+				// Buff.affect( Dungeon.hero, Invisibility.class, Invisibility.DURATION );
+				int countcrawl = 0;
+				for (Mob mob : Dungeon.level.mobs) {
+						if (Level.fieldOfView[mob.pos]) {
+							countcrawl += 1;
+						}
+					}
+					if (countcrawl == 0){
+						// if (Dungeon.hero.buffs(Invisibility.class) == null){
+						Buff.affect( Dungeon.hero, Invisibility.class, 5 );
+						// }
+					}
 			}
 			switch (Dungeon.level.feeling) {
 				case CHASM:

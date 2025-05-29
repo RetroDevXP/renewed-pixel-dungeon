@@ -29,7 +29,7 @@ import com.retrodevxp.pixeldungeon.utils.Utils;
 
 public class WndChooseWay extends Window {
 	
-	private static final int WIDTH		= 120;
+	private static final int WIDTH		= 150;
 	private static final int BTN_HEIGHT	= 18;
 	private static final float GAP		= 2;
 	

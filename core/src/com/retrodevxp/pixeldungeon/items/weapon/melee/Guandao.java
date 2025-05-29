@@ -49,6 +49,6 @@ public class Guandao extends MeleeWeapon {
 	
 	@Override
 	public String desc() {
-		return "This heavy polearm requires a lot of strength to effectively slash at enemies.";
+		return "This large polearm with a massive, heavy blade requires a lot of strength to effectively slash at enemies.";
 	}
 }

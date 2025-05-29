@@ -66,4 +66,9 @@ public class Charging extends Glyph {
 		return BLUE;
 	}
 
+	@Override
+	public String description(){
+		return "The magical energy stored within this armor has a chance to charge the wearer's wands when damaged.";
+	}
+
 }

@@ -100,4 +100,9 @@ public class Shock extends Weapon.Enchantment {
 			hit( Random.element( ns ), Random.Int( damage / 2, damage ) );
 		}
 	}
+
+	@Override
+	public String description(){
+		return "This weapon contains strong electrical magic, which is unleashed as powerful lightning bolts upon damaging its target.";
+	}
 }

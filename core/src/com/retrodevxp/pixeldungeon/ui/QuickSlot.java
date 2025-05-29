@@ -43,6 +43,7 @@ public class QuickSlot extends Button<GameAction> implements WndBag.Listener {
 	
 	private static QuickSlot primary;
 	private static QuickSlot secondary;
+	private static QuickSlot tertiary;
 	
 	private Item itemInSlot;
 	private ItemSlot slot;
@@ -55,6 +56,7 @@ public class QuickSlot extends Button<GameAction> implements WndBag.Listener {
 	private static Char lastTarget= null;
 	public static Object primaryValue;
 	public static Object secondaryValue;
+	public static Object tertiaryValue;
 	
 	public void primary() {
 		primary = this;
@@ -65,6 +67,12 @@ public class QuickSlot extends Button<GameAction> implements WndBag.Listener {
 	public void secondary() {
 		secondary = this;
 		this.hotKey = GameAction.ADDQUICKSLOT2;
+		item( select() );
+	}
+
+	public void tertiary() {
+		tertiary = this;
+		this.hotKey = GameAction.ADDQUICKSLOT3;
 		item( select() );
 	}
 	
@@ -153,6 +161,14 @@ public class QuickSlot extends Button<GameAction> implements WndBag.Listener {
 	public boolean onKeyDown(NoosaInputProcessor.Key<GameAction> key) {
 
         switch (key.action) {
+		case QUICKSLOT3:
+            try{
+				tertiary.selectCheck().execute( Dungeon.hero );
+			}
+			catch(Exception e){
+				
+			}
+            return true;
 		case QUICKSLOT2:
             try{
 				primary.selectCheck().execute( Dungeon.hero );
@@ -197,6 +213,9 @@ public class QuickSlot extends Button<GameAction> implements WndBag.Listener {
 	@SuppressWarnings("unchecked")
 	public Item selectCheck(){
 		Object content = (this == primary ? primaryValue : secondaryValue);
+		if (this == tertiary){
+			content = tertiaryValue;
+		}
 		if (content instanceof Item) {
 			
 			return (Item)content;
@@ -217,6 +236,9 @@ public class QuickSlot extends Button<GameAction> implements WndBag.Listener {
 	private Item select() {
 		
 		Object content = (this == primary ? primaryValue : secondaryValue);
+		if (this == tertiary){
+			content = tertiaryValue;
+		}
 		if (content instanceof Item) {
 			
 			return (Item)content;
@@ -238,8 +260,11 @@ public class QuickSlot extends Button<GameAction> implements WndBag.Listener {
 		if (item != null) {
 			if (this == primary) {
 				primaryValue = (item.stackable ? item.getClass() : item);
-			} else {
+			} else if (this == secondary) {
 				secondaryValue = (item.stackable ? item.getClass() : item);
+			}
+			else if (this == tertiary) {
+				tertiaryValue = (item.stackable ? item.getClass() : item);
 			}
 			refresh();
 		}
@@ -310,6 +335,9 @@ public class QuickSlot extends Button<GameAction> implements WndBag.Listener {
 		if (secondary != null) {
 			secondary.item( secondary.select() );
 		}
+		if (tertiary != null) {
+			tertiary.item( tertiary.select() );
+		}
 	}
 	
 	public static void target( Item item, Char target ) {
@@ -330,10 +358,16 @@ public class QuickSlot extends Button<GameAction> implements WndBag.Listener {
 			secondary.crossM.remove();
 			secondary.targeting = false;
 		}
+		if (tertiary != null && tertiary.targeting) {
+			tertiary.crossB.visible = false;
+			tertiary.crossM.remove();
+			tertiary.targeting = false;
+		}
 	}
 	
 	private static final String QUICKSLOT1	= "quickslot";
 	private static final String QUICKSLOT2	= "quickslot2";
+	private static final String QUICKSLOT3	= "quickslot3";
 	
 	@SuppressWarnings("unchecked")
 	public static void save( Bundle bundle ) {
@@ -350,6 +384,11 @@ public class QuickSlot extends Button<GameAction> implements WndBag.Listener {
 					
 			bundle.put( QUICKSLOT2, ((Class<?>)secondaryValue).getName() );
 		}
+		if (tertiaryValue instanceof Class && 
+			stuff.getItem( (Class<? extends Item>)tertiaryValue ) != null) {
+				
+			bundle.put( QUICKSLOT3, ((Class<?>)tertiaryValue).getName() );
+		}
 	}
 	
 	public static void save( Bundle bundle, Item item ) {
@@ -359,11 +398,15 @@ public class QuickSlot extends Button<GameAction> implements WndBag.Listener {
 		if (item == secondaryValue && Toolbar.secondQuickslot()) {
 			bundle.put( QuickSlot.QUICKSLOT2, true );
 		}
+		if (item == tertiaryValue) {
+			bundle.put( QuickSlot.QUICKSLOT3, true );
+		}
 	}
 	
 	public static void restore( Bundle bundle ) {
 		primaryValue = null;
 		secondaryValue = null;
+		tertiaryValue = null;
 		
 		String qsClass = bundle.getString( QUICKSLOT1 );
 		if (qsClass != null) {
@@ -380,6 +423,14 @@ public class QuickSlot extends Button<GameAction> implements WndBag.Listener {
 			} catch (Exception e) {
 			}
 		}
+
+		qsClass = bundle.getString( QUICKSLOT3 );
+		if (qsClass != null) {
+			try {
+				tertiaryValue = ClassReflection.forName( qsClass );
+			} catch (Exception e) {
+			}
+		}
 	}
 	
 	public static void restore( Bundle bundle, Item item ) {
@@ -388,6 +439,9 @@ public class QuickSlot extends Button<GameAction> implements WndBag.Listener {
 		}
 		if (bundle.getBoolean( QUICKSLOT2 )) {
 			secondaryValue = item;
+		}
+		if (bundle.getBoolean( QUICKSLOT3 )) {
+			tertiaryValue = item;
 		}
 	}
 	

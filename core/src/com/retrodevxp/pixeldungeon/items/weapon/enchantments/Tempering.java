@@ -58,4 +58,9 @@ public class Tempering extends Weapon.Enchantment {
 		return Utils.format( TXT_TEMPERED, weaponName );
 	}
 
+	@Override
+	public String description(){
+		return "This tempered weapon deals slightly more damage to its targets.";
+	}
+
 }

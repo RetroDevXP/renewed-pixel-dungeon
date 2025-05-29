@@ -17,37 +17,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
-package com.retrodevxp.pixeldungeon.sprites;
+package com.retrodevxp.pixeldungeon.actors.buffs;
 
-import com.retrodevxp.pixeldungeon.Assets;
-import com.retrodevxp.noosa.TextureFilm;
+import com.retrodevxp.pixeldungeon.ui.BuffIndicator;
 
-public class SpiritWolfSprite extends MobSprite {
+public class MagicPierced extends FlavourBuff {
+
+	public static final float DURATION	= 10f;
 	
-	public SpiritWolfSprite() {
-		super();
-		
-		texture( Assets.SPIRITWOLF );
-		
-		TextureFilm frames = new TextureFilm( texture, 16, 16 );
-		
-		idle = new Animation( 5, true );
-		idle.frames( frames, 4, 3, 7, 1, 4, 3, 7, 1 );
-		
-		run = new Animation( 5, true );
-		run.frames( frames, 0, 5, 2, 7, 0, 5, 2, 7 );
-		
-		attack = new Animation( 5, false );
-		attack.frames( frames, 1, 2, 6, 8, 1 );
-		
-		die = new Animation( 5, false );
-		die.frames( frames, 1, 9, 10 );
-		
-		play( idle );
+	@Override
+	public int icon() {
+		return BuffIndicator.CRIPPLE;
 	}
 	
 	@Override
-	public int blood() {
-		return 0x99FFFF;
+	public String toString() {
+		return "Crippled";
 	}
 }

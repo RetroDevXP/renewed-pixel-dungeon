@@ -61,4 +61,9 @@ public class Paralysis extends Weapon.Enchantment {
 		return Utils.format( TXT_STUNNING, weaponName );
 	}
 
+	@Override
+	public String description(){
+		return "Electrical powers stored within this weapon sometimes causes paralysis to its target.";
+	}
+
 }

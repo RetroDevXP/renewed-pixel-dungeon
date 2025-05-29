@@ -72,4 +72,9 @@ public class Bounce extends Glyph {
 		return Utils.format( TXT_BOUNCE, weaponName );
 	}
 
+	@Override
+	public String description(){
+		return "Enemies damaging the wearer of this armor may be pushed backwards.";
+	}
+
 }

@@ -147,4 +147,9 @@ public class Viscosity extends Glyph {
 			return true;
 		}
 	}
+
+	@Override
+	public String description(){
+		return "Strong protective magic of this armor greatly delays the damage its wearer receives.";
+	}
 }

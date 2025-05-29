@@ -25,6 +25,7 @@ import com.retrodevxp.pixeldungeon.Dungeon;
 import com.retrodevxp.pixeldungeon.actors.Char;
 import com.retrodevxp.pixeldungeon.actors.buffs.Poison;
 import com.retrodevxp.pixeldungeon.actors.mobs.Mob;
+import com.retrodevxp.pixeldungeon.effects.particles.ElmoParticle;
 import com.retrodevxp.pixeldungeon.levels.Level;
 import com.retrodevxp.pixeldungeon.sprites.SpiritWolfSprite;
 import com.retrodevxp.pixeldungeon.utils.Utils;
@@ -64,8 +65,8 @@ public class SpiritWolf extends NPC {
 	public void spawn( int level ) {
 		this.level = level;
 		
-		HT = 5 + (3 + level) * 5;
-		defenseSkill = 5 + level;
+		HT = 5 + (2 + level) * 3;
+		defenseSkill = 3 + level;
 	}
 	
 	@Override
@@ -75,15 +76,26 @@ public class SpiritWolf extends NPC {
 	
 	@Override
 	public int damageRoll() {
-		return Random.NormalIntRange( 2 + level + (int)(HT / 30), 5 + (2 * level) + (int)(HT / 10) );
+		return (int) Random.Float( 2 + (0.75f * level) + (HP / 20f), 5 + (1.5f * level) + (HP / 5f) );
+		// return Random.NormalIntRange( 2 + level + (int)(HP / 30), 5 + (2 * level) + (int)(HP / 10) );
 	}
 	
 	@Override
 	public int attackProc( Char enemy, int damage ) {
 		if (enemy instanceof Mob) {
-			((Mob)enemy).aggro( this );
+			// ((Mob)enemy).aggro( this );
+			if (Level.adjacent(Dungeon.hero.pos, enemy.pos)){
+				if ( Random.IntRange( 1, 5 ) == 1){
+					((Mob)enemy).aggro( this );
+				}
+			}
+			else{
+				((Mob)enemy).aggro( this );
+			}
+			//If the enemy is adjacent to the hero, Spirit Wolf only sometimes draw aggro from that enemy, otherwise it protects the hero too well.
+			//If the hero isn't adjacent to the enemy, however, the enemy would aggro the Spirit Wolf.
 		}
-		enemy.sprite.burst( 0x99FFFF, 10 );
+		enemy.sprite.emitter().burst( ElmoParticle.FACTORY, 5 );
 		return damage;
 	}
 	

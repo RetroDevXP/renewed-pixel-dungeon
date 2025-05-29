@@ -74,4 +74,9 @@ public class AntiEntropy extends Glyph {
 	public Glowing glowing() {
 		return BLUE;
 	}
+
+	@Override
+	public String description(){
+		return "This enchanted armor creates a vacuum of heat around its wearer, freezing surrounding enemies. The heat, however, is drawn to its wearer.";
+	}
 }

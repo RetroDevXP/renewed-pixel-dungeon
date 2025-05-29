@@ -17,37 +17,38 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
-package com.retrodevxp.pixeldungeon.sprites;
+package com.retrodevxp.pixeldungeon.items.weapon.melee;
 
-import com.retrodevxp.pixeldungeon.Assets;
-import com.retrodevxp.noosa.TextureFilm;
+import com.retrodevxp.pixeldungeon.sprites.ItemSpriteSheet;
 
-public class SpiritWolfSprite extends MobSprite {
+public class Flail extends MeleeWeapon {
+
+	{
+		name = "flail";
+		image = ItemSpriteSheet.FLAIL;
+	}
 	
-	public SpiritWolfSprite() {
-		super();
-		
-		texture( Assets.SPIRITWOLF );
-		
-		TextureFilm frames = new TextureFilm( texture, 16, 16 );
-		
-		idle = new Animation( 5, true );
-		idle.frames( frames, 4, 3, 7, 1, 4, 3, 7, 1 );
-		
-		run = new Animation( 5, true );
-		run.frames( frames, 0, 5, 2, 7, 0, 5, 2, 7 );
-		
-		attack = new Animation( 5, false );
-		attack.frames( frames, 1, 2, 6, 8, 1 );
-		
-		die = new Animation( 5, false );
-		die.frames( frames, 1, 9, 10 );
-		
-		play( idle );
+	public Flail() {
+		super( 3, 0.50f, 1.5f, -1, 1  );
+	}
+
+	@Override
+	protected int rangemin(){
+		return 2;
 	}
 	
 	@Override
-	public int blood() {
-		return 0x99FFFF;
+	protected int rangemax(){
+		return 5;
+	}
+
+	@Override
+	protected int rangestr(){
+		return 15;
+	}
+	
+	@Override
+	public String desc() {
+		return "A metal head attached to a handle with a chain. While powerful, this weapon is wildly inaccurate to swing by any inexperienced users.";
 	}
 }

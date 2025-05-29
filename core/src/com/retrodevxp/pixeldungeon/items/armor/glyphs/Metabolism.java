@@ -80,4 +80,9 @@ public class Metabolism extends Glyph {
 	public Glowing glowing() {
 		return RED;
 	}
+
+	@Override
+	public String description(){
+		return "The magic of this armor converts energy into healing. When damaged, the user may be healed. The energy spent makes the user more hungry, however.";
+	}
 }

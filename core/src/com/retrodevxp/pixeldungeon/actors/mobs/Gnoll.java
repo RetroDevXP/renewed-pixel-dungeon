@@ -21,9 +21,14 @@ package com.retrodevxp.pixeldungeon.actors.mobs;
 
 import com.retrodevxp.pixeldungeon.Dungeon;
 import com.retrodevxp.pixeldungeon.actors.Char;
+import com.retrodevxp.pixeldungeon.actors.buffs.Buff;
+import com.retrodevxp.pixeldungeon.actors.buffs.Rage;
 import com.retrodevxp.pixeldungeon.actors.mobs.npcs.Ghost;
+import com.retrodevxp.pixeldungeon.effects.Speck;
 import com.retrodevxp.pixeldungeon.items.Gold;
+import com.retrodevxp.pixeldungeon.levels.Level;
 import com.retrodevxp.pixeldungeon.sprites.GnollSprite;
+import com.retrodevxp.pixeldungeon.utils.GLog;
 import com.retrodevxp.utils.Random;
 
 public class Gnoll extends Mob {
@@ -60,6 +65,35 @@ public class Gnoll extends Mob {
 	public int attackSkill( Char target ) {
 		return 11;
 	}
+
+	//Gnoll Scouts alerts other Gnolls to the hero's position when damaged at full HP.
+	//If the damage is from other sources, it won't alert other Gnolls. The damage must be from the hero.
+	@Override
+	public int defenseProc( Char enemy, int damage ){
+		if (enemy == Dungeon.hero && HP == HT && damage < HT){
+			int countGnolls = 0;
+			for (Mob mob : Dungeon.level.mobs.toArray( new Mob[0] )) {
+			if (mob instanceof Gnoll || mob instanceof Brute || mob instanceof Shaman){
+				if (mob != this){
+					mob.beckon( Dungeon.hero.pos );
+					countGnolls += 1;
+				}
+			if (Dungeon.visible[mob.pos]) {
+				}
+			}
+			// System.out.println("Gnoll");
+			
+		}
+		if (countGnolls >= 1){
+			GLog.w("Gnoll Scout alerted other Gnolls! You hear other Gnolls answering in the distance.");
+		}
+		else{
+			GLog.w("Gnoll Scout alerted other Gnolls!");
+		}
+		this.sprite.centerEmitter().start( Speck.factory( Speck.SCREAM ), 0.3f, 3 );	
+		}
+		return super.defenseProc( enemy, damage );
+	}
 	
 	@Override
 	public int dr() {
@@ -76,7 +110,7 @@ public class Gnoll extends Mob {
 	public String description() {
 		return
 			"Gnolls are hyena-like humanoids. They dwell in sewers and dungeons, venturing up to raid the surface from time to time. " +
-			"Gnoll scouts are more commonly encountered in the upper parts of the dungeon where they are more likely to survive without protection from their pack." + 
-			"Being regular members of their pack, they are not as strong as brutes and not as intelligent as shamans.";
+			"Gnoll scouts are more commonly encountered in the upper parts of the dungeon where they are more likely to survive without protection from their pack. " + 
+			"While not as strong as brutes and not as intelligent as shamans, these scouts alerts their pack to the presence of intruders.";
 	}
 }

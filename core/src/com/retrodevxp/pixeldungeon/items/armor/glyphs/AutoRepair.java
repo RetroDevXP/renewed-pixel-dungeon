@@ -52,4 +52,9 @@ public class AutoRepair extends Glyph {
 		return GRAY;
 	}
 
+	@Override
+	public String description(){
+		return "If this description somehow appears in game, it's a bug.";
+	}
+
 }

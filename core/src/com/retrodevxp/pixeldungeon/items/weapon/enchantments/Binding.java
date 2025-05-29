@@ -21,6 +21,7 @@ package com.retrodevxp.pixeldungeon.items.weapon.enchantments;
 
 import com.retrodevxp.pixeldungeon.actors.Char;
 import com.retrodevxp.pixeldungeon.actors.buffs.Buff;
+import com.retrodevxp.pixeldungeon.actors.buffs.Roots;
 import com.retrodevxp.pixeldungeon.items.weapon.Weapon;
 import com.retrodevxp.pixeldungeon.sprites.ItemSprite;
 import com.retrodevxp.pixeldungeon.sprites.ItemSprite.Glowing;
@@ -39,7 +40,7 @@ public class Binding extends Weapon.Enchantment {
 		
 		if (Random.Int( level + 7 ) >= 5) {
 			
-			Buff.prolong( defender, com.retrodevxp.pixeldungeon.actors.buffs.Roots.class, 
+			Buff.prolong( defender, Roots.class, 
 				Random.Float( 3, 3f + level / 2 ) );
 			
 			return true;
@@ -56,6 +57,11 @@ public class Binding extends Weapon.Enchantment {
 	@Override
 	public String name( String weaponName) {
 		return Utils.format( TXT_STUNNING, weaponName );
+	}
+
+	@Override
+	public String description(){
+		return "The magical enchantments of this weapon sometimes binds the target in place.";
 	}
 
 }

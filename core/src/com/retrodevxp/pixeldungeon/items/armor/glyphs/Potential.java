@@ -72,4 +72,9 @@ public class Potential extends Glyph {
 	public Glowing glowing() {
 		return BLUE;
 	}
+
+	@Override
+	public String description(){
+		return "This armor has strong electrical magic stored within. Unleashing this magic damages the attacker as well as the wearer.";
+	}
 }

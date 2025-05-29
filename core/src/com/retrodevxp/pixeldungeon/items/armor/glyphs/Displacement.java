@@ -70,4 +70,9 @@ public class Displacement extends Glyph {
 	public Glowing glowing() {
 		return BLUE;
 	}
+
+	@Override
+	public String description(){
+		return "Rigged with potentially life-saving magic, this armor has a chance to teleport its wearer to another location when damaged.";
+	}
 }

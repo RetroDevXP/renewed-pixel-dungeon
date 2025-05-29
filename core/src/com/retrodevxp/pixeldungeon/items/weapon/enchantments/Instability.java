@@ -37,4 +37,9 @@ public class Instability extends Weapon.Enchantment {
 		return Utils.format( TXT_UNSTABLE, weaponName );
 	}
 
+	@Override
+	public String description(){
+		return "The unstable magic bound to this weapon is mostly unknown.";
+	}
+
 }

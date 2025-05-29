@@ -28,6 +28,7 @@ import com.retrodevxp.pixeldungeon.ResultDescriptions;
 import com.retrodevxp.pixeldungeon.actors.Actor;
 import com.retrodevxp.pixeldungeon.actors.Char;
 import com.retrodevxp.pixeldungeon.actors.hero.Hero;
+import com.retrodevxp.pixeldungeon.actors.hero.HeroClass;
 import com.retrodevxp.pixeldungeon.items.Item;
 import com.retrodevxp.pixeldungeon.items.scrolls.ScrollOfUpgrade;
 import com.retrodevxp.pixeldungeon.scenes.GameScene;
@@ -121,6 +122,7 @@ public class WandOfMagicMissile extends Wand {
 	@Override
 	public String desc() {
 		return
+			(Dungeon.hero.heroClass == HeroClass.MAGE ? "The simple yet handy wand that you have always utilized. " : "") + 
 			"This wand launches bright missiles of pure magical energy, dealing moderate damage to a target creature.";
 	}
 	

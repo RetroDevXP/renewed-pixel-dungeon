@@ -61,4 +61,9 @@ public class Slow extends Weapon.Enchantment {
 		return Utils.format( TXT_CHILLING, weaponName );
 	}
 
+	@Override
+	public String description(){
+		return "Cold to the touch, this weapon limits the speed of its targets.";
+	}
+
 }

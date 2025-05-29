@@ -169,7 +169,7 @@ public class Tengu extends Mob {
 		
 		spend( 1 / speed() );
 
-		speech = Random.NormalIntRange( 0, 3 );
+		speech = Random.IntRange( 0, 3 );
 		if (speech == 0){
 			yell( "Too slow! ");
 		}
@@ -178,6 +178,9 @@ public class Tengu extends Mob {
 		}
 		else if (speech == 2){
 			yell( "Hah! ");
+		}
+		else if (speech == 3){
+			yell( "Pathetic! ");
 		}
 	}
 	

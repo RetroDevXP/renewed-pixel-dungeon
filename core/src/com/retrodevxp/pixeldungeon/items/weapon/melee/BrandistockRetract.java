@@ -26,17 +26,17 @@ import com.retrodevxp.pixeldungeon.scenes.GameScene;
 import com.retrodevxp.pixeldungeon.sprites.ItemSpriteSheet;
 import com.retrodevxp.pixeldungeon.windows.WndBag;
 
-public class Brandistock extends MeleeWeapon {
+public class BrandistockRetract extends MeleeWeapon {
 
-	public static final String AC_RETRACT	= "Retract";
+	public static final String AC_RETRACT	= "Extend";
 	{
 		name = "brandistock";
-		image = ItemSpriteSheet.BRANDISTOCK;
+		image = ItemSpriteSheet.RETRACTED;
 		defaultAction = AC_RETRACT;
 	}
 	
-	public Brandistock() {
-		super( 2, 1.1f, 1.5f, -1, -1  );
+	public BrandistockRetract() {
+		super( 2, 1.1f, 1.1f, -1, -1  );
 	}
 	
 	@Override
@@ -71,24 +71,25 @@ public class Brandistock extends MeleeWeapon {
 	@Override
 	public void execute( Hero hero, String action ) {
 		if (action.equals( AC_RETRACT )) {
-		int weaponlevel = level();
-			BrandistockRetract retracted = new BrandistockRetract();
+			int weaponlevel = level();
+			Brandistock extracted = new Brandistock();
 			if (this.enchantment != null){
-				retracted.enchant(this.enchantment);
+				extracted.enchant(this.enchantment);
 			}
-			retracted.identify();
+			extracted.identify();
 			if (weaponlevel > 0){
 				for (int i = 0; i < weaponlevel; i++){
-					retracted.upgrade();
+					extracted.upgrade();
 				}
 			}
 			if (hero.belongings.weapon == this) {
-				hero.belongings.weapon = retracted;
+				hero.belongings.weapon = extracted;
 				updateQuickslot();
 			} else {
 				detach( hero.belongings.backpack );
-				retracted.collect();
+				extracted.collect();
 			}
+			
 			
 			curUser = hero;
 			

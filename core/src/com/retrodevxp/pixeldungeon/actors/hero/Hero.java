@@ -35,6 +35,7 @@ import com.retrodevxp.pixeldungeon.ResultDescriptions;
 import com.retrodevxp.pixeldungeon.actors.Actor;
 import com.retrodevxp.pixeldungeon.actors.Char;
 import com.retrodevxp.pixeldungeon.actors.blobs.SacrificialFire;
+import com.retrodevxp.pixeldungeon.actors.buffs.Amok;
 import com.retrodevxp.pixeldungeon.actors.buffs.Barkskin;
 import com.retrodevxp.pixeldungeon.actors.buffs.Bleeding;
 import com.retrodevxp.pixeldungeon.actors.buffs.Blindness;
@@ -62,6 +63,9 @@ import com.retrodevxp.pixeldungeon.actors.mobs.npcs.NPC;
 import com.retrodevxp.pixeldungeon.effects.CheckedCell;
 import com.retrodevxp.pixeldungeon.effects.Flare;
 import com.retrodevxp.pixeldungeon.effects.Speck;
+import com.retrodevxp.pixeldungeon.effects.Swap;
+import com.retrodevxp.pixeldungeon.effects.particles.FlameParticle;
+import com.retrodevxp.pixeldungeon.effects.particles.SparkParticle;
 import com.retrodevxp.pixeldungeon.items.Amulet;
 import com.retrodevxp.pixeldungeon.items.Ankh;
 import com.retrodevxp.pixeldungeon.items.DewVial;
@@ -89,15 +93,32 @@ import com.retrodevxp.pixeldungeon.items.scrolls.Scroll;
 import com.retrodevxp.pixeldungeon.items.scrolls.ScrollOfEnchantment;
 import com.retrodevxp.pixeldungeon.items.scrolls.ScrollOfMagicMapping;
 import com.retrodevxp.pixeldungeon.items.scrolls.ScrollOfRecharging;
+import com.retrodevxp.pixeldungeon.items.scrolls.ScrollOfTeleportation;
 import com.retrodevxp.pixeldungeon.items.scrolls.ScrollOfUpgrade;
 import com.retrodevxp.pixeldungeon.items.wands.Wand;
+import com.retrodevxp.pixeldungeon.items.wands.WandOfAmok;
+import com.retrodevxp.pixeldungeon.items.wands.WandOfAvalanche;
+import com.retrodevxp.pixeldungeon.items.wands.WandOfBlindness;
+import com.retrodevxp.pixeldungeon.items.wands.WandOfBlink;
+import com.retrodevxp.pixeldungeon.items.wands.WandOfDisintegration;
+import com.retrodevxp.pixeldungeon.items.wands.WandOfFirebolt;
+import com.retrodevxp.pixeldungeon.items.wands.WandOfFlock;
+import com.retrodevxp.pixeldungeon.items.wands.WandOfLightning;
+import com.retrodevxp.pixeldungeon.items.wands.WandOfMagicMissile;
+import com.retrodevxp.pixeldungeon.items.wands.WandOfPoison;
+import com.retrodevxp.pixeldungeon.items.wands.WandOfReach;
+import com.retrodevxp.pixeldungeon.items.wands.WandOfRegrowth;
+import com.retrodevxp.pixeldungeon.items.wands.WandOfSpirits;
+import com.retrodevxp.pixeldungeon.items.wands.WandOfTeleportation;
 import com.retrodevxp.pixeldungeon.items.weapon.melee.MeleeWeapon;
+import com.retrodevxp.pixeldungeon.items.weapon.melee.Whip;
 import com.retrodevxp.pixeldungeon.items.weapon.missiles.MissileWeapon;
 import com.retrodevxp.pixeldungeon.levels.Level;
 import com.retrodevxp.pixeldungeon.levels.Terrain;
 import com.retrodevxp.pixeldungeon.levels.features.AlchemyPot;
 import com.retrodevxp.pixeldungeon.levels.features.Chasm;
 import com.retrodevxp.pixeldungeon.levels.features.Sign;
+import com.retrodevxp.pixeldungeon.mechanics.Ballistica;
 import com.retrodevxp.pixeldungeon.plants.Earthroot;
 import com.retrodevxp.pixeldungeon.scenes.GameScene;
 import com.retrodevxp.pixeldungeon.scenes.InterlevelScene;
@@ -325,6 +346,14 @@ public class Hero extends Char {
 		if (barkskin != null) {
 			dr += barkskin.level();
 		}
+		if( buff( Fury.class ) != null){
+			if(HP <= HT / 10){
+				dr += 2;
+			}
+			else{
+				dr += 1;
+			}
+		}
 		return dr;
 	}
 	
@@ -346,16 +375,23 @@ public class Hero extends Char {
 				}
 			}
 			if (knightcount > 1) {
-				dmg *= (1f - ((knightcount - 2) / 10f));
+				dmg = Math.round(dmg * (1f - ((knightcount - 2) / 10f)));
 				// GLog.w("Knight count:" + knightcount);
+				if (knightcount > 2){
+					this.sprite.showStatus( CharSprite.NEGATIVE, "!" );
+				}
 			}
 			else{
-				dmg *= 1.1f;
+				dmg = Math.round(dmg * 1.1f);
+				this.sprite.showStatus( CharSprite.POSITIVE, "!" );
 				// GLog.w("Strong Knight count:" + knightcount);
 			}
 		}
 		if(isStarving()){
-			dmg *= 0.75f;
+			dmg = Math.round(dmg * 0.75f);
+		}
+		if (buff( HuntBuff.class ) != null){
+			dmg = Math.round(dmg * 1.10f);
 		}
 		return buff( Fury.class ) != null ? (int)(dmg * 1.5f) : (int)(dmg);
 	}
@@ -829,6 +865,21 @@ public class Hero extends Char {
 	private boolean actAttack( HeroAction.Attack action ) {
 
 		enemy = action.target;
+		if ((belongings.weapon instanceof Whip) && enemy.isAlive() && !isCharmedBy( enemy )){
+
+		
+		int cellwhip = Ballistica.cast( pos, enemy.pos, false, true );
+		if (Ballistica.distance < 5){
+		for (int i=1; i < Ballistica.distance; i++) {
+			if (Ballistica.trace[i] == enemy.pos) {
+				spend( attackDelay() );
+				sprite.attack( enemy.pos );
+				return false;
+				}
+			}
+		}
+	}
+		
 
 		if (Level.adjacent( pos, enemy.pos ) && enemy.isAlive() && !isCharmedBy( enemy )) {
 			
@@ -879,9 +930,150 @@ public class Hero extends Char {
 			case BATTLEMAGE:
 				if (wep instanceof Wand) {
 					Wand wand = (Wand)wep;
+					
 					if (wand.curCharges >= wand.maxCharges) {
 						
 						wand.use();
+						try{
+							Wand wandweapon = (Wand)wep;
+							int wandlevel = Math.max(0, wandweapon.level());
+							if (wandweapon instanceof WandOfAmok){
+								if (Random.Float( 1f, 5.75f + (float)(wandlevel / 3.25f) ) > 5f){
+									Buff.prolong( enemy, Amok.class, Random.Float( 1f, 5.1f + (float)(wandlevel / 3f) ) );
+								}
+							}
+							else if (wandweapon instanceof WandOfAvalanche){
+								if (Random.Float( 1f, 5.75f + (float)(wandlevel / 3.25f) ) > 5f){
+									Buff.prolong( enemy, Paralysis.class, Random.Float( 0.7f, 1.1f + (float)(wandlevel / 5f) ) );
+								}
+							}
+							else if (wandweapon instanceof WandOfBlindness){
+								if (Random.Float( 1f, 7.25f + (float)(wandlevel / 2.5f) ) > 5f){
+									Buff.prolong( enemy, Blindness.class, Random.Float( 0.5f, 2.5f + (float)(wandlevel / 3f) ) );
+								}
+							}
+							else if (wandweapon instanceof WandOfBlink){
+								if (Random.Float( 1f, 5.75f + (float)(wandlevel / 3f) ) > 5f){
+								int count = 10;
+								int pos;
+								do {
+								pos = Dungeon.level.randomRespawnCell();
+								if (count-- <= 0) {
+									break;
+								}
+								} while (pos == -1);
+			
+								if (pos == -1) {
+				
+								GLog.w( ScrollOfTeleportation.TXT_NO_TELEPORT );
+				
+								} else {
+			
+									WandOfBlink.appear( this, pos );
+									Dungeon.level.press( pos, this );
+									Dungeon.observe();
+				
+									}
+								}
+							}
+							else if (wandweapon instanceof WandOfDisintegration){
+								if (Random.Float( 1f, 5.25f + (float)(wandlevel / 3.25f) ) > 5f){
+									new Flare( 7, 16 ).color( 0xFF0000, true ).show( enemy.sprite, 2f );
+									Sample.INSTANCE.play( Assets.SND_READ );
+									enemy.sprite.flash();
+									damage += (Random.IntRange( 1 + wandlevel, 2 + wandlevel + (int)(enemy.HT / 10) ));
+								}
+							}
+							else if (wandweapon instanceof WandOfFirebolt){
+								if (Random.Float( 1f, 7.25f + (float)(wandlevel / 3f) ) > 5f){
+									Buff.affect( enemy, Burning.class ).reignite( enemy );
+
+									enemy.sprite.emitter().burst( FlameParticle.FACTORY, 5 );
+								}
+							}
+							else if (wandweapon instanceof WandOfFlock){
+								if (Random.Float( 1f, 7.25f + (float)(wandlevel / 3f) ) > 5f){
+									Buff.affect( enemy, Vertigo.class, Random.Float( 2.5f, 2.5f + (float)(wandlevel / 3f) ) );
+								}
+							}
+							else if (wandweapon instanceof WandOfLightning){
+								if (Random.Float( 1f, 5.75f + (float)(wandlevel / 3f) ) > 5f){
+
+									enemy.sprite.emitter().burst( SparkParticle.FACTORY, 5 );
+									damage += (Random.IntRange( 1 + wandlevel, 2 + wandlevel + wandweapon.curCharges ));
+								}
+							}
+							else if (wandweapon instanceof WandOfMagicMissile){
+								if (Random.Float( 1f, 7.25f + (float)(wandlevel / 2.75f) ) > 5f){
+
+									enemy.sprite.emitter().burst( SparkParticle.FACTORY, 5 );
+									damage += (Random.IntRange( (int)(wandlevel / 2f), 2 + wandlevel + wandweapon.curCharges ));
+								}
+							}
+							else if (wandweapon instanceof WandOfPoison){
+								if (Random.Float( 1f, 5.75f + (float)(wandlevel / 2.75f) ) > 5f){
+									Buff.affect( enemy, Poison.class ).set( Poison.durationFactor( enemy ) * (5 + wandlevel) );
+								}
+							}
+							else if (wandweapon instanceof WandOfReach){
+								if (Random.Float( 1f, 7.75f + (float)(wandlevel / 2.75f) ) > 5f){
+									try{
+										Actor.addDelayed( new Swap( this, enemy ), -1 );
+									}
+								catch(Exception e){
+
+									}								
+								}
+							}
+							else if (wandweapon instanceof WandOfRegrowth){
+								if (Random.Float( 1f, 6.75f + (float)(wandlevel / 3.75f) ) > 5f){
+									if (HP < HT){
+										HP += 1 + (int)(wandlevel / 3f);
+										if (HP > HT){
+											HP = HT;
+										}
+										sprite.emitter().burst( Speck.factory( Speck.HEALING ), 1 );
+									}
+									
+								}
+							}
+							else if (wandweapon instanceof WandOfSpirits){
+								if (Random.Float( 1f, 5.75f + (float)(wandlevel / 2.75f) ) > 5f){
+									Buff.prolong( this, Invisibility.class, Random.Float( 2.5f, 2.5f + (float)(wandlevel / 5f) ) );
+
+								}
+							}
+							else if (wandweapon instanceof WandOfTeleportation){
+								if (Random.Float( 1f, 6.25f + (float)(wandlevel / 2.75f) ) > 5f){
+								int count = 10;
+								int pos;
+								do {
+								pos = Dungeon.level.randomRespawnCell();
+								if (count-- <= 0) {
+									break;
+								}
+								} while (pos == -1);
+			
+								if (pos == -1) {
+				
+								GLog.w( ScrollOfTeleportation.TXT_NO_TELEPORT );
+				
+								} else {
+			
+									enemy.pos = pos;
+									enemy.sprite.place( enemy.pos );
+									enemy.sprite.visible = Dungeon.visible[pos];
+									GLog.i( this.name + " teleported " + enemy.name + " to somewhere" );
+				
+									}	
+								}
+							}
+
+
+						}
+						catch(Exception e){
+
+						}
 						
 					} else if (damage > 0) {
 						
@@ -899,7 +1091,15 @@ public class Hero extends Char {
 				break;
 			case CHASER:
 				if (rangedWeapon != null) {
-					Buff.prolong( this, HuntBuff.class, 5.1f ).object = this.id();
+					if (enemy.HP < enemy.HT){
+						Buff.prolong( this, HuntBuff.class, 5.1f ).object = this.id();
+					}
+					
+				}
+				else{
+					if (enemy.HP < enemy.HT){
+						Buff.prolong( this, HuntBuff.class, 2.5f ).object = this.id();
+					}
 				}
 				break;
 			default:
@@ -931,6 +1131,7 @@ public class Hero extends Char {
 		
 		return damage;
 	}
+	
 	
 	@Override
 	public void damage( int dmg, Object src ) {		
@@ -1236,6 +1437,7 @@ public class Hero extends Char {
 	}
 	
 	public static void reallyDie( Object cause ) {
+		try{
 		
 		int length = Level.LENGTH;
 		int[] map = Dungeon.level.map;
@@ -1291,6 +1493,11 @@ public class Hero extends Char {
 		}
 		
 		Dungeon.deleteGame( Dungeon.hero.heroClass, true );
+	}
+	catch(Exception e){
+		System.out.println("" + e.toString());
+	}
+
 	}
 	
 	@Override
