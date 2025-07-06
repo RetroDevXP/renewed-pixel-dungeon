@@ -58,15 +58,8 @@ task copyNatives {
     outputs.dir "$projectDir/src/main/jniLibs"
     doLast {
         configurations.natives.files.each { jar ->
-            println "Inspecting native jar: $jar"
             def zip = zipTree(jar)
             def entries = zip.matching { include "lib/**/*.so" }
-            if (entries.isEmpty()) {
-                println ".so files not found in: $jar"
-            } else {
-                println ".so files found in: $jar"
-                entries.each { println " - ${it}" }
-            }
 
             copy {
                 from(entries)
