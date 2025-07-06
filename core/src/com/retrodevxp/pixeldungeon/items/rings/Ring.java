@@ -22,6 +22,7 @@ package com.retrodevxp.pixeldungeon.items.rings;
 import java.util.ArrayList;
 
 import com.retrodevxp.pixeldungeon.Badges;
+import com.retrodevxp.pixeldungeon.Challenges;
 import com.retrodevxp.pixeldungeon.Dungeon;
 import com.retrodevxp.pixeldungeon.PixelDungeon;
 import com.retrodevxp.pixeldungeon.actors.Char;
@@ -236,11 +237,14 @@ public class Ring extends EquipableItem {
 	
 	@Override
 	public int maxDurability( int lvl ) {
-		if (lvl <= 100) {
+		// if (lvl <= 100) {
+		// 	return Integer.MAX_VALUE;
+		// } else {
+		if (!Dungeon.isChallenged(Challenges.DURABILITYACTIVE)){
 			return Integer.MAX_VALUE;
-		} else {
-			return 100 * (lvl < 16 ? 16 - lvl : 1);
 		}
+			return 100 * (lvl < 16 ? 16 - lvl : 1);
+		// }
 	}
 	
 	public boolean isKnown() {

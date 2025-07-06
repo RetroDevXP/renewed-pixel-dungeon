@@ -64,6 +64,6 @@ public class WandOfAmok extends Wand {
 	public String desc() {
 		return
 			"The purple light from this wand will make the target run amok " +
-			"attacking random creatures in its vicinity.";
+			"attacking random creatures, even non-hostile ones, in its vicinity.";
 	}
 }

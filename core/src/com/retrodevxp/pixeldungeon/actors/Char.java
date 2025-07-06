@@ -146,7 +146,8 @@ public abstract class Char extends Actor {
 			}
 			
 			// FIXME
-			int dr = Random.IntRange( 0, enemy.dr() );
+			//1.2.0, armor RNG for both enemies and the hero is 20% to 100% instead of 0% to 100%, for unlucky rolls to be less impactful.
+			int dr = Random.IntRange( (int)(enemy.dr() / 5f), enemy.dr() );
 			if (this instanceof Hero && ((Hero)this).rangedWeapon != null && ((Hero)this).subClass == HeroSubClass.DEADEYE){
 				dr = 0;
 				enemy.sprite.showStatus(CharSprite.NEGATIVE, "Pierced");

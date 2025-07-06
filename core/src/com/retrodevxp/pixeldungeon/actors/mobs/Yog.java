@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 import com.retrodevxp.noosa.Camera;
+import com.retrodevxp.pixeldungeon.Challenges;
 import com.retrodevxp.pixeldungeon.Dungeon;
 import com.retrodevxp.pixeldungeon.ResultDescriptions;
 import com.retrodevxp.pixeldungeon.Statistics;
@@ -71,10 +72,10 @@ public class Yog extends Mob {
 	}
 	
 	private static final String TXT_DESC =
-		"Yog-Dzewa is an old demon god, who once controlled a vast army of demons. " +
+		"Yog-Dzewa is an old demon god, who once controlled a vast army of powerful demons. " +
 		"A century ago, Yog-Dzewa, along with its army of demons, tried to take over the Dwarven Metropolis. " +
 		"After a costly war, the Dwarves eradicated the majority of the demons from most parts of their city. " +
-		"The rest of the demons resided in the lower parts of the metropolis, eventually controlling it entirely. The demon god itself, mostly vaporized, was " +
+		"The rest of the demons remained in the lower parts of the metropolis, eventually controlling it entirely. The demon god itself, mostly vaporized, was " +
 		"imprisoned in the deepest part of the halls below the dwarven city. The dwarves believed it to be too weak to rise ever again...";	
 	
 	private static int fistsCount = 0;
@@ -221,7 +222,10 @@ public class Yog extends Mob {
 		
 		@Override
 		public int damageRoll() {
+			if (Dungeon.isChallenged( Challenges.STRONGER_MOBS)){
 			return Random.NormalIntRange( 24, 36 );
+			}
+			return Random.NormalIntRange( 20, 32 );
 		}
 		
 		@Override
@@ -315,7 +319,10 @@ public class Yog extends Mob {
 		
 		@Override
 		public int damageRoll() {
+			if (Dungeon.isChallenged( Challenges.STRONGER_MOBS)){
 			return Random.NormalIntRange( 20, 32 );
+		}
+			return Random.NormalIntRange( 18, 28 );
 		}
 		
 		@Override
@@ -420,6 +427,9 @@ public class Yog extends Mob {
 		
 		@Override
 		public int damageRoll() {
+			if (Dungeon.isChallenged( Challenges.STRONGER_MOBS)){
+				return Random.NormalIntRange( 16, 21 );
+			}
 			return Random.NormalIntRange( 15, 20 );
 		}
 		

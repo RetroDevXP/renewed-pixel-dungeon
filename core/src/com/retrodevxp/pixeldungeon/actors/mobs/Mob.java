@@ -35,7 +35,9 @@ import com.retrodevxp.pixeldungeon.actors.buffs.Terror;
 import com.retrodevxp.pixeldungeon.actors.hero.Hero;
 import com.retrodevxp.pixeldungeon.actors.hero.HeroSubClass;
 import com.retrodevxp.pixeldungeon.effects.Flare;
+import com.retrodevxp.pixeldungeon.effects.Speck;
 import com.retrodevxp.pixeldungeon.effects.Wound;
+import com.retrodevxp.pixeldungeon.effects.particles.ElmoParticle;
 import com.retrodevxp.pixeldungeon.items.Generator;
 import com.retrodevxp.pixeldungeon.items.Item;
 import com.retrodevxp.pixeldungeon.levels.Level;
@@ -298,9 +300,14 @@ public abstract class Mob extends Char {
 	
 	@Override
 	public int defenseProc( Char enemy, int damage ) {
-		if (!enemySeen && enemy == Dungeon.hero && ((Hero)enemy).subClass == HeroSubClass.SPY) {
-			damage += Random.Int( 1, damage );
-			Wound.hit( this );
+		
+		if (!enemySeen && enemy == Dungeon.hero ) {
+			if (((Hero)enemy).subClass == HeroSubClass.SPY)
+			{
+				damage += Random.Int( Math.max((int)(damage * 0.1f), 1), Math.max((int)(damage * 0.75f), 1) );
+				Wound.hit( this );
+			}
+			this.sprite.emitter().burst( Speck.factory( Speck.FORGE ), 3 );
 		}
 		return damage;
 	}

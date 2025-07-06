@@ -21,8 +21,12 @@ package com.retrodevxp.pixeldungeon.actors.mobs;
 
 import java.util.HashSet;
 
+import com.retrodevxp.pixeldungeon.Challenges;
+import com.retrodevxp.pixeldungeon.Dungeon;
 import com.retrodevxp.pixeldungeon.actors.Char;
+import com.retrodevxp.pixeldungeon.actors.blobs.ToxicGas;
 import com.retrodevxp.pixeldungeon.actors.buffs.Amok;
+import com.retrodevxp.pixeldungeon.actors.buffs.Poison;
 import com.retrodevxp.pixeldungeon.actors.buffs.Sleep;
 import com.retrodevxp.pixeldungeon.actors.buffs.Terror;
 import com.retrodevxp.pixeldungeon.actors.mobs.npcs.Imp;
@@ -47,7 +51,10 @@ public class Golem extends Mob {
 	
 	@Override
 	public int damageRoll() {
-		return Random.NormalIntRange( 25, 40 );
+		if (Dungeon.isChallenged( Challenges.STRONGER_MOBS)){
+			return Random.NormalIntRange( 27, 42 );
+		}
+		return Random.NormalIntRange( 25, 36 );
 	}
 	
 	@Override
@@ -81,8 +88,8 @@ public class Golem extends Mob {
 	public String description() {
 		return
 			"The Dwarves tried to combine their knowledge of mechanisms with their newfound power of magic. " +
-			"They fused magic into the mechanical bodies of golems, which were believed to be " +
-			"most controllable of all. Despite this, the tiniest mistake in the ritual could cause an outbreak.";
+			"They fused powerful magic into the durable, mechanical bodies of golems, resulting in strong, controllable creatures. " +
+			"They deal tremendous force with their arms, but are significantly slower than most creatures.";
 	}
 	
 	private static final HashSet<Class<?>> RESISTANCES = new HashSet<Class<?>>();
@@ -98,6 +105,8 @@ public class Golem extends Mob {
 	private static final HashSet<Class<?>> IMMUNITIES = new HashSet<Class<?>>();
 	static {
 		IMMUNITIES.add( Amok.class );
+		IMMUNITIES.add( Poison.class );
+		IMMUNITIES.add( ToxicGas.class );
 		IMMUNITIES.add( Terror.class );
 		IMMUNITIES.add( Sleep.class );
 	}

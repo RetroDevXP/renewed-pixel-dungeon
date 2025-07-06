@@ -3,14 +3,143 @@ Renewed Pixel Dungeon
 
 Renewed Pixel Dungeon adds or changes many features from Vanilla.
 
-This mod includes many new features, such as a new subclass for each class, new extra item choice mechanic, melee weapons dealing damage when thrown (to different degrees of effectiveness), some thrown weapons are re-usable, changed hunger system, new melee weapons, new thrown weapons, new items, new plants, new wand, new enchants, new enemy, etc.
+This mod includes many new features, such as a new subclass for each class, new extra item choice mechanic, melee weapons dealing damage when thrown (to different degrees of effectiveness), some thrown weapons being re-usable, changed hunger system, new melee weapons, new thrown weapons, new items, new plants, new wand, new enchants, new enemy, etc.
 
 This file is for the features of 1.0.0 as well as later updates. Please see each version's sections.
+
+# 1.2.0
+
+Platforms
+----------
+
+Renewed Pixel Dungeon is coming to Android soon!
+
+Classes
+----------
+
+Battlemage melee wand damage is weakened, from 1 extra damage per charge to 0.5 extra damage per charge, to balance out the extra effects he gets when the wand is at full charges.
+
+When the Battlemage attacks enemies with a fully charged Wand of Firebolt in melee, he now has a less chance to set his target on fire.
+
+Spy bonus damage on surprise attack changed from 1-(100% of damage) to (10% of damage)-(75% of damage). This makes it less reliant on RNG. While the max damage is decreased, the min damage is increased, especially deep into the dungeon where an unlucky 1 bonus damage doesn't do much.
+
+Fixed a feature in this file that was not mentioned in the last update (Berserker receives less damage while berserk).
+
+The Dungeon
+----------
+
+Altar rooms are barricaded in. Mobs are now only beckoned to the sacrificial fire when there is something in the fire. This is to prevent all enemies on the level from gathering in the altar room.
+
+Calculations
+----------
+
+To slightly decrease combat luck, the RNG for armor in damage calculation is changed from 0%-100% to 20%-100%. Attacks no longer ignore the armor entirely if unlucky. This affects enemies as well as the hero.
+
+The Health Regeneration is increased from 1 to 1 + (Max HP / 30). This is for the regeneration to be stronger late game, where the hero might struggle to regenerate health without enough Sungrass or Potions of Healing. It is also more consistent with the health decrease from starving being more severe.
+
+Challenges
+----------
+
+This game is changed to be slightly less difficult. However, there are new challenges added to make it more difficult. This allows you to customize your own difficulty more. Challenges are unlocked upon winning with any class at least once.
+
+Added new challenge: Dire dungeon, makes enemies deal more damage.
+
+Added new challenge: Undurable items: Reactivates the vanilla durability mechanic.
+
+On Diet changed to Unnutritious. This challenge has been changed from no food drops, to food being 1/3 as effective, since not having any food drop is way too punishing with the changed hunger system.
+
+Items, Companions, and Enchants
+----------
+
+When using a Wand of Poison on an already poisoned enemy, it now deals some extra damage. This also applies to the Battlemage using this wand in melee with a max charge. This makes investing in it stronger, while also balancing out some more enemies now being immune to poison.
+
+Added new weapon: Cutlass. This tier-2 weapon is fast and accurate, and is even faster when slashing wildly while being surrounded by multiple enemies!
+
+
+Enemies and NPCs
+----------
+
+Many enemies deals slightly less damage. To make the game more difficult, activate the Dire dungeon challenge. This gives you a choice of customizing your own difficulty to an extent. With Dire Dungeon, some enemies are as strong as previously, while others are even stronger!
+
+Dwarf Brawler (formerly Senior Monk) damage increased from 12-20 to 15-21, but has their paralysis chance reduced from 1/10 to 1/15 to reduce the chances of them "stun-locking" the hero. Being a rare enemy, it also grants increased EXP from 15 to 17.
+
+King of Dwarves deals less max damage from 35 to 32. 
+
+Undead dwarves deal less damage from 12-16 to 10-15, and their paralysis chance is down from 1/5 to 1/10 to reduce the chances of them "stun-locking" the hero.
+
+To balance out, King of Dwarves' max army size increased from 5 to 7.
+
+Gnoll Brute deals less max damage while berserk from 40 to 36.
+
+Evileye deals less damage from 14-20 to 12-18. 
+
+Scorpio deals less damage from 20-32 to 18-28. 
+
+Rotting Fist deals less damage from 24-36 to 20-32. 
+
+Burning Fist deals less damage from 20-32 to 18-28. 
+
+Gnoll Shaman deals less max zap damage from 12 to 11.
+
+DM-300 deals less damage from 16-24 to 15-23. 
+
+Golem deals less max damage from 40 to 36.
+
+Dwarf Warlock deals less zap max damage from 18 to 17.
+
+Goo is now immune to poison, and is now also completely immune to toxic gas instead of just having a resistance.
+
+DM-300 is now immune to poison.
+
+Golems are now immune to poison and toxic gas.
+
+Old Wandmaker is now immune to Scrolls of Wipe Out, mainly for lore reasons.
+
+
+Hunger System
+----------
+
+Ascending or Descending a floor uses less hunger, from 1/10 to 1/20.
+
+
+Buffs
+----------
+
+
+
+UI, Lore, and Others
+----------
+
+Fixed a bug where quickslot items that were dropped are still usable with the usage of hotkeys.
+
+Fixed a bug with not properly unloading quickslots when returning to main menu, causing crashes and other bugs.
+
+You can now assign melee weapons to quickslots, to throw them.
+
+Fixed thrown melee weapons not having a sound effect when it hits.
+
+Added some effects to indicate surprise attacks.
+
+Fixed the order of some keys in keybindings.
+
+Removed the non-functional "swap quickslots" in key bindings. It was a planned feature to have a hotkey that swaps the items between the quickslots.
+
+Changed some layouts to handle different screen sizes.
+
+Changed some more texts.
+
+Changed the layout of this file slightly for better readability.
+
+Updated Gradle version from 8.9 to 8.11 in preparation of Android port.
+
+Changed LibGDX version.
 
 # 1.1.0
 
 Classes
 ----------
+
+Berserker receives slightly less damage when berserk. This effect is stronger when he has less than 10% HP remaining.
 
 Knights now have indicators when their ability activates. Also has roundings in its formula for a smoother ability strength.
 
@@ -26,7 +155,7 @@ Fixed Deadeye's name in some cases.
 
 Chaser has been changed. Instead of the "thrill of the hunt" buff being obtained upon damaging enemies with a ranged weapon, the buff is now obtained by damaging an already wounded enemy. Using a ranged weapon for this leads to a longer buff duration. The "thrill of the hunt" buff also grants a slight damage increase as well.
 
-Items, Companions, Enchants
+Items, Companions, and Enchants
 ----------
 
 Whip has been changed to reach multiple tiles (currently the only weapon with this effect). It deals less damage but is more accurate.
@@ -47,7 +176,27 @@ Culling enchantment has a changed formula. This enchantment is also weaker on bo
 
 More Scrolls of Upgrades and Potions of Strength generates in the Demon Halls, encouraging you to explore it more.
 
-UI, Lore, Others
+Bulbush Fruits are now also cooked when burning.
+
+
+Enemies and NPCs
+----------
+
+Gnoll Scouts are less rare deeper into the dungeon. When a Gnoll Socut is damaged, it alerts other Gnolls to your position.
+
+Swarm Of Flies deals slightly more damage.
+
+Hunger System
+----------
+
+All wands take longer to charge while starving.
+
+Buffs
+----------
+
+Thrill of the hunt also gives a slight damage increase. The way to obtain this buff is different.
+
+UI, Lore, and Others
 ----------
 
 Added a 3rd quickslot. If you already played version 1.0.0, you might need to manually bind the key of this quickslot. Otherwise it defaults to "E".
@@ -57,23 +206,6 @@ Slightly modified Tome of Mastery UI size to potentially handle longer subclass 
 There are descriptions for enchantments now.
 
 Changed some more texts.
-
-Enemies
-----------
-
-Gnoll Scouts are less rare deeper into the dungeon. When a Gnoll Socut is damaged, it alerts other Gnolls to your position.
-
-Swarm Of Flies deals slightly more damage.
-
-Hunger
-----------
-
-All wands take longer to charge while starving.
-
-Buffs
-----------
-
-Thrill of the hunt also gives a slight damage increase. The way to obtain this buff is different.
 
 # 1.0.0
 
@@ -107,7 +239,7 @@ Huntresses identify Potions of Paralytic Gas from the beginning.
 
 It is not required to defeat DM-300 to unlock Huntress.
 
-Items, Companions, Enchants
+Items, Companions, and Enchants
 ----------
 Added extra items, a mechanic that grants you an item from a choice of 3 when beginning each game. Each class have different choices.
 
@@ -123,7 +255,7 @@ Added new weapon enchantments: Culling, Binding, and Initializing.
 
 Changed Tempered enchantment since degradation is removed.
 
-Added new Armor enchantments: Stealth, and Charging.
+Added new Armor enchantments: Stealth and Charging.
 
 Removed Self-Repair enchantment since degradation is removed.
 
@@ -135,35 +267,18 @@ Added new thrown weapons: Wooden Dart, Frost Dart, and Serrated Spike. Wooden Da
 
 Added new thrown items: Fire Bomb, Dizzy Bomb, and Smoke Bomb. 
 
-Added new Wands: Wand of Spirits, and Wand of Blindness.
+Added new Wands: Wand of Spirits and Wand of Blindness.
 
 Added new companion, Spirit Wolf, summoned by the Wand of Spirits.
 
 Some balance adjustments to some weapon stats.
 
-Added new Plants: The Bulbush, and the Hardthorn. The Bulbush drops a food, the Hardthorn cripples any who steps on it while also making them bleed.
+Added new Plants: The Bulbush and the Hardthorn. The Bulbush drops a food, the Hardthorn cripples any who steps on it while also making them bleed.
 
 Added new food: The Bulbush fruit, along with its cooked versions.
 
 
-UI, Lore, Others
-----------
-
-There are always 2 quickslots available. Each has their own hotkey to use, as well as their own hotkey to assign items to.
-
-Added Donate to Main Menu.
-
-Added an in-game guide to Main Menu.
-
-Modded the Logo.
-
-Modded the icon.
-
-Changed some lore, including some enemy names.
-
-Easter Eggs? Totally didn't add any Easter Eggs. None.
-
-Enemies
+Enemies and NPCs
 ----------
 
 Added new enemy: Dwarven Warrior, encountered in the Dwarven Metropolis.
@@ -192,7 +307,7 @@ Sewer Crabs, Spinners, and Scorpio drops food more often.
 
 ...and other balance changes, such as stats of some enemies. In general, late-game is slightly less difficult.
 
-Hunger
+Hunger System
 ----------
 
 It takes much longer to starve. By extension, each food also keeps you satiated for longer.
@@ -204,5 +319,24 @@ Buffs
 Blindness also decreases accuracy of attacks.
 
 Added new buff: Thrill of the hunt, exclusive to the Chaser subclass.
+
+UI, Lore, and Others
+----------
+
+There are always 2 quickslots available. Each has their own hotkey to use, as well as their own hotkey to assign items to.
+
+Added Donate to Main Menu.
+
+Added an in-game guide to Main Menu.
+
+Modded the Logo.
+
+Modded the icon.
+
+Changed some lore, including some enemy names.
+
+Easter Eggs? Totally didn't add any Easter Eggs. None.
+
+End of Features. Thank you.
 
 

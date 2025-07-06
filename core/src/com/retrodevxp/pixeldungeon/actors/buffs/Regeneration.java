@@ -32,7 +32,10 @@ public class Regeneration extends Buff {
 		if (target.isAlive()) {
 
 			if (target.HP < target.HT && !((Hero)target).isStarving()) {
-				target.HP += 1;
+				target.HP += (1 + Math.floor(target.HT / 30f));
+			}
+			if (target.HP > target.HT){
+				target.HP = target.HT;
 			}
 			
 			int bonus = 0;

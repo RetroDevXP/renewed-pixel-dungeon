@@ -29,6 +29,7 @@ import com.retrodevxp.pixeldungeon.actors.buffs.Invisibility;
 import com.retrodevxp.pixeldungeon.actors.hero.Hero;
 import com.retrodevxp.pixeldungeon.actors.mobs.Bestiary;
 import com.retrodevxp.pixeldungeon.actors.mobs.Mob;
+import com.retrodevxp.pixeldungeon.actors.mobs.npcs.Wandmaker;
 import com.retrodevxp.pixeldungeon.effects.CellEmitter;
 import com.retrodevxp.pixeldungeon.effects.Speck;
 import com.retrodevxp.pixeldungeon.effects.particles.WrathParticle;
@@ -90,7 +91,7 @@ public class ScrollOfWipeOut extends Item {
 		Invisibility.dispel();
 		
 		for (Mob mob : Dungeon.level.mobs.toArray( new Mob[0] )) {
-			if (!Bestiary.isBoss( mob )) {
+			if (!Bestiary.isBoss( mob ) && !(mob instanceof Wandmaker)) {
 				Sample.INSTANCE.play( Assets.SND_CURSED, 0.3f, 0.3f, Random.Float( 0.6f, 0.9f ) );
 				mob.die( this );
 			}

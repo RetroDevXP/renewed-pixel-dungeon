@@ -25,6 +25,7 @@ import com.retrodevxp.noosa.Camera;
 import com.retrodevxp.noosa.audio.Sample;
 import com.retrodevxp.pixeldungeon.Assets;
 import com.retrodevxp.pixeldungeon.Badges;
+import com.retrodevxp.pixeldungeon.Challenges;
 import com.retrodevxp.pixeldungeon.Dungeon;
 import com.retrodevxp.pixeldungeon.Statistics;
 import com.retrodevxp.pixeldungeon.actors.Actor;
@@ -35,6 +36,7 @@ import com.retrodevxp.pixeldungeon.actors.buffs.Buff;
 import com.retrodevxp.pixeldungeon.actors.buffs.Burning;
 import com.retrodevxp.pixeldungeon.actors.buffs.Frost;
 import com.retrodevxp.pixeldungeon.actors.buffs.Paralysis;
+import com.retrodevxp.pixeldungeon.actors.buffs.Poison;
 import com.retrodevxp.pixeldungeon.effects.CellEmitter;
 import com.retrodevxp.pixeldungeon.effects.Speck;
 import com.retrodevxp.pixeldungeon.effects.particles.ElmoParticle;
@@ -65,7 +67,10 @@ public class DM300 extends Mob {
 	
 	@Override
 	public int damageRoll() {
-		return Random.NormalIntRange( 16, 24 );
+		if (Dungeon.isChallenged( Challenges.STRONGER_MOBS)){
+			return Random.NormalIntRange( 16, 24 );
+		}
+		return Random.NormalIntRange( 15, 23 );
 	}
 	
 	@Override
@@ -183,6 +188,7 @@ public class DM300 extends Mob {
 	private static final HashSet<Class<?>> IMMUNITIES = new HashSet<Class<?>>();
 	static {
 		IMMUNITIES.add( ToxicGas.class );
+		IMMUNITIES.add( Poison.class );
 	}
 	
 	@Override

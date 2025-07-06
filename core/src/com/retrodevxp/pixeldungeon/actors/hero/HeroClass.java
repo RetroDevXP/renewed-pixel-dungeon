@@ -26,8 +26,10 @@ import com.retrodevxp.pixeldungeon.items.FireBomb;
 import com.retrodevxp.pixeldungeon.items.SmokeBomb;
 import com.retrodevxp.pixeldungeon.items.TomeOfMastery;
 import com.retrodevxp.pixeldungeon.items.armor.ClothArmor;
+import com.retrodevxp.pixeldungeon.items.armor.PlateArmor;
 import com.retrodevxp.pixeldungeon.items.bags.Keyring;
 import com.retrodevxp.pixeldungeon.items.food.Food;
+import com.retrodevxp.pixeldungeon.items.food.Pasty;
 import com.retrodevxp.pixeldungeon.items.potions.PotionOfHealing;
 import com.retrodevxp.pixeldungeon.items.potions.PotionOfMindVision;
 import com.retrodevxp.pixeldungeon.items.potions.PotionOfParalyticGas;
@@ -36,6 +38,7 @@ import com.retrodevxp.pixeldungeon.items.rings.RingOfShadows;
 import com.retrodevxp.pixeldungeon.items.scrolls.ScrollOfEnchantment;
 import com.retrodevxp.pixeldungeon.items.scrolls.ScrollOfIdentify;
 import com.retrodevxp.pixeldungeon.items.scrolls.ScrollOfMagicMapping;
+import com.retrodevxp.pixeldungeon.items.scrolls.ScrollOfMirrorImage;
 import com.retrodevxp.pixeldungeon.items.scrolls.ScrollOfPsionicBlast;
 import com.retrodevxp.pixeldungeon.items.scrolls.ScrollOfUpgrade;
 import com.retrodevxp.pixeldungeon.items.wands.WandOfAmok;
@@ -45,6 +48,7 @@ import com.retrodevxp.pixeldungeon.items.wands.WandOfBlink;
 import com.retrodevxp.pixeldungeon.items.wands.WandOfDisintegration;
 import com.retrodevxp.pixeldungeon.items.wands.WandOfFirebolt;
 import com.retrodevxp.pixeldungeon.items.wands.WandOfMagicMissile;
+import com.retrodevxp.pixeldungeon.items.wands.WandOfPoison;
 import com.retrodevxp.pixeldungeon.items.wands.WandOfReach;
 import com.retrodevxp.pixeldungeon.items.wands.WandOfRegrowth;
 import com.retrodevxp.pixeldungeon.items.wands.WandOfSpirits;
@@ -142,18 +146,24 @@ public enum HeroClass {
 	private static void initExtra(){
 		new TomeOfMastery().collect();
 		new WandOfAmok().identify().collect();
-		new WandOfDisintegration().identify().collect();
+		// new WandOfDisintegration().identify().collect();
 		// new WandOfFirebolt().identify().collect();
 		// new ScrollOfPsionicBlast().identify().collect();
 		new WandOfSpirits().identify().collect();
-		new WandOfReach().identify().collect();
+		// new WandOfReach().identify().collect();
+		// new WandOfReach().identify().collect();
+		// new WandOfReach().identify().collect();
 		new WandOfTeleportation().identify().collect();
 		// new WandOfBlink().identify().collect();
 		new WandOfRegrowth().identify().collect();
+		// new WandOfPoison().identify().collect();
 		// new WandOfAvalanche().identify().collect();
-		new Whip().identify().collect();
-		new Flail().identify().collect();
-		new Brandistock().identify().collect();
+		new PlateArmor().identify().collect();
+		new ScrollOfMirrorImage().identify().collect();
+		new Cutlass().identify().collect();
+		// new Whip().identify().collect();
+		// new Flail().identify().collect();
+		// new Brandistock().identify().collect();
 
 		for (int i = 1; i < 100; i++){
 			new PotionOfHealing().identify().collect();
@@ -161,6 +171,7 @@ public enum HeroClass {
 			new PotionOfStrength().identify().collect();
 			new ScrollOfEnchantment().identify().collect();
 			new ScrollOfUpgrade().identify().collect();
+			new Pasty().collect();
 		}
 		// QuickSlot.primaryValue = ArmorKit.class;
 		// for (int i = 1; i < 100; i++){

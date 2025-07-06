@@ -52,6 +52,7 @@ public class ItemSpriteSheet {
 	public static final int WHIP			= 137;
 	public static final int DWARVEN_AXE		= 152;
 	public static final int FLAIL			= 154;
+	public static final int CUTLASS			= 156;
 	
 
 

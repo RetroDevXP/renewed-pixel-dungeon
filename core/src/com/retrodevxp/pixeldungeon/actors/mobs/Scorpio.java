@@ -21,6 +21,7 @@ package com.retrodevxp.pixeldungeon.actors.mobs;
 
 import java.util.HashSet;
 
+import com.retrodevxp.pixeldungeon.Challenges;
 import com.retrodevxp.pixeldungeon.Dungeon;
 import com.retrodevxp.pixeldungeon.actors.Char;
 import com.retrodevxp.pixeldungeon.actors.buffs.Buff;
@@ -55,7 +56,10 @@ public class Scorpio extends Mob {
 	
 	@Override
 	public int damageRoll() {
-		return Random.NormalIntRange( 20, 32 );
+		if (Dungeon.isChallenged( Challenges.STRONGER_MOBS)){
+			return Random.NormalIntRange( 20, 32 );
+		}
+		return Random.NormalIntRange( 18, 28 );
 	}
 	
 	@Override

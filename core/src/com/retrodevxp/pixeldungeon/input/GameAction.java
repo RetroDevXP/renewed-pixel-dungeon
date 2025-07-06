@@ -14,12 +14,12 @@ public enum GameAction {
 
 	//FIXME: Currently Quickslot 1 is swapped with Quickslot 2 due to the layout of the quickslots. It works fine like this though.
 	BACKPACK("Backpack"),
-	SWAP("Swap Quickslot"),
+	// SWAP("Swap Quickslot"),
 	QUICKSLOT("Quickslot"),
 	QUICKSLOT2("Quickslot 2"),
 	QUICKSLOT3("Quickslot 3"),
-	ADDQUICKSLOT("Add to Quickslot 2"),
 	ADDQUICKSLOT2("Add to Quickslot"),
+	ADDQUICKSLOT("Add to Quickslot 2"),
 	ADDQUICKSLOT3("Add to Quickslot 3"),
 
 	TAG_ATTACK("Attack"),

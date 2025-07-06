@@ -41,7 +41,7 @@ public enum HeroSubClass {
 		"When using an out-of-charge wand, the _Warlock_ is able to extract energy from his soul to be converted into wand charges. " ),
 	BATTLEMAGE( "battlemage", 
 		"When fighting with a wand in his hands, the _Battlemage_ inflicts additional damage depending " +
-		"on the current number of charges. Every successful hit restores 1 charge to this wand. Excess energy is converted into extra effects." ),
+		"on the current number of charges. Every successful hit restores 1 charge to this wand. Excess energy makes the wand unleash powerful effects." ),
 	SCRIBE( "scribe", 
 		"With his proficiency, the _Scribe_ is more resistant or even immune to most negative effects from enchantments. " +
 		"When he upgrades an enchanted item, the enchantment will never be removed despite the collision of different magic." ),
@@ -64,7 +64,7 @@ public enum HeroSubClass {
 		"seeds from plants. Also trampling a high grass grants them a temporary armor buff. _Wardens_ also regenerate health slightly quicker." ),
 	CHASER( "chaser", 
 		"When damaging a wounded enemy, the _Chaser_ gets into the thrill of the hunt, moving faster and dealing slightly more damage. " +
-		"This bonus lasts longer when attacking enemies with a missile weapon." );
+		"This effect lasts longer when attacking enemies with a missile weapon." );
 		
 	
 	private String title;

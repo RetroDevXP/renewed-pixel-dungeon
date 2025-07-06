@@ -22,7 +22,6 @@ package com.retrodevxp.pixeldungeon.items.armor.glyphs;
 import com.retrodevxp.pixeldungeon.Assets;
 import com.retrodevxp.pixeldungeon.actors.Char;
 import com.retrodevxp.pixeldungeon.actors.buffs.Buff;
-import com.retrodevxp.pixeldungeon.actors.buffs.Charm;
 import com.retrodevxp.pixeldungeon.actors.buffs.Invisibility;
 import com.retrodevxp.pixeldungeon.effects.Speck;
 import com.retrodevxp.pixeldungeon.items.armor.Armor;

@@ -21,6 +21,7 @@ package com.retrodevxp.pixeldungeon.items.weapon;
 
 import com.badlogic.gdx.utils.reflect.ClassReflection;
 import com.retrodevxp.pixeldungeon.Badges;
+import com.retrodevxp.pixeldungeon.Challenges;
 import com.retrodevxp.pixeldungeon.Dungeon;
 import com.retrodevxp.pixeldungeon.actors.Char;
 import com.retrodevxp.pixeldungeon.actors.hero.Hero;
@@ -184,8 +185,11 @@ abstract public class Weapon extends KindOfWeapon {
 	
 	@Override
 	public int maxDurability( int lvl ) {
-		// return 5 * (lvl < 16 ? 16 - lvl : 1);
-		return Integer.MAX_VALUE;
+		if (!Dungeon.isChallenged(Challenges.DURABILITYACTIVE)){
+			return Integer.MAX_VALUE;
+		}
+		return 5 * (lvl < 16 ? 16 - lvl : 1);
+		// return Integer.MAX_VALUE;
 	}
 	
 	@Override

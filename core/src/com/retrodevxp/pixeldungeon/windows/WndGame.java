@@ -25,6 +25,7 @@ import com.badlogic.gdx.utils.SharedLibraryLoader;
 import com.retrodevxp.pixeldungeon.Badges;
 import com.retrodevxp.pixeldungeon.Dungeon;
 import com.retrodevxp.pixeldungeon.PixelDungeon;
+import com.retrodevxp.pixeldungeon.Rankings;
 import com.retrodevxp.pixeldungeon.scenes.GameScene;
 import com.retrodevxp.pixeldungeon.scenes.InterlevelScene;
 import com.retrodevxp.pixeldungeon.scenes.RankingsScene;
@@ -79,6 +80,7 @@ public class WndGame extends Window {
 				@Override
 				protected void onClick() {
 					Dungeon.hero = null;
+					System.out.println("Debug: Hero is null");
 					PixelDungeon.challenges( Dungeon.challenges );
 					InterlevelScene.mode = InterlevelScene.Mode.DESCEND;
 					InterlevelScene.noStory = true;
@@ -103,7 +105,13 @@ public class WndGame extends Window {
 					try {
 						Dungeon.saveAll();
 					} catch (IOException e) {
-						// Do nothing
+						System.out.println("Debug: Error occured while saving when returning to main menu, " + e.toString());
+					}
+					try{
+						Dungeon.refreshStatic();
+					}
+					catch(Exception e){
+						System.out.println("Debug: Error refreshing dungeon: " + e.toString());
 					}
 					Game.switchScene( TitleScene.class );
 				}

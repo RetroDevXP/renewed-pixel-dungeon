@@ -26,6 +26,7 @@ import com.retrodevxp.pixeldungeon.Badges;
 import com.retrodevxp.pixeldungeon.Dungeon;
 import com.retrodevxp.pixeldungeon.Statistics;
 import com.retrodevxp.pixeldungeon.Badges.Badge;
+import com.retrodevxp.pixeldungeon.Challenges;
 import com.retrodevxp.pixeldungeon.actors.Actor;
 import com.retrodevxp.pixeldungeon.actors.Char;
 import com.retrodevxp.pixeldungeon.actors.blobs.ToxicGas;
@@ -64,6 +65,9 @@ public class Tengu extends Mob {
 	
 	@Override
 	public int damageRoll() {
+		if (Dungeon.isChallenged( Challenges.STRONGER_MOBS)){
+			return Random.NormalIntRange( 9, 18 );
+		}
 		return Random.NormalIntRange( 8, 15 );
 	}
 	
@@ -105,7 +109,15 @@ public class Tengu extends Mob {
 		
 		Badges.validateBossSlain();
 		
-		yell( "Free... at... last..." );
+		
+
+		speech = Random.IntRange( 0, 1 );
+		if (speech == 0){
+			yell( "Free... at... last..." );
+		}
+		else if (speech == 1){
+			yell( "You... got... me...");
+		}
 	}
 	
 	@Override
@@ -171,16 +183,16 @@ public class Tengu extends Mob {
 
 		speech = Random.IntRange( 0, 3 );
 		if (speech == 0){
-			yell( "Too slow! ");
+			yell( "Too slow!");
 		}
 		else if (speech == 1){
-			yell( "Can't catch me! ");
+			yell( "Can't catch me!");
 		}
 		else if (speech == 2){
-			yell( "Hah! ");
+			yell( "Hah!");
 		}
 		else if (speech == 3){
-			yell( "Pathetic! ");
+			yell( "Pathetic!");
 		}
 	}
 	
@@ -197,7 +209,7 @@ public class Tengu extends Mob {
 			"They are smart, stealthy and extensively use shurikens as well as traps. Despite their large, menacing appearance, " +
 			"they prefer to strike at enemies from a range, as their physical prowess isn't as strong as their appearance. " + 
 			"After they were hunted for their crimes, most of them went into hiding. " + 
-			"Others were locked up in maximum-security prisons. This Tengu has been locked here for who knows how long.";
+			"Others were locked up in maximum-security prisons. Being locked here for who knows how long, your arrival is the most exciting thing happening to it in a long time.";
 	}
 	
 	private static final HashSet<Class<?>> RESISTANCES = new HashSet<Class<?>>();

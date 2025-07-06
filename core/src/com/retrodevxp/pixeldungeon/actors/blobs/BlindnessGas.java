@@ -23,7 +23,6 @@ import com.retrodevxp.pixeldungeon.actors.Actor;
 import com.retrodevxp.pixeldungeon.actors.Char;
 import com.retrodevxp.pixeldungeon.actors.buffs.Blindness;
 import com.retrodevxp.pixeldungeon.actors.buffs.Buff;
-import com.retrodevxp.pixeldungeon.actors.buffs.Vertigo;
 import com.retrodevxp.pixeldungeon.effects.BlobEmitter;
 import com.retrodevxp.pixeldungeon.effects.Speck;
 

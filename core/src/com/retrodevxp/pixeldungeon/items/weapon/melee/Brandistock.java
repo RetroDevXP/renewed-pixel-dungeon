@@ -32,7 +32,7 @@ public class Brandistock extends MeleeWeapon {
 	{
 		name = "brandistock";
 		image = ItemSpriteSheet.BRANDISTOCK;
-		defaultAction = AC_RETRACT;
+		// defaultAction = AC_RETRACT;
 	}
 	
 	public Brandistock() {

@@ -85,6 +85,6 @@ public class WandOfTeleportation extends Wand {
 	public String desc() {
 		return
 			"A blast from this wand will teleport a creature against " +
-			"its will to a random place on the current level.";
+			"its will to a random place on the current dungeon floor.";
 	}
 }

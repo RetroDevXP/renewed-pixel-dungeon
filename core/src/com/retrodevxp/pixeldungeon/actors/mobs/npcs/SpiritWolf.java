@@ -71,7 +71,7 @@ public class SpiritWolf extends NPC {
 	
 	@Override
 	public int attackSkill( Char target ) {
-		return defenseSkill;
+		return 2 + (int)(defenseSkill * 1.75f);
 	}
 	
 	@Override

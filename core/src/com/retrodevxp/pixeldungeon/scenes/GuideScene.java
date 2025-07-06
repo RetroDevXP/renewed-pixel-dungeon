@@ -19,7 +19,6 @@
  */
 package com.retrodevxp.pixeldungeon.scenes;
 
-import com.badlogic.gdx.Gdx;
 import com.retrodevxp.input.NoosaInputProcessor;
 import com.retrodevxp.noosa.BitmapTextMultiline;
 import com.retrodevxp.noosa.Camera;
@@ -34,15 +33,20 @@ import com.retrodevxp.pixeldungeon.ui.Window;
 
 public class GuideScene extends PixelScene {
 
+	private static int pagetotal = 7;
 	private static final String TXT_BASICS = 
-		"Renewed Pixel Dungeon\n\n" +
+		"Renewed Pixel Dungeon" + " Page 1 of " + (pagetotal + 1) + "\n\n" +
 		"Basics\n\n" +
 		"-A turn-based roguelike game. The goal of this game is to obtain the Amulet of Yendor on the deepest floor of the dungeon.\n" +
 		"-As with other roguelikes, you start from the beginning when you lose. However, some benefits, such as the Tome of Mastery, are permanently unlocked.\n" +
-		"-Each class has their own perks, as well as extra items they get to choose from.\n";
+		"-Each class has their own perks, as well as extra items they get to choose from.\n" +
+		"-Once you unlock the Tome of Mastery, each class can be upgraded into subclasses, each with their own benefits.\n" +
+		"-Each class has their own perks, as well as extra items they get to choose from.\n" +
+		"-Defeat enemies to obtain EXP in order to level up, increasing your max HP and some other stats.\n";
+
 
 		private static final String TXT_DUNGEON = 
-		"Renewed Pixel Dungeon\n\n" +
+		"Renewed Pixel Dungeon" + " Page 2 of " + (pagetotal + 1)  + "\n\n" +
 		"The Dungeon\n\n" + 
 		"-Each floor of the Dungeon might contain hidden traps or hidden doors. Some rooms are locked, requiring a key.\n" +
 		"-There are 25 floors total. As you travel deeper, prepare to encounter stronger enemies.\n" +
@@ -51,7 +55,7 @@ public class GuideScene extends PixelScene {
 		"-There are extra tips on each level's entrance.\n";
 
 		private static final String TXT_ITEMS = 
-		"Renewed Pixel Dungeon\n\n" +
+		"Renewed Pixel Dungeon" + " Page 3 of " + (pagetotal + 1)  + "\n\n" +
 		"Items\n\n" + 
 		"-Items are obtained in many different ways. There are items dropped on each floor. On top of that, some enemies might drop items.\n" +
 		"-Some items aren't identified from the beginning.\n" +
@@ -60,34 +64,34 @@ public class GuideScene extends PixelScene {
 		"-Try to utilize the avaliable items to survive the situation. Take as long to consider as you need. It's turn-based.\n";
 
 		private static final String TXT_WEAPONS = 
-		"Renewed Pixel Dungeon\n\n" +
+		"Renewed Pixel Dungeon" + " Page 4 of " + (pagetotal + 1)  + "\n\n" +
 		"Weapons\n\n" + 
 		"-You deal more damage with a weapon equipped.\n" +
 		"-Each weapon have different required strengths. If you use weapons unsuited for your strength, its effectiveness worsens.\n" +
 		"-Each weapon have different damage, speed, and accuracy.\n" +
 		"-Enchanted weapons have extra effects. Some enchantments activates by chance. Some by conditions. Some always.\n" +
-		"-When a weapon is upgraded, its required strength also decreases.\n";
+		"-When a weapon is upgraded, its required strength to equip also decreases. This does not affect the strength needed to throw it.\n";
 
 		private static final String TXT_ARMOR = 
-		"Renewed Pixel Dungeon\n\n" +
+		"Renewed Pixel Dungeon" + " Page 5 of " + (pagetotal + 1)  + "\n\n" +
 		"Armor\n\n" + 
 		"-You receive less damage with an armor equipped.\n" +
 		"-Each armor have different required strengths. If you use armor unsuited for your strength, its effectiveness worsens.\n" +
-		"-Class armor are available deep into the dungeon. They grant an extra ability, at a cost.\n" +
+		"-Class armor are available deep into the dungeon. They grant an extra ability, at a cost upon usage.\n" +
 		"-Enchanted armor have extra effects. Some enchantments activates by chance. Some by conditions. Some always.\n" +
 		"-When an armor is upgraded, its required strength also decreases.\n";
 
 		private static final String TXT_SPD = 
-		"Renewed Pixel Dungeon\n\n" +
+		"Renewed Pixel Dungeon" + " Page 6 of " + (pagetotal + 1)  + "\n\n" +
 		"Speed\n\n" + 
 		"-Not all enemies have the same move speed.\n" +
 		"-Some enemies, such as Sewer Crabs, move much quicker than you. You can't outrun them!\n" +
 		"-Some enemies have different attack speeds. Some might land multiple attacks for each one of yours!\n" +
-		"-Some weapons also have different attack speeds.\n" +
+		"-Some weapons also have different attack speeds when equipped.\n" +
 		"-There are many different ways to manipulate the speed of you or your enemies.\n";
 
 		private static final String TXT_HUNGER = 
-		"Renewed Pixel Dungeon\n\n" +
+		"Renewed Pixel Dungeon" + " Page 7 of " + (pagetotal + 1)  + "\n\n" +
 		"Hunger\n\n" + 
 		"-As you act, you get more hungry.\n" +
 		"-When starving, your heath regeneration stops, you lose health periodically, and you deal reduced damage.\n" +
@@ -95,21 +99,36 @@ public class GuideScene extends PixelScene {
 		"-There are food on each floor of the dungeon. Some enemies also drops food.\n" +		
 		"-Some foods have extra effects, which are not always positive. Some foods are cookable with heat or cold.\n";
 
+		private static final String TXT_CHALLENGES = 
+		"Renewed Pixel Dungeon" + " Page 8 of " + (pagetotal + 1)  + "\n\n" +
+		"Challenges\n\n" + 
+		"-After winning at least once, you can activate challenges to make the game more difficult.\n" +
+		"-Unnutritious: Food restores much less hunger.\n" +
+		"-Faith is my armor: You won't obtain any armor from the dungeon.\n" +
+		"-Pharmacophobia: Potions of healing won't drop.\n" +
+		"-Barren land: You won't obtain seeds or dew from grass.\n" +
+		"-Swarm intelligence: Once noticed by an enemy, others will swarm your location.\n" +
+		"-Into darkness: A darker dungeon limits visibility.\n" +
+		"-Forbidden runes: You won't obtain any scrolls, apart from Scrolls of Upgrade.\n" +
+		"-Dire dungeon: Enemies deals slightly more damage.\n" +
+		"-Undurable items: Upgraded items may break with lots of usage.\n" +
+		"-To have an experience more similar to the vanilla version, try using Dire dungeon and Undurable items.\n";
+
 
 	private BitmapTextMultiline text;
 	
 	private static final String NEXT = "Next ->";
 	private static final String LAST = "<- Last";
 	private int page = 0;
-	private int pagetotal = 6;
+	
 	
 	@Override
 	public void create() {
 		super.create();
 		page = 0;
 		
-		text = createMultiline( TXT_BASICS, 8 );
-		text.maxWidth = Math.min( Camera.main.width, 120 );
+		text = createMultiline( TXT_BASICS, 6 );
+		text.maxWidth = Math.min( Camera.main.width, 150 );
 		text.measure();
 		add( text );
 		
@@ -198,6 +217,9 @@ public class GuideScene extends PixelScene {
 				break;
 			case 6:
 				text.text(TXT_HUNGER);
+				break;
+			case 7:
+				text.text(TXT_CHALLENGES);
 				break;
 			default:
 				text.text(TXT_BASICS);

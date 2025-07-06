@@ -21,6 +21,7 @@ package com.retrodevxp.pixeldungeon.levels.painters;
 
 import com.retrodevxp.pixeldungeon.Dungeon;
 import com.retrodevxp.pixeldungeon.actors.blobs.SacrificialFire;
+import com.retrodevxp.pixeldungeon.items.potions.PotionOfLiquidFlame;
 import com.retrodevxp.pixeldungeon.levels.Level;
 import com.retrodevxp.pixeldungeon.levels.Room;
 import com.retrodevxp.pixeldungeon.levels.Terrain;
@@ -58,6 +59,8 @@ public class AltarPainter extends Painter {
 		fire.seed( c.x + c.y * Level.WIDTH, 5 + Dungeon.depth * 5 );
 		level.blobs.put( SacrificialFire.class, fire );
 		
-		door.set( Room.Door.Type.EMPTY );
+		// door.set( Room.Door.Type.EMPTY );
+		room.entrance().set( Room.Door.Type.BARRICADE );
+		level.addItemToSpawn( new PotionOfLiquidFlame() );
 	}
 }

@@ -22,6 +22,7 @@ package com.retrodevxp.pixeldungeon.actors.mobs;
 import java.util.HashSet;
 
 import com.retrodevxp.pixeldungeon.Badges;
+import com.retrodevxp.pixeldungeon.Challenges;
 import com.retrodevxp.pixeldungeon.Dungeon;
 import com.retrodevxp.pixeldungeon.Statistics;
 import com.retrodevxp.pixeldungeon.actors.Char;
@@ -65,6 +66,9 @@ public class Piranha extends Mob {
 	
 	@Override
 	public int damageRoll() {
+		if (Dungeon.isChallenged( Challenges.STRONGER_MOBS)){
+			return Random.NormalIntRange( Dungeon.depth, 7 + Dungeon.depth * 2 );
+		}
 		return Random.NormalIntRange( Dungeon.depth, 4 + Dungeon.depth * 2 );
 	}
 	

@@ -23,6 +23,7 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.utils.reflect.ClassReflection;
 import com.retrodevxp.pixeldungeon.Badges;
+import com.retrodevxp.pixeldungeon.Challenges;
 import com.retrodevxp.pixeldungeon.Dungeon;
 import com.retrodevxp.pixeldungeon.actors.Char;
 import com.retrodevxp.pixeldungeon.actors.hero.Hero;
@@ -204,8 +205,12 @@ public class Armor extends EquipableItem {
 	
 	@Override
 	public int maxDurability( int lvl ) {
+		if (!Dungeon.isChallenged(Challenges.DURABILITYACTIVE)){
+			return Integer.MAX_VALUE;
+		}
+		return 6 * (lvl < 16 ? 16 - lvl : 1);
 		// return 6 * (lvl < 16 ? 16 - lvl : 1);
-		return Integer.MAX_VALUE;
+		
 	}
 	
 	public int proc( Char attacker, Char defender, int damage ) {

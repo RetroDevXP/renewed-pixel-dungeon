@@ -24,6 +24,7 @@ import java.util.HashSet;
 import com.retrodevxp.noosa.audio.Sample;
 import com.retrodevxp.pixeldungeon.Assets;
 import com.retrodevxp.pixeldungeon.Badges;
+import com.retrodevxp.pixeldungeon.Challenges;
 import com.retrodevxp.pixeldungeon.Dungeon;
 import com.retrodevxp.pixeldungeon.Statistics;
 import com.retrodevxp.pixeldungeon.actors.Actor;
@@ -51,7 +52,7 @@ import com.retrodevxp.utils.Random;
 
 public class King extends Mob {
 	
-	private static final int MAX_ARMY_SIZE	= 5;
+	private static final int MAX_ARMY_SIZE	= 7;
 	
 	{
 		name = Dungeon.depth == Statistics.deepestFloor ? "King of Dwarves" : "undead King of Dwarves";
@@ -82,7 +83,10 @@ public class King extends Mob {
 	
 	@Override
 	public int damageRoll() {
-		return Random.NormalIntRange( 20, 35 );
+		if (Dungeon.isChallenged( Challenges.STRONGER_MOBS)){
+			return Random.NormalIntRange( 22, 35 );
+		}
+		return Random.NormalIntRange( 20, 32 );
 	}
 	
 	@Override
@@ -146,7 +150,7 @@ public class King extends Mob {
 		
 		Badges.validateBossSlain();
 		
-		yell( "This is impossible" + "... I am... immortal..." );
+		yell( "This is impossible... I am... immortal..." );
 	}
 	
 	private int maxArmySize() {
@@ -204,7 +208,7 @@ public class King extends Mob {
 	@Override
 	public void notice() {
 		super.notice();
-		yell( "How dare you!" );
+		yell( "You dare enter my throne room?" );
 	}
 	
 	@Override
@@ -212,7 +216,9 @@ public class King extends Mob {
 		return
 			"The last king of dwarves was known for his deep understanding of the processes of life and death. " +
 			"He has persuaded members of his court to participate in a ritual of immortality. This granted him eternal youthfulness. " +
-			"However, his court members lacked the strong will required to withstand the ritual, and they became corrupted into undeads.";
+			"However, his court members lacked the strong will required to withstand the ritual, and they turned into undead. " +
+			"Without his court, he descended into his throne room in the deepest part of the city, abandoning his people " +
+			"as his once mighty kingdom started crumbling above him. ";
 	}
 	
 	private static final HashSet<Class<?>> RESISTANCES = new HashSet<Class<?>>();
@@ -269,7 +275,7 @@ public class King extends Mob {
 		
 		@Override
 		public int damageRoll() {
-			return Random.NormalIntRange( 12, 16 );
+			return Random.NormalIntRange( 10, 15 );
 		}
 		
 		@Override
@@ -279,7 +285,7 @@ public class King extends Mob {
 		
 		@Override
 		public int attackProc( Char enemy, int damage ) {
-			if (Random.Int( MAX_ARMY_SIZE ) == 0) {
+			if (Random.Int( MAX_ARMY_SIZE * 2 ) == 0) {
 				Buff.prolong( enemy, Paralysis.class, 1 );
 			}
 			

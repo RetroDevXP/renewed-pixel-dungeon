@@ -30,7 +30,7 @@ public class BulbushFruitCooked extends Food {
 		name = "cooked bulbush fruit";
 		image = ItemSpriteSheet.BULBUSHCOOKED;
 		energy = Hunger.HUNGRY - 25;
-		message = "That fruit tasted mediocre!";
+		message = "That fruit tasted mediocre.";
 	}
 	
 	// @Override

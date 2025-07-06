@@ -19,6 +19,8 @@
  */
 package com.retrodevxp.pixeldungeon.actors.mobs;
 
+import com.retrodevxp.pixeldungeon.Challenges;
+import com.retrodevxp.pixeldungeon.Dungeon;
 import com.retrodevxp.pixeldungeon.actors.Char;
 import com.retrodevxp.pixeldungeon.actors.mobs.npcs.Ghost;
 import com.retrodevxp.pixeldungeon.sprites.RatSprite;
@@ -38,6 +40,9 @@ public class Rat extends Mob {
 	
 	@Override
 	public int damageRoll() {
+		if (Dungeon.isChallenged( Challenges.STRONGER_MOBS)){
+			return Random.NormalIntRange( 2, 5 );
+		}
 		return Random.NormalIntRange( 1, 5 );
 	}
 	

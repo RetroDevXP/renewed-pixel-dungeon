@@ -146,6 +146,52 @@ public class Dungeon {
 		
 		StartScene.curClass.initHero( hero );
 	}
+
+	//From trying to fix a bug that was causing errors after exiting to main menu. This didn't fix the error though.
+	public static void refreshStatic(){
+		challenges = PixelDungeon.challenges();
+		
+		Actor.clear();
+		
+		PathFinder.setMapSize( Level.WIDTH, Level.HEIGHT );
+		
+		Scroll.initLabels();
+		Potion.initColors();
+		Wand.initWoods();
+		Ring.initGems();
+		
+		Statistics.reset();
+		Journal.reset();
+		
+		depth = 0;
+		gold = 0;
+		slots = 0;
+		
+		droppedItems = new SparseArray<ArrayList<Item>>();
+		
+		potionOfStrength = 0;
+		scrollsOfUpgrade = 0;
+		scrollsOfEnchantment = 0;
+		dewVial = true;
+		
+		chapters = new HashSet<Integer>();
+		
+		Ghost.Quest.reset();
+		Wandmaker.Quest.reset();
+		Blacksmith.Quest.reset();
+		Imp.Quest.reset();
+		
+		Room.shuffleTypes();
+		
+		QuickSlot.primaryValue = null;
+		QuickSlot.secondaryValue = null;
+		QuickSlot.tertiaryValue = null;
+		
+		hero = new Hero();
+		hero.live();
+		
+		Badges.reset();
+	}
 	
 	public static boolean isChallenged( int mask ) {
 		return (challenges & mask) != 0;
@@ -524,8 +570,22 @@ public class Dungeon {
 		String version = bundle.getString( VERSION );
 		
 		hero = null;
+		System.out.println("Debug: Hero is null");
+		Object obj = bundle.get( HERO );
+		if (obj != null){
+			System.out.println("Debug: Object isn't null");
+		}
+		else{
+			System.out.println("Debug: Object is actually null");
+		}
 		hero = (Hero)bundle.get( HERO );
-		
+		if (hero != null){
+			System.out.println("Debug: Hero is not null");
+		}
+		else{
+			System.out.println("Debug: Hero not successfully loaded");
+			hero = new Hero();
+		}
 		// QuickSlot.compress();
 		
 		gold = bundle.getInt( GOLD );

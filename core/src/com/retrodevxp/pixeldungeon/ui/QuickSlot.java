@@ -82,8 +82,11 @@ public class QuickSlot extends Button<GameAction> implements WndBag.Listener {
 		
 		if (this == primary) {
 			primary = null;
-		} else {
+		} else if (this == secondary){
 			secondary = null;
+		}
+		else{
+			tertiary = null;
 		}
 		
 		lastTarget = null;
@@ -92,7 +95,7 @@ public class QuickSlot extends Button<GameAction> implements WndBag.Listener {
 	@Override
 	protected void createChildren() {
 		super.createChildren();
-		System.out.println("Quickslot" + this.toString());
+		// System.out.println("Quickslot" + this.toString());
 		slot = new ItemSlot() {
 			@Override
 			protected void onClick() {
@@ -111,7 +114,12 @@ public class QuickSlot extends Button<GameAction> implements WndBag.Listener {
 			}
 			@Override
 			protected boolean onLongClick() {
+				try{
 				return QuickSlot.this.onLongClick();
+				}
+				catch(Exception e){
+					return false;
+				}
 			}
 			@Override
 			protected void onTouchDown() {
@@ -218,7 +226,12 @@ public class QuickSlot extends Button<GameAction> implements WndBag.Listener {
 		}
 		if (content instanceof Item) {
 			
-			return (Item)content;
+			if (Dungeon.hero.belongings.backpack.items.contains(content) || Dungeon.hero.belongings.weapon == (content)){
+				return (Item)content;
+			}
+			else{
+				return null;
+			}
 			
 		} else if (content != null) {
 			

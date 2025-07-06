@@ -153,8 +153,8 @@ public class Imp extends NPC {
 	@Override
 	public String description() {
 		return 
-			"Imps are lesser demons. They are notable for neither their strength nor their magic talent, " +
-			"but they are quite smart and sociable. Many imps prefer to live among non-demons.";
+			"Imps are lesser demons. Unlike most demons, they are neither strong nor agressive. " +
+			"However, they are quite smart and sociable, often making deals with other species. Many Imps prefer to live among non-demons.";
 	}
 	
 	public static class Quest {

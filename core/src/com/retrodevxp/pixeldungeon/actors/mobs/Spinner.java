@@ -21,6 +21,8 @@ package com.retrodevxp.pixeldungeon.actors.mobs;
 
 import java.util.HashSet;
 
+import com.retrodevxp.pixeldungeon.Challenges;
+import com.retrodevxp.pixeldungeon.Dungeon;
 import com.retrodevxp.pixeldungeon.actors.Char;
 import com.retrodevxp.pixeldungeon.actors.blobs.Blob;
 import com.retrodevxp.pixeldungeon.actors.blobs.Web;
@@ -53,6 +55,9 @@ public class Spinner extends Mob {
 	
 	@Override
 	public int damageRoll() {
+		if (Dungeon.isChallenged( Challenges.STRONGER_MOBS)){
+			return Random.NormalIntRange( 14, 18 );
+		}
 		return Random.NormalIntRange( 12, 16 );
 	}
 	

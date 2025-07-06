@@ -58,10 +58,12 @@ public class MeleeWeapon extends Weapon {
 		DLY = dly;
 		
 		STR = typicalSTR();
+		
+		defaultAction = AC_THROW;
 	}
 	
 	protected int min0() {
-		return Math.max(tier, tier + bonus_atk);
+		return Math.max(Math.max(tier, tier + bonus_atk), max0() / 7);
 	}
 	
 	protected int max0() {
@@ -257,7 +259,7 @@ public class MeleeWeapon extends Weapon {
 			// if (curUser.throwmelee( enemy, this )) {
 				
 			int dr =  Dungeon.hero.subClass == HeroSubClass.DEADEYE ? 0 :
-				Random.IntRange( 0, enemy.dr() );
+				Random.IntRange( enemy.dr() / 5, enemy.dr() );
 			
 			int dmg = Random.Int(rangemin, rangemax);
 			int effectiveDamage = Math.max( dmg - dr - encumrance, 0 );
@@ -267,6 +269,7 @@ public class MeleeWeapon extends Weapon {
 				
 			if (throwaccuracy(Dungeon.hero, enemy, cursed, encumrance, isIdentified())){
 				enemy.damage(effectiveDamage, Dungeon.hero);
+				Sample.INSTANCE.play(Assets.SND_HIT, 1, 1, Random.Float(0.7f,1.1f));
 				if (!enemy.isAlive()){
 					GLog.i( TXT_DEFEAT, Dungeon.hero.name, enemy.name );
 				}

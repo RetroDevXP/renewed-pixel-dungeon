@@ -61,7 +61,7 @@ public class RingOfThorns extends Ring {
 	@Override
 	public String desc() {
 		return isKnown() ?
-			"Even though the ring itself doesn't have any actual thorns, it is imbued with magic. An enemy that attacks you " +
+			"WHile lacking real thorns, this ring is imbued with powerful reflective magic. An enemy that attacks you " +
 			"will itself be wounded by a fraction of the damage that it inflicts. " +
 			"Upgrading this ring won't give any additional bonuses." :
 			super.desc();

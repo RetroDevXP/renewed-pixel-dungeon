@@ -25,6 +25,7 @@ import com.retrodevxp.noosa.Game;
 import com.retrodevxp.noosa.Image;
 import com.retrodevxp.pixeldungeon.Assets;
 import com.retrodevxp.pixeldungeon.Dungeon;
+import com.retrodevxp.pixeldungeon.Rankings;
 import com.retrodevxp.pixeldungeon.ResultDescriptions;
 import com.retrodevxp.pixeldungeon.effects.Flare;
 import com.retrodevxp.pixeldungeon.effects.Speck;

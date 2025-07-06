@@ -22,6 +22,7 @@ package com.retrodevxp.pixeldungeon.ui;
 import com.retrodevxp.pixeldungeon.Assets;
 import com.retrodevxp.pixeldungeon.Dungeon;
 import com.retrodevxp.pixeldungeon.DungeonTilemap;
+import com.retrodevxp.pixeldungeon.PixelDungeon;
 import com.retrodevxp.pixeldungeon.input.GameAction;
 import com.retrodevxp.pixeldungeon.items.Item;
 import com.retrodevxp.pixeldungeon.scenes.CellSelector;
@@ -29,6 +30,7 @@ import com.retrodevxp.pixeldungeon.scenes.GameScene;
 import com.retrodevxp.pixeldungeon.sprites.ItemSprite;
 import com.retrodevxp.pixeldungeon.windows.WndBag;
 import com.retrodevxp.pixeldungeon.windows.WndCatalogus;
+import com.badlogic.gdx.Gdx;
 import com.retrodevxp.noosa.Game;
 import com.retrodevxp.noosa.Gizmo;
 import com.retrodevxp.noosa.Image;
@@ -105,7 +107,8 @@ public class Toolbar extends Component {
 			}
 		} );
 		
-		add( btnInventory = new Tool( 60, 7, 23, 25, GameAction.BACKPACK ) {
+		// add( btnInventory = new Tool( PixelDungeon.landscape()? 60 : 0, PixelDungeon.landscape()? 7 : 27, 23, 25, GameAction.BACKPACK ) {
+		add( btnInventory = new Tool(  60, 7, 23, 25, GameAction.BACKPACK ) {
 			private GoldIndicator gold;
 			@Override
 			protected void onClick() {
@@ -167,6 +170,9 @@ public class Toolbar extends Component {
 		btnWait.setPos( x, y );
 		btnSearch.setPos( btnWait.right(), y );
 		btnInfo.setPos( btnSearch.right(), y );
+		if (!PixelDungeon.landscape() && Gdx.graphics.getWidth() <= 450){
+			btnInfo.setPos( x, btnWait.top() - btnInfo.height() );
+		}
 		// btnSwap.setPos( width - btnSwap.width(), y - btnSwap.height() );
 		btnQuick3.setPos( width - btnQuick3.width(), y );
 		if (btnQuick2.visible && btnQuick3.visible) {

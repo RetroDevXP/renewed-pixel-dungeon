@@ -91,6 +91,6 @@ public class Torch extends Item {
 	@Override
 	public String info() {
 		return
-			"It's an indispensable item in The Demon Halls, which are notorious for their poor ambient lighting.";
+			"When lit, this torch allows you to see in a wider area when it's dark. It's an indispensable item in The Demon Halls, which are notorious for their poor ambient lighting.";
 	}
 }

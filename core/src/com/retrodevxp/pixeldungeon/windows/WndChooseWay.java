@@ -124,7 +124,7 @@ public class WndChooseWay extends Window {
 		titlebar.setRect( 0, 0, WIDTH, 0 );
 		add( titlebar );
 		
-		HighlightedText hl = new HighlightedText( 6 );
+		HighlightedText hl = new HighlightedText( 5 );
 		hl.text( text, WIDTH );
 		hl.setPos( titlebar.left(), titlebar.bottom() + GAP );
 		add( hl );

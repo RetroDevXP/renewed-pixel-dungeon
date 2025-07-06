@@ -23,6 +23,7 @@ import java.util.HashSet;
 
 import com.retrodevxp.noosa.audio.Sample;
 import com.retrodevxp.pixeldungeon.Assets;
+import com.retrodevxp.pixeldungeon.Challenges;
 import com.retrodevxp.pixeldungeon.Dungeon;
 import com.retrodevxp.pixeldungeon.ResultDescriptions;
 import com.retrodevxp.pixeldungeon.actors.Char;
@@ -52,6 +53,9 @@ public class Skeleton extends Mob {
 	
 	@Override
 	public int damageRoll() {
+		if (Dungeon.isChallenged( Challenges.STRONGER_MOBS)){
+			return Random.NormalIntRange( 5, 11 );
+		}
 		return Random.NormalIntRange( 3, 8 );
 	}
 	

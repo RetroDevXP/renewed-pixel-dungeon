@@ -47,7 +47,7 @@ public class ScrollOfIdentify extends InventoryScroll {
 	@Override
 	public String desc() {
 		return
-			"This scroll completely identifies everything of a single item.";
+			"This scroll completely identifies everything about a single item. Unknown potions, wands, rings, scrolls, or other items will be identified. Curses will be known. Item levels will be revealed.";
 	}
 	
 	@Override

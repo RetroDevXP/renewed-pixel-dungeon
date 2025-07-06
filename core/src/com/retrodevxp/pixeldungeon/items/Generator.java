@@ -139,6 +139,7 @@ public class Generator {
 			Spear.class, 
 			Brandistock.class, 
 			BrandistockRetract.class, 
+			Cutlass.class,
 			Mace.class, 
 			Sword.class, 
 			Longsword.class,
@@ -161,7 +162,7 @@ public class Generator {
 			WoodenDart.class,
 			FrostDart.class,
 		 };
-		Category.WEAPON.probs = new float[]{ 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1 };
+		Category.WEAPON.probs = new float[]{ 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1 };
 		
 		Category.ARMOR.classes = new Class<?>[]{ 
 			ClothArmor.class, 

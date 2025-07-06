@@ -46,8 +46,8 @@ public class RingOfDetection extends Ring {
 	@Override
 	public String desc() {
 		return isKnown() ?
-			"Wearing this ring will allow the wearer to notice hidden secrets - " +
-			"traps and secret doors - without taking time to search. Degraded rings of detection " +
+			"Wearing this ring will allow the wearer to more commonly notice hidden secrets - " +
+			"traps and secret doors - without taking time to search. The wearer's sharpened senses also allows for searching of larger areas at once. Degraded rings of detection " +
 			"will dull your senses, making it harder to notice secrets even when actively searching for them." :
 			super.desc();
 	}

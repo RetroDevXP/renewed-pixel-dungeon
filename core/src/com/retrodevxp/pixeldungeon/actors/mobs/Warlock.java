@@ -21,6 +21,7 @@ package com.retrodevxp.pixeldungeon.actors.mobs;
 
 import java.util.HashSet;
 
+import com.retrodevxp.pixeldungeon.Challenges;
 import com.retrodevxp.pixeldungeon.Dungeon;
 import com.retrodevxp.pixeldungeon.ResultDescriptions;
 import com.retrodevxp.pixeldungeon.actors.Char;
@@ -59,6 +60,9 @@ public class Warlock extends Mob implements Callback {
 	
 	@Override
 	public int damageRoll() {
+		if (Dungeon.isChallenged( Challenges.STRONGER_MOBS)){
+			return Random.NormalIntRange( 14, 22 );
+		}
 		return Random.NormalIntRange( 12, 20 );
 	}
 	
@@ -104,7 +108,10 @@ public class Warlock extends Mob implements Callback {
 				Buff.prolong( enemy, Weakness.class, Weakness.duration( enemy ) );
 			}
 			
-			int dmg = Random.Int( 12, 18 );
+			int dmg = Random.Int( 12, 17 );
+			if (Dungeon.isChallenged( Challenges.STRONGER_MOBS)){
+				dmg = Random.Int( 15, 23 );
+			}
 			enemy.damage( dmg, this );
 			
 			if (!enemy.isAlive() && enemy == Dungeon.hero) {

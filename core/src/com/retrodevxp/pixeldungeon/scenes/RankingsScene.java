@@ -26,6 +26,7 @@ import com.retrodevxp.noosa.Image;
 import com.retrodevxp.noosa.audio.Music;
 import com.retrodevxp.noosa.ui.Button;
 import com.retrodevxp.pixeldungeon.Assets;
+import com.retrodevxp.pixeldungeon.Dungeon;
 import com.retrodevxp.pixeldungeon.PixelDungeon;
 import com.retrodevxp.pixeldungeon.Rankings;
 import com.retrodevxp.pixeldungeon.effects.Flare;
@@ -60,7 +61,8 @@ public class RankingsScene extends PixelScene {
 	
 	@Override
 	public void create() {
-		
+		Dungeon.refreshStatic();
+		// System.out.println("Debug: Refreshed dungeon.");
 		super.create();
 		
 		Music.INSTANCE.play( Assets.THEME, true );

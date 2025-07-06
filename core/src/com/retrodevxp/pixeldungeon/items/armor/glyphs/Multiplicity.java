@@ -91,6 +91,6 @@ public class Multiplicity extends Glyph {
 
 	@Override
 	public String description(){
-		return "When the wearer is damaged, this armor sometimes creates illusions of the wearer, at the cost of some HP.";
+		return "When the wearer is damaged, this armor sometimes creates magical illusions of the wearer to attack enemies, at the cost of some HP.";
 	}
 }

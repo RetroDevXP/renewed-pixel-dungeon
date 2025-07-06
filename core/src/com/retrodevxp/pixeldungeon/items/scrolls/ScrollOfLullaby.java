@@ -73,7 +73,7 @@ public class ScrollOfLullaby extends Scroll {
 	@Override
 	public String desc() {
 		return
-			"A soothing melody will put all creatures in your field of view into a deep sleep, " +
+			"A soothing tune accompanied by magic will put all creatures in your field of view into a deep sleep, " +
 			"giving you a chance to flee or make a surprise attack on them.";
 	}
 	

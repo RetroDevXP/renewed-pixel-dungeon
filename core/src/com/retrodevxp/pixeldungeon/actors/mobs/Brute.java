@@ -21,6 +21,7 @@ package com.retrodevxp.pixeldungeon.actors.mobs;
 
 import java.util.HashSet;
 
+import com.retrodevxp.pixeldungeon.Challenges;
 import com.retrodevxp.pixeldungeon.Dungeon;
 import com.retrodevxp.pixeldungeon.actors.Char;
 import com.retrodevxp.pixeldungeon.actors.buffs.Terror;
@@ -59,8 +60,13 @@ public class Brute extends Mob {
 	
 	@Override
 	public int damageRoll() {
+		if (Dungeon.isChallenged( Challenges.STRONGER_MOBS)){
+			return berserk ?
+			Random.NormalIntRange( 12, 46 ) :	
+			Random.NormalIntRange( 9, 21 );
+		}
 		return berserk ?
-			Random.NormalIntRange( 10, 40 ) :	
+			Random.NormalIntRange( 10, 36 ) :	
 			Random.NormalIntRange( 8, 18 );
 	}
 	

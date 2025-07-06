@@ -27,9 +27,11 @@ import com.retrodevxp.pixeldungeon.actors.blobs.ToxicGas;
 import com.retrodevxp.pixeldungeon.actors.buffs.Burning;
 import com.retrodevxp.pixeldungeon.actors.hero.Hero;
 import com.retrodevxp.pixeldungeon.actors.mobs.Mob;
+import com.retrodevxp.pixeldungeon.items.wands.WandOfBlink;
 import com.retrodevxp.pixeldungeon.levels.Level;
 import com.retrodevxp.pixeldungeon.sprites.CharSprite;
 import com.retrodevxp.pixeldungeon.sprites.MirrorSprite;
+import com.retrodevxp.pixeldungeon.utils.GLog;
 import com.retrodevxp.utils.Bundle;
 import com.retrodevxp.utils.Random;
 
@@ -112,8 +114,8 @@ public class MirrorImage extends NPC {
 	@Override
 	public String description() {
 		return
-			"This illusion bears a close resemblance to you, " +
-			"but it's paler and twitches a little.";
+			"This mirror image, summoned by magic, bears a close resemblance to you. " +
+			"Despite being an illusion, it actually deals damage to its enemies by unleashing its magic into its target, after which it disappears.";
 	}
 	
 	@Override
@@ -125,8 +127,10 @@ public class MirrorImage extends NPC {
 
 	@Override
 	public void interact() {
-		
+		GLog.w("interacted");
+		if (Level.adjacent(pos, Dungeon.hero.pos)){
 		int curPos = pos;
+		GLog.w("adjacent");
 		
 		moveSprite( pos, Dungeon.hero.pos );
 		move( Dungeon.hero.pos );
@@ -136,6 +140,22 @@ public class MirrorImage extends NPC {
 		
 		Dungeon.hero.spend( 1 / Dungeon.hero.speed() );
 		Dungeon.hero.busy();
+		}
+		
+		else{
+			try{
+				destroy();
+				sprite.die();
+				// Dungeon.hero.pos = pos;
+				WandOfBlink.appear( Dungeon.hero, pos );
+				Dungeon.level.press( pos, Dungeon.hero );
+				Dungeon.observe();
+			}
+			catch(Exception e){
+				System.out.println(e.toString());
+			}
+			
+		}
 	}
 	
 	private static final HashSet<Class<?>> IMMUNITIES = new HashSet<Class<?>>();

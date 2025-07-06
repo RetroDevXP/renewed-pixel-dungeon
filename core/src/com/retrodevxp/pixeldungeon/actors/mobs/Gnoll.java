@@ -19,6 +19,7 @@
  */
 package com.retrodevxp.pixeldungeon.actors.mobs;
 
+import com.retrodevxp.pixeldungeon.Challenges;
 import com.retrodevxp.pixeldungeon.Dungeon;
 import com.retrodevxp.pixeldungeon.actors.Char;
 import com.retrodevxp.pixeldungeon.actors.buffs.Buff;
@@ -52,11 +53,17 @@ public class Gnoll extends Mob {
 	public int damageRoll() {
 		try{
 			if (Dungeon.depth > 5){
+				if (Dungeon.isChallenged( Challenges.STRONGER_MOBS)){
+					return Random.NormalIntRange( 4, 9 );
+				}
 				return Random.NormalIntRange( 3, 7 );
 			}
 		}
 		catch(Exception e){
 			
+		}
+		if (Dungeon.isChallenged( Challenges.STRONGER_MOBS)){
+			return Random.NormalIntRange( 3, 6 );
 		}
 		return Random.NormalIntRange( 2, 5 );
 	}

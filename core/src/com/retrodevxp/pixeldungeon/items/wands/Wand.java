@@ -23,6 +23,7 @@ import java.util.ArrayList;
 
 import com.retrodevxp.pixeldungeon.Assets;
 import com.retrodevxp.pixeldungeon.Badges;
+import com.retrodevxp.pixeldungeon.Challenges;
 import com.retrodevxp.pixeldungeon.Dungeon;
 import com.retrodevxp.pixeldungeon.actors.Actor;
 import com.retrodevxp.pixeldungeon.actors.Char;
@@ -385,8 +386,11 @@ public abstract class Wand extends KindOfWeapon {
 	
 	@Override
 	public int maxDurability( int lvl ) {
-		// return 6 * (lvl < 16 ? 16 - lvl : 1);
-		return Integer.MAX_VALUE;
+		if (!Dungeon.isChallenged(Challenges.DURABILITYACTIVE)){
+			return Integer.MAX_VALUE;
+		}
+		return 6 * (lvl < 16 ? 16 - lvl : 1);
+		// return Integer.MAX_VALUE;
 	}
 	
 	protected void updateLevel() {

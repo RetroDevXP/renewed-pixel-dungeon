@@ -74,7 +74,7 @@ public class Bounce extends Glyph {
 
 	@Override
 	public String description(){
-		return "Enemies damaging the wearer of this armor may be pushed backwards.";
+		return "Enemies damaging the wearer of this armor may be pushed backwards by a magical force.";
 	}
 
 }

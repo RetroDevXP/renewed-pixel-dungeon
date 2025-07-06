@@ -7,7 +7,8 @@ buildscript {
         maven { url 'https://github.com/steffenschaefer/gwt-gradle-plugin/raw/maven-repo/' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.4.0'
+        classpath 'com.android.tools.build:gradle:8.10.0'
+        // classpath 'com.android.tools.build:gradle:7.4.0'
         // classpath 'com.github.jtakakura:gradle-robovm-plugin:0.0.10'
         classpath 'org.wisepersist:gwt-gradle-plugin:1.1.19'
         classpath 'org.gretty:gretty:4.1.6'
@@ -26,7 +27,8 @@ allprojects {
         appName = 'renewed-pixel-dungeon'
         appTitle = 'Renewed Pixel Dungeon'
         appId = 'com.retrodevxp.pixeldungeon'
-        gdxVersion = '1.10.1-SNAPSHOT'
+        gdxVersion = '1.10.0'
+        // gdxVersion = '1.10.1-SNAPSHOT'
         roboVMVersion = '2.3.12'
         // gdxControllersVersion = '2.1.0'
     }
@@ -58,7 +60,7 @@ project(":core") {
 
 
     dependencies {
-	    implementation project(":PD-classes")
+	    // implementation project(":PD-classes")
         implementation "com.badlogicgames.gdx:gdx:$gdxVersion"
         // compile "com.badlogicgames.gdx-controllers:gdx-controllers-core:$gdxControllersVersion"
     }

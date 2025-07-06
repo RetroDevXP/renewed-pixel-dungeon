@@ -21,6 +21,8 @@ package com.retrodevxp.pixeldungeon.actors.mobs;
 
 import java.util.HashSet;
 
+import com.retrodevxp.pixeldungeon.Challenges;
+import com.retrodevxp.pixeldungeon.Dungeon;
 import com.retrodevxp.pixeldungeon.actors.Char;
 import com.retrodevxp.pixeldungeon.actors.buffs.Buff;
 import com.retrodevxp.pixeldungeon.actors.buffs.Burning;
@@ -53,6 +55,9 @@ public class Elemental extends Mob {
 	
 	@Override
 	public int damageRoll() {
+		if (Dungeon.isChallenged( Challenges.STRONGER_MOBS)){
+			return Random.NormalIntRange( 19, 26 );
+		}
 		return Random.NormalIntRange( 16, 20 );
 	}
 	
@@ -93,7 +98,7 @@ public class Elemental extends Mob {
 	@Override
 	public String description() {
 		return
-			"Wandering fire elementals are a byproduct of summoning greater entities. " +
+			"These Fire Elementals aren't native to the Dwarven Metropolis. Rather, they were summoned as a by-product of summoning greater beings by the dwarves' newfound power of magic. " +
 			"They are too chaotic in their nature to be controlled by even the most powerful demonologist.";
 	}
 	

@@ -27,6 +27,7 @@ import com.badlogic.gdx.utils.reflect.ClassReflection;
 import com.retrodevxp.noosa.audio.Sample;
 import com.retrodevxp.pixeldungeon.Assets;
 import com.retrodevxp.pixeldungeon.Badges;
+import com.retrodevxp.pixeldungeon.Challenges;
 import com.retrodevxp.pixeldungeon.Dungeon;
 import com.retrodevxp.pixeldungeon.actors.Actor;
 import com.retrodevxp.pixeldungeon.actors.Char;
@@ -53,6 +54,7 @@ import com.retrodevxp.utils.Bundlable;
 import com.retrodevxp.utils.Bundle;
 import com.retrodevxp.utils.Callback;
 import com.retrodevxp.utils.PointF;
+import com.retrodevxp.utils.Random;
 
 public class Item implements Bundlable {
 
@@ -300,6 +302,8 @@ public class Item implements Bundlable {
 	}
 	
 	public void use() {
+		if (Dungeon.isChallenged( Challenges.DURABILITYACTIVE)){
+		
 		if (level > 0 && !isBroken()) {
 			int threshold = (int)(maxDurability() * DURABILITY_WARNING_LEVEL);
 			if (durability-- >= threshold && threshold > durability && levelKnown) {
@@ -325,6 +329,7 @@ public class Item implements Bundlable {
 					Sample.INSTANCE.play( Assets.SND_DEGRADE );
 				}
 			}
+		}
 		}
 	}
 	

@@ -20,6 +20,8 @@
 package com.retrodevxp.pixeldungeon.actors.mobs;
 
 import com.retrodevxp.pixeldungeon.Badges;
+import com.retrodevxp.pixeldungeon.Challenges;
+import com.retrodevxp.pixeldungeon.Dungeon;
 import com.retrodevxp.pixeldungeon.actors.Char;
 import com.retrodevxp.pixeldungeon.actors.buffs.Buff;
 import com.retrodevxp.pixeldungeon.actors.buffs.Paralysis;
@@ -32,18 +34,21 @@ public class Senior extends Monk {
 		name = "dwarven brawler";
 		spriteClass = SeniorSprite.class;
 
-		EXP = 15;
+		EXP = 17;
 		maxLvl = 21;
 	}
 	
 	@Override
 	public int damageRoll() {
-		return Random.NormalIntRange( 12, 20 );
+		if (Dungeon.isChallenged( Challenges.STRONGER_MOBS)){
+			return Random.NormalIntRange( 16, 25 );
+		}
+		return Random.NormalIntRange( 15, 21 );
 	}
 	
 	@Override
 	public int attackProc( Char enemy, int damage ) {
-		if (Random.Int( 10 ) == 0) {
+		if (Random.Int( 15 ) == 0) {
 			Buff.prolong( enemy, Paralysis.class, 1.1f );
 		}
 		return super.attackProc( enemy, damage );

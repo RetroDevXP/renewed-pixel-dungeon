@@ -21,6 +21,7 @@ package com.retrodevxp.pixeldungeon.actors.mobs;
 
 import java.util.HashSet;
 
+import com.retrodevxp.pixeldungeon.Challenges;
 import com.retrodevxp.pixeldungeon.Dungeon;
 import com.retrodevxp.pixeldungeon.ResultDescriptions;
 import com.retrodevxp.pixeldungeon.actors.Actor;
@@ -126,7 +127,12 @@ public class Eye extends Mob {
 			}
 			
 			if (hit( this, ch, true )) {
-				ch.damage( Random.NormalIntRange( 14, 20 ), this );
+				if (Dungeon.isChallenged( Challenges.STRONGER_MOBS)){
+					ch.damage( Random.NormalIntRange( 14, 20 ), this );
+				}
+				else{
+				ch.damage( Random.NormalIntRange( 12, 18 ), this );
+				}
 				
 				if (Dungeon.visible[pos]) {
 					ch.sprite.flash();

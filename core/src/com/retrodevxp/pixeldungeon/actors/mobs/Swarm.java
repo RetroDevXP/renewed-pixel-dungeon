@@ -21,6 +21,7 @@ package com.retrodevxp.pixeldungeon.actors.mobs;
 
 import java.util.ArrayList;
 
+import com.retrodevxp.pixeldungeon.Challenges;
 import com.retrodevxp.pixeldungeon.Dungeon;
 import com.retrodevxp.pixeldungeon.actors.Actor;
 import com.retrodevxp.pixeldungeon.actors.Char;
@@ -71,6 +72,9 @@ public class Swarm extends Mob {
 	
 	@Override
 	public int damageRoll() {
+		if (Dungeon.isChallenged( Challenges.STRONGER_MOBS)){
+			return Random.NormalIntRange( 2, 6 );
+		}
 		return Random.NormalIntRange( 1, 5 );
 	}
 	
@@ -141,7 +145,7 @@ public class Swarm extends Mob {
 	@Override
 	public String description() {
 		return
-			"The deadly swarm of flies are actually summoned by some sort of lingering magical energy from this place. Every non-magical attack " +
+			"This swarm of flies is actually summoned by some sort of lingering magical energy from this place. Every non-magical attack " +
 			"will split it into two smaller but equally dangerous swarms.";
 	}
 }

@@ -81,6 +81,6 @@ public class WandOfRegrowth extends Wand {
 	@Override
 	public String desc() {
 		return
-			"\"When life ceases new life always begins to grow... The eternal cycle always remains!\"";
+			"This wand accelerates the growth of even the smallest hidden patches of grass, causing it to sprout out from the ground. Creatures caught by the grass are rooted in place.";
 	}
 }

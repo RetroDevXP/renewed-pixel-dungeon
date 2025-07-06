@@ -31,8 +31,8 @@ import com.retrodevxp.noosa.BitmapText;
 public class WndChallenges extends Window {
 
 	private static final int WIDTH		= 108;
-	private static final int TTL_HEIGHT	= 12;
-	private static final int BTN_HEIGHT	= 18;
+	private static final int TTL_HEIGHT	= 9;
+	private static final int BTN_HEIGHT	= 15;
 	private static final int GAP		= 1;
 	
 	private static final String TITLE	= "Challenges";

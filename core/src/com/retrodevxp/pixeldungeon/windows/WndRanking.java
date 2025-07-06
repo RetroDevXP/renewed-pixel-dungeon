@@ -65,8 +65,9 @@ public class WndRanking extends WndTabbed {
 	private Image busy;
 	
 	public WndRanking( final String gameFile ) {
-		
 		super();
+		try{
+
 		resize( WIDTH, HEIGHT );
 		
 		thread = Game.instance.getPlatformSupport().newThread(new Runnable(){
@@ -75,7 +76,9 @@ public class WndRanking extends WndTabbed {
 				try {
 					Badges.loadGlobal();
 					Dungeon.loadGame( gameFile );
+					System.out.println("Debug: Loading " + gameFile.toString());
 				} catch (Exception e ) {
+					System.out.println(e.toString());
 					error = TXT_ERROR;
 				}
 			}
@@ -88,10 +91,15 @@ public class WndRanking extends WndTabbed {
 		busy.x = (WIDTH - busy.width) / 2;
 		busy.y = (HEIGHT - busy.height) / 2;
 		add( busy );
+		}
+		catch(Exception e){
+			System.out.println(e.toString());
+		}
 	}
 	
 	@Override
 	public void update() {
+		try{
 		super.update();
 		
 		if (thread != null && !thread.isAlive()) {
@@ -105,8 +113,13 @@ public class WndRanking extends WndTabbed {
 			}
 		}
 	}
+	catch(Exception e){
+		System.out.println(e.toString());
+	}
+	}
 	
 	private void createControls() {
+		try{
 		
 		String[] labels = 
 			{TXT_STATS, TXT_ITEMS, TXT_BADGES};
@@ -123,6 +136,10 @@ public class WndRanking extends WndTabbed {
 		}
 		
 		select( 0 );
+	}
+	catch(Exception e){
+		System.out.println(e.toString());
+	}
 	}
 
 	public class RankingTab extends LabeledTab {
@@ -167,6 +184,7 @@ public class WndRanking extends WndTabbed {
 		public StatsTab() {
 			super();
 			
+			try{
 			String heroClass = Dungeon.hero.className();
 			
 			IconTitle title = new IconTitle();
@@ -210,6 +228,10 @@ public class WndRanking extends WndTabbed {
 			pos = statSlot( this, TXT_FOOD, Integer.toString( Statistics.foodEaten ), pos );
 			pos = statSlot( this, TXT_ALCHEMY, Integer.toString( Statistics.potionsCooked ), pos );
 			pos = statSlot( this, TXT_ANKHS, Integer.toString( Statistics.ankhsUsed ), pos );
+		}
+		catch(Exception e){
+			
+		}
 		}
 		
 		private float statSlot( Group parent, String label, String value, float pos ) {

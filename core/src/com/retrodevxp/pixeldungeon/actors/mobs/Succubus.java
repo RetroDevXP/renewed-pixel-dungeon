@@ -22,6 +22,8 @@ package com.retrodevxp.pixeldungeon.actors.mobs;
 import java.util.HashSet;
 
 import com.retrodevxp.pixeldungeon.Assets;
+import com.retrodevxp.pixeldungeon.Challenges;
+import com.retrodevxp.pixeldungeon.Dungeon;
 import com.retrodevxp.pixeldungeon.actors.Actor;
 import com.retrodevxp.pixeldungeon.actors.Char;
 import com.retrodevxp.pixeldungeon.actors.buffs.Buff;
@@ -61,6 +63,9 @@ public class Succubus extends Mob {
 	
 	@Override
 	public int damageRoll() {
+		if (Dungeon.isChallenged( Challenges.STRONGER_MOBS)){
+			return Random.NormalIntRange( 17, 27 );
+		}
 		return Random.NormalIntRange( 15, 25 );
 	}
 	
@@ -118,8 +123,8 @@ public class Succubus extends Mob {
 	@Override
 	public String description() {
 		return
-			"The succubi are demons that look like seductive (in a slightly gothic way) girls. Using its magic, the succubus " +
-			"can charm a hero, who will become unable to attack anything until the charm wears off.";
+			"The Succubi are powered by strong demonic magic. They lurk in the darkness and are able to \"blink\" to their targets. " +
+			"These demons can charm a hero, who will become unable to attack anything until the charm wears off.";
 	}
 	
 	private static final HashSet<Class<?>> RESISTANCES = new HashSet<Class<?>>();

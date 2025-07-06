@@ -17,37 +17,38 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
-package com.retrodevxp.pixeldungeon.actors.buffs;
+package com.retrodevxp.pixeldungeon.items.weapon.melee;
 
-import com.retrodevxp.pixeldungeon.ui.BuffIndicator;
-import com.retrodevxp.utils.Bundle;
+import com.retrodevxp.pixeldungeon.sprites.ItemSpriteSheet;
 
-public class HuntBuff extends FlavourBuff {
+public class Cutlass extends MeleeWeapon {
 	
-public int object = 0;
+	{
+		name = "cutlass";
+		image = ItemSpriteSheet.CUTLASS;
+	}
 	
-	private static final String OBJECT	= "object";
-	
+	public Cutlass() {
+		super( 2, 1.1f, 0.8f, -1, 0  );
+	}
+
 	@Override
-	public void storeInBundle( Bundle bundle ) {
-		super.storeInBundle( bundle );
-		bundle.put( OBJECT, object );
-		
+	protected int rangemin(){
+		return 5;
 	}
 	
 	@Override
-	public void restoreFromBundle( Bundle bundle ) {
-		super.restoreFromBundle( bundle );
-		object = bundle.getInt( OBJECT );
+	protected int rangemax(){
+		return 9;
+	}
+
+	@Override
+	protected int rangestr(){
+		return 12;
 	}
 	
 	@Override
-	public int icon() {
-		return BuffIndicator.MARK;
-	}
-	
-	@Override
-	public String toString() {
-		return "thrill of the hunt";
+	public String desc() {
+		return "A curved sword with a guarded hilt. By swinging it swiftly, this weapon deals damage faster the more enemies surrounds its user.";
 	}
 }

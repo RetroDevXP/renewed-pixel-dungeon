@@ -24,6 +24,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.retrodevxp.pixeldungeon.Assets;
 import com.retrodevxp.pixeldungeon.PixelDungeon;
+import com.retrodevxp.pixeldungeon.Rankings;
 import com.retrodevxp.pixeldungeon.effects.BannerSprites;
 import com.retrodevxp.pixeldungeon.effects.Fireball;
 import com.retrodevxp.pixeldungeon.input.GameAction;

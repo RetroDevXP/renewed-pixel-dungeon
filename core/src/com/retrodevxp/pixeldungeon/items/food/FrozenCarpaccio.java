@@ -79,7 +79,7 @@ public class FrozenCarpaccio extends Food {
 	public String info() {
 		return 
 			"It's a piece of frozen raw meat. The only way to eat it is " +
-			"by cutting thin slices of it. And this way it's suprisingly good.";
+			"by cutting thin slices of it. And this way it's surprisingly good.";
 	}
 	
 	public int price() {

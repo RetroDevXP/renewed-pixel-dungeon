@@ -542,9 +542,9 @@ public abstract class Level implements Bundlable {
 	
 	public Heap drop( Item item, int cell ) {
 		
-		if (Dungeon.isChallenged( Challenges.NO_FOOD ) && item instanceof Food) {
-			item = new Gold( item.price() );
-		} else
+		// if (Dungeon.isChallenged( Challenges.NO_FOOD ) && item instanceof Food) {
+		// 	item = new Gold( item.price() );
+		// } else
 		if (Dungeon.isChallenged( Challenges.NO_ARMOR ) && item instanceof Armor) {
 			item = new Gold( item.price() );
 		} else

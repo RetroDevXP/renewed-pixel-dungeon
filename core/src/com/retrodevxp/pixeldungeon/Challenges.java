@@ -28,19 +28,23 @@ public class Challenges {
 	public static final int SWARM_INTELLIGENCE	= 16;
 	public static final int DARKNESS			= 32;
 	public static final int NO_SCROLLS			= 64;
+	public static final int STRONGER_MOBS			= 128;
+	public static final int DURABILITYACTIVE			= 256;
 	
 	public static final String[] NAMES = {
-		"On diet",
+		"Unnutritious",
 		"Faith is my armor",
 		"Pharmacophobia",
 		"Barren land",
 		"Swarm intelligence",
 		"Into darkness",
-		"Forbidden runes"
+		"Forbidden runes",
+		"Dire dungeon",
+		"Undurable items"
 	};
 	
 	public static final int[] MASKS = {
-		NO_FOOD, NO_ARMOR, NO_HEALING, NO_HERBALISM, SWARM_INTELLIGENCE, DARKNESS, NO_SCROLLS
+		NO_FOOD, NO_ARMOR, NO_HEALING, NO_HERBALISM, SWARM_INTELLIGENCE, DARKNESS, NO_SCROLLS, STRONGER_MOBS, DURABILITYACTIVE
 	};
 	
 }

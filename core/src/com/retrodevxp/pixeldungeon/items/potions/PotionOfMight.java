@@ -47,7 +47,7 @@ public class PotionOfMight extends PotionOfStrength {
 	public String desc() {
 		return
 			"This powerful liquid will course through your muscles, permanently " +
-			"increasing your strength by one point and health by five points.";
+			"increasing your strength by one point and max health by five points.";
 	}
 	
 	@Override

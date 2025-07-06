@@ -64,7 +64,9 @@ public class Blacksmith extends NPC {
 		"Oh, yer here... thought yer never return.";
 	private static final String TXT_END =
 		"How yer doin'?";
-	
+	private static final String TXT_EXTRA =
+		"Yer even mined a lot extra gold. Good. Hand 'em to me and I'll give yer something nice.";
+		
 	private static final String TXT_LOOKS_BETTER	= "your %s certainly looks better now";
 	
 	{
@@ -137,8 +139,25 @@ public class Blacksmith extends NPC {
 					if (pick.isEquipped( Dungeon.hero )) {
 						pick.doUnequip( Dungeon.hero, false );
 					}
+					int goldmined = gold.quantity();
 					pick.detach( Dungeon.hero.belongings.backpack );
 					gold.detachAll( Dungeon.hero.belongings.backpack );
+					//TODO: For a future update: Troll gives a special item when you mine lots of extra gold.
+					// try{
+					// 	if (goldmined >= 25){
+					// 		tell( TXT_EXTRA );
+					// 	}
+
+					// 		Pickaxe extra = new Pickaxe();
+					// 		if (extra.doPickUp( Dungeon.hero )) {
+					// 			GLog.i( Hero.TXT_YOU_NOW_HAVE, extra.name() );
+					// 		} else {
+					// 			Dungeon.level.drop( extra, Dungeon.hero.pos ).sprite.drop();
+					// 		}
+					// }
+					// catch(Exception e){
+						
+					// }
 					tell( TXT_COMPLETED );
 					
 					Quest.completed = true;

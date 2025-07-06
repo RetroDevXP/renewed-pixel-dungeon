@@ -22,12 +22,14 @@ package com.retrodevxp.pixeldungeon.actors.mobs;
 import java.util.HashSet;
 
 import com.retrodevxp.pixeldungeon.Badges;
+import com.retrodevxp.pixeldungeon.Challenges;
 import com.retrodevxp.pixeldungeon.Dungeon;
 import com.retrodevxp.pixeldungeon.Statistics;
 import com.retrodevxp.pixeldungeon.actors.Char;
 import com.retrodevxp.pixeldungeon.actors.blobs.ToxicGas;
 import com.retrodevxp.pixeldungeon.actors.buffs.Buff;
 import com.retrodevxp.pixeldungeon.actors.buffs.Ooze;
+import com.retrodevxp.pixeldungeon.actors.buffs.Poison;
 import com.retrodevxp.pixeldungeon.effects.Speck;
 import com.retrodevxp.pixeldungeon.items.LloydsBeacon;
 import com.retrodevxp.pixeldungeon.items.keys.SkeletonKey;
@@ -65,8 +67,14 @@ public class Goo extends Mob {
 	@Override
 	public int damageRoll() {
 		if (pumpedUp) {
+			if (Dungeon.isChallenged( Challenges.STRONGER_MOBS)){
+				return Random.NormalIntRange( 7, 28 );
+			}
 			return Random.NormalIntRange( 5, 25 );
 		} else {
+			if (Dungeon.isChallenged( Challenges.STRONGER_MOBS)){
+				return Random.NormalIntRange( 3, 13 );
+			}
 			return Random.NormalIntRange( 2, 11 );
 		}
 	}
@@ -222,10 +230,20 @@ public class Goo extends Mob {
 			"Some believed it to be the result of strong magic from the deeper levels. " +
 			"Many inexperienced adventurers have perished to its corrosive ooze.";
 	}
+
+	private static final HashSet<Class<?>> IMMUNITIES = new HashSet<Class<?>>();
+	static {
+		IMMUNITIES.add( ToxicGas.class );
+		IMMUNITIES.add( Poison.class );
+	}
+	
+	@Override
+	public HashSet<Class<?>> immunities() {
+		return IMMUNITIES;
+	}
 	
 	private static final HashSet<Class<?>> RESISTANCES = new HashSet<Class<?>>();
 	static {
-		RESISTANCES.add( ToxicGas.class );
 		RESISTANCES.add( Death.class );
 		RESISTANCES.add( ScrollOfPsionicBlast.class );
 	}

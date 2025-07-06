@@ -332,6 +332,17 @@ public class PixelDungeon extends Game<GameAction> {
 		Gdx.app.error("PD", e.getMessage(), e);
 	}
 
+	public void refreshDungeon(){
+		try{
+			Dungeon.hero = null;
+			Dungeon.depth = 0;
+			Game.instance.render();
+		}
+		catch(Exception e){
+			
+		}
+	}
+
 	// @Override
 	// public void dispose(){
 	// 	super.dispose();

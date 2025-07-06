@@ -24,6 +24,8 @@ import java.util.ArrayList;
 import com.retrodevxp.noosa.audio.Sample;
 import com.retrodevxp.pixeldungeon.Assets;
 import com.retrodevxp.pixeldungeon.Badges;
+import com.retrodevxp.pixeldungeon.Challenges;
+import com.retrodevxp.pixeldungeon.Dungeon;
 import com.retrodevxp.pixeldungeon.Statistics;
 import com.retrodevxp.pixeldungeon.actors.buffs.Hunger;
 import com.retrodevxp.pixeldungeon.actors.hero.Hero;
@@ -62,7 +64,13 @@ public class Food extends Item {
 			
 			detach( hero.belongings.backpack );
 			
-			((Hunger)hero.buff( Hunger.class )).satisfy( energy );
+			if (Dungeon.isChallenged( Challenges.NO_FOOD )){
+				((Hunger)hero.buff( Hunger.class )).satisfy( energy / 3f );
+			}
+			else{
+				((Hunger)hero.buff( Hunger.class )).satisfy( energy );
+
+			}
 			GLog.i( message );
 			
 			switch (hero.heroClass) {

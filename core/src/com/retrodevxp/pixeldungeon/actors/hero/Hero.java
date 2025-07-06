@@ -110,6 +110,7 @@ import com.retrodevxp.pixeldungeon.items.wands.WandOfReach;
 import com.retrodevxp.pixeldungeon.items.wands.WandOfRegrowth;
 import com.retrodevxp.pixeldungeon.items.wands.WandOfSpirits;
 import com.retrodevxp.pixeldungeon.items.wands.WandOfTeleportation;
+import com.retrodevxp.pixeldungeon.items.weapon.melee.Cutlass;
 import com.retrodevxp.pixeldungeon.items.weapon.melee.MeleeWeapon;
 import com.retrodevxp.pixeldungeon.items.weapon.melee.Whip;
 import com.retrodevxp.pixeldungeon.items.weapon.missiles.MissileWeapon;
@@ -236,9 +237,21 @@ public class Hero extends Char {
 	
 	@Override
 	public void restoreFromBundle( Bundle bundle ) {
+		try{
+			if (Dungeon.hero == null){
+				Dungeon.hero = new Hero();
+				System.out.println("Debug: Hero is null. Initializing new Hero.");
+			}
+		}
+		catch(Exception e){
+			Dungeon.hero = new Hero();
+			System.out.println("Debug: Error loading Hero: " + e.toString());
+			e.printStackTrace();
+		}
 		super.restoreFromBundle( bundle );
 		
 		heroClass = HeroClass.restoreInBundle( bundle );
+		// System.out.println("Debug: Loading hero.");
 		subClass = HeroSubClass.restoreInBundle( bundle );
 		
 		attackSkill = bundle.getInt( ATTACK );
@@ -246,11 +259,18 @@ public class Hero extends Char {
 		
 		STR = bundle.getInt( STRENGTH );
 		updateAwareness();
-		
+		// System.out.println("Debug: Loading hero strength.");
 		lvl = bundle.getInt( LEVEL );
 		exp = bundle.getInt( EXPERIENCE );
 		
-		belongings.restoreFromBundle( bundle );
+		try{
+			belongings.restoreFromBundle( bundle );
+		}
+		catch(Exception e){
+			System.out.println("Debug: Error loading hero items " + e.toString());
+			e.printStackTrace();
+		}
+		// System.out.println("Debug: Loading hero items.");
 	}
 	
 	public static void preview( GamesInProgress.Info info, Bundle bundle ) {
@@ -441,6 +461,23 @@ public class Hero extends Char {
 			if (count > 1) {
 				delay *= 1.0f - (count / 16.0f);
 			}
+		}
+
+		try{
+			if (belongings.weapon instanceof Cutlass) {
+			int count = 0;
+			for (int n : Level.NEIGHBOURS8) {
+				if (Actor.findChar(pos + n) != null) {
+					++count;
+				}
+			}
+			if (count > 1) {
+				delay *= 1.0f - (count / 12.0f);
+			}
+		}
+		}
+		catch(Exception e){
+			
 		}
 		
 		return delay;
@@ -804,7 +841,7 @@ public class Hero extends Char {
 			
 			Hunger hunger = buff( Hunger.class );
 			if (hunger != null && !hunger.isStarving()) {
-				hunger.satisfy( -Hunger.STARVING / 10 );
+				hunger.satisfy( -Hunger.STARVING / 20 );
 			}
 			
 			InterlevelScene.mode = InterlevelScene.Mode.DESCEND;
@@ -843,7 +880,7 @@ public class Hero extends Char {
 				
 				Hunger hunger = buff( Hunger.class );
 				if (hunger != null && !hunger.isStarving()) {
-					hunger.satisfy( -Hunger.STARVING / 10 );
+					hunger.satisfy( -Hunger.STARVING / 20 );
 				}
 				
 				InterlevelScene.mode = InterlevelScene.Mode.ASCEND;
@@ -985,7 +1022,7 @@ public class Hero extends Char {
 								}
 							}
 							else if (wandweapon instanceof WandOfFirebolt){
-								if (Random.Float( 1f, 7.25f + (float)(wandlevel / 3f) ) > 5f){
+								if (Random.Float( 1f, 5.5f + (float)(wandlevel / 2.75f) ) > 5f){
 									Buff.affect( enemy, Burning.class ).reignite( enemy );
 
 									enemy.sprite.emitter().burst( FlameParticle.FACTORY, 5 );
@@ -1012,6 +1049,14 @@ public class Hero extends Char {
 							}
 							else if (wandweapon instanceof WandOfPoison){
 								if (Random.Float( 1f, 5.75f + (float)(wandlevel / 2.75f) ) > 5f){
+									try{
+										if (enemy.buff(Poison.class)!= null){
+											damage += (Random.IntRange( (int)(wandlevel / 1.25f), 2 + wandlevel ));
+										}
+									}
+									catch (Exception e){
+
+									}
 									Buff.affect( enemy, Poison.class ).set( Poison.durationFactor( enemy ) * (5 + wandlevel) );
 								}
 							}
@@ -1082,7 +1127,7 @@ public class Hero extends Char {
 						
 						ScrollOfRecharging.charge( this );
 					}
-					damage += wand.curCharges;
+					damage += (int)(wand.curCharges / 2);
 				}
 			case DEADEYE:
 				if (rangedWeapon != null) {

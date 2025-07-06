@@ -145,13 +145,15 @@ public class WandOfFlock extends Wand {
 		@Override
 		public void damage( int dmg, Object src ) {
 		}
-		
+
 		@Override
 		public String description() {
 			return 
-				"This large sheep was summoned by magical energy. Despite this, it isn't just an illusion and will physically block anything from passing. " +
-				"Its blank stare doesn't give off a tough appearance, but it is completely immune to any form of damage.";
+				"This is a magic sheep. What's so magical about it? You can't kill it. " +
+				"It will stand there until it magcially fades away, all the while chewing cud with a blank stare.";
 		}
+		
+		
 
 		@Override
 		public void interact() {

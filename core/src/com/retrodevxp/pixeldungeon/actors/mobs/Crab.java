@@ -19,6 +19,7 @@
  */
 package com.retrodevxp.pixeldungeon.actors.mobs;
 
+import com.retrodevxp.pixeldungeon.Challenges;
 import com.retrodevxp.pixeldungeon.Dungeon;
 import com.retrodevxp.pixeldungeon.actors.Char;
 import com.retrodevxp.pixeldungeon.actors.mobs.npcs.Ghost;
@@ -47,6 +48,9 @@ public class Crab extends Mob {
 	
 	@Override
 	public int damageRoll() {
+		if (Dungeon.isChallenged( Challenges.STRONGER_MOBS)){
+			return Random.NormalIntRange( 5, 7 );
+		}
 		return Random.NormalIntRange( 3, 6 );
 	}
 	
@@ -79,7 +83,7 @@ public class Crab extends Mob {
 	public String description() {
 		return
 			"These huge crabs are at the top of the food chain in the sewers. " +
-			"They are extremely fast and their thick exoskeleton can withstand " +
-			"heavy blows while their powerful claws strike at enemies.";
+			"They are faster than most other monsters. Their thick exoskeleton can withstand " +
+			"heavy blows and their heavy claws strike powerfully at enemies.";
 	}
 }

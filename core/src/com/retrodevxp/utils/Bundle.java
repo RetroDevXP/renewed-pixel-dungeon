@@ -94,6 +94,7 @@ public class Bundle {
 				return null;
 			}
 		} catch (Exception e) {
+			// System.out.println("Debug: Loading from bundle error:" + e.toString());
 			e = null;
 			return null;
 		}	

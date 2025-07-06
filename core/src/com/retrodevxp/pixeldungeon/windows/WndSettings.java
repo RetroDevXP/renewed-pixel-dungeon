@@ -156,18 +156,18 @@ public class WndSettings extends Window {
 
 		} else {
 			
-			CheckBox btnQuickslot = new CheckBox( TXT_QUICKSLOT ) {
-				@Override
-				protected void onClick() {
-					super.onClick();
-					Toolbar.secondQuickslot( checked() );
-				}
-			};
-			btnQuickslot.setRect( 0, lastBtn.bottom() + GAP, WIDTH, BTN_HEIGHT );
-			btnQuickslot.checked( Toolbar.secondQuickslot() );
-			add( btnQuickslot );
+			// CheckBox btnQuickslot = new CheckBox( TXT_QUICKSLOT ) {
+			// 	@Override
+			// 	protected void onClick() {
+			// 		super.onClick();
+			// 		Toolbar.secondQuickslot( checked() );
+			// 	}
+			// };
+			// btnQuickslot.setRect( 0, lastBtn.bottom() + GAP, WIDTH, BTN_HEIGHT );
+			// btnQuickslot.checked( Toolbar.secondQuickslot() );
+			// add( btnQuickslot );
 			
-			lastBtn = btnQuickslot;
+			// lastBtn = btnQuickslot;
 		}
 
 		if (type == Application.ApplicationType.Desktop || type == Application.ApplicationType.WebGL) {

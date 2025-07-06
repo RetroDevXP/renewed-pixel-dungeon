@@ -63,7 +63,7 @@ public class ScrollOfEnchantment extends InventoryScroll {
 	@Override
 	public String desc() {
 		return
-			"This scroll is able to imbue a weapon or an armor " +
-			"with a random enchantment, granting it a special power.";
+			"This scroll is able to imbue a weapon or an armor with a random kind of magical enchantment, granting it a special power. " +
+			"Some enchantments comes at a cost upon activation, so be warned.";
 	}
 }

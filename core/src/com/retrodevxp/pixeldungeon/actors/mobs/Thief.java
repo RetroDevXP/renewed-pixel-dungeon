@@ -19,6 +19,7 @@
  */
 package com.retrodevxp.pixeldungeon.actors.mobs;
 
+import com.retrodevxp.pixeldungeon.Challenges;
 import com.retrodevxp.pixeldungeon.Dungeon;
 import com.retrodevxp.pixeldungeon.actors.Char;
 import com.retrodevxp.pixeldungeon.actors.buffs.Terror;
@@ -72,6 +73,9 @@ public class Thief extends Mob {
 	
 	@Override
 	public int damageRoll() {
+		if (Dungeon.isChallenged( Challenges.STRONGER_MOBS)){
+			return Random.NormalIntRange( 2, 9 );
+		}
 		return Random.NormalIntRange( 1, 7 );
 	}
 	

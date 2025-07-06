@@ -95,7 +95,7 @@ public class Wraith extends Mob {
 	@Override
 	public String description() {
 		return
-			"This vengeful spirit had their grave or tomb disturbed. " +
+			"Having their grave or tomb disturbed, this vengeful spirit is restless. " +
 			"Being an ethereal entity, it is very hard to hit with a regular weapon.";
 	}
 	

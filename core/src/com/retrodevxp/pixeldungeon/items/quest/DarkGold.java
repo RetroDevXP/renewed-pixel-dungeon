@@ -45,8 +45,8 @@ public class DarkGold extends Item {
 	@Override
 	public String info() {
 		return
-			"This metal is called dark not because of its color (it doesn't differ from the normal gold), " +
-			"but because it melts under the daylight, making it useless on the surface.";
+			"While often considered not as beautiful as normal gold, dark gold is more durable, making it more viable as a material " +
+			"to be used in a forge. However, it softens under strong daylight, making anything made from it useless on the surface and thus is only useful for dungeons.";
 	}
 	
 	@Override

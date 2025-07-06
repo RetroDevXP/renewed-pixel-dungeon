@@ -303,6 +303,7 @@ public class StartScene extends PixelScene {
 	private void startNewGame() {
 
 		Dungeon.hero = null;
+		System.out.println("Debug: Hero is null");
 		InterlevelScene.mode = InterlevelScene.Mode.DESCEND;
 		
 		if (PixelDungeon.intro()) {

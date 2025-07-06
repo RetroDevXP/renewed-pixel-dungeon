@@ -22,6 +22,7 @@ package com.retrodevxp.pixeldungeon.actors.mobs;
 import java.util.HashSet;
 
 import com.retrodevxp.noosa.Camera;
+import com.retrodevxp.pixeldungeon.Challenges;
 import com.retrodevxp.pixeldungeon.Dungeon;
 import com.retrodevxp.pixeldungeon.ResultDescriptions;
 import com.retrodevxp.pixeldungeon.actors.Char;
@@ -59,6 +60,9 @@ public class Shaman extends Mob implements Callback {
 	
 	@Override
 	public int damageRoll() {
+		if (Dungeon.isChallenged( Challenges.STRONGER_MOBS)){
+			return Random.NormalIntRange( 3, 8 );
+		}
 		return Random.NormalIntRange( 2, 6 );
 	}
 	
@@ -94,7 +98,10 @@ public class Shaman extends Mob implements Callback {
 			spend( TIME_TO_ZAP );
 			
 			if (hit( this, enemy, true )) {
-				int dmg = Random.Int( 2, 12 );
+				int dmg = Random.Int( 2, 11 );
+				if (Dungeon.isChallenged( Challenges.STRONGER_MOBS)){
+					dmg = Random.Int( 5, 15 );
+				}
 				if (Level.water[enemy.pos] && !enemy.flying) {
 					dmg *= 1.5f;
 				}
