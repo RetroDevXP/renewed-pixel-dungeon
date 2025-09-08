@@ -19,6 +19,7 @@
  */
 package com.retrodevxp.pixeldungeon.windows;
 
+import com.retrodevxp.pixeldungeon.Badges;
 import com.retrodevxp.pixeldungeon.Rankings;
 import com.retrodevxp.pixeldungeon.Statistics;
 import com.retrodevxp.pixeldungeon.actors.hero.Hero;
@@ -67,7 +68,7 @@ public class WndResurrect extends Window {
 			@Override
 			protected void onClick() {
 				hide();
-				
+				Badges.validateResurrect();
 				Statistics.ankhsUsed++;
 				
 				InterlevelScene.mode = InterlevelScene.Mode.RESURRECT;

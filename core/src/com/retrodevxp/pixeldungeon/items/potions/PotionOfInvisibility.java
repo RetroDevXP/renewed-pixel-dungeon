@@ -56,7 +56,7 @@ public class PotionOfInvisibility extends Potion {
 		return
 			"Drinking this potion will render you temporarily invisible. While invisible, " +
 			"enemies will be unable to see you. Attacking an enemy, as well as using a wand or a scroll " +
-			"before enemy's eyes, will dispel the effect.";
+			"before an enemy's eyes, will dispel the effect.";
 	}
 	
 	@Override

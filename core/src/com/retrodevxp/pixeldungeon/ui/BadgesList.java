@@ -28,6 +28,7 @@ import com.retrodevxp.noosa.audio.Sample;
 import com.retrodevxp.noosa.ui.Component;
 import com.retrodevxp.pixeldungeon.Assets;
 import com.retrodevxp.pixeldungeon.Badges;
+import com.retrodevxp.pixeldungeon.PixelDungeon;
 import com.retrodevxp.pixeldungeon.effects.BadgeBanner;
 import com.retrodevxp.pixeldungeon.scenes.PixelScene;
 import com.retrodevxp.pixeldungeon.windows.WndBadge;
@@ -53,15 +54,40 @@ public class BadgesList extends ScrollPane {
 	
 	@Override
 	protected void layout() {
-		float pos = 0;
+		try{
+			if (!PixelDungeon.landscape()){
+				float pos = 0;
 		
-		int size = items.size();
-		for (int i=0; i < size; i++) {
-			items.get( i ).setRect( 0, pos, width, ListItem.HEIGHT );
-			pos += ListItem.HEIGHT;
+			int size = items.size();
+			for (int i=0; i < size; i++) {
+				items.get( i ).setRect( 0, pos, width, ListItem.HEIGHT );
+				pos += ListItem.HEIGHT;
+			}
+		
+			content.setSize( width, pos );
+			}
+			else{
+				float pos = 0;
+				float pos2 = 0;
+		
+				int size = items.size();
+				for (int i=0; i < size; i++) {
+					if (i%2 == 0){
+						items.get( i ).setRect( 0, pos, width/2, ListItem.HEIGHT );
+						pos += ListItem.HEIGHT;
+					}
+					else{
+						items.get( i ).setRect( width/2, pos2, width/2, ListItem.HEIGHT );
+						pos2 += ListItem.HEIGHT;
+					}
+				}
+		
+				content.setSize( width*2, pos );
+			}
 		}
-		
-		content.setSize( width, pos );
+		catch(Exception e){
+
+		}
 		
 		super.layout();
 	}

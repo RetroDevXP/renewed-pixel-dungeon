@@ -31,6 +31,8 @@ public class Statistics {
 	public static int piranhasKilled;
 	public static int nightHunt;
 	public static int ankhsUsed;
+	public static int thrownMeleeKills;
+	public static int surpriseAttacks;
 	
 	public static float duration;
 	
@@ -49,6 +51,8 @@ public class Statistics {
 		piranhasKilled	= 0;
 		nightHunt		= 0;	
 		ankhsUsed		= 0;
+		thrownMeleeKills		= 0;
+		surpriseAttacks		= 0;
 		
 		duration	= 0;
 		

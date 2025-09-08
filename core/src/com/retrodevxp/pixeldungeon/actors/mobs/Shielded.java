@@ -46,4 +46,11 @@ public class Shielded extends Brute {
 		super.die( cause );
 		Badges.validateRare( this );
 	}
+
+	@Override
+	public String description() {
+		return
+			"This Gnoll Brute has gotten hold of a shield. " +
+			"Gnolls aren't known to be capable of making such a fine-looking shield, so who knows where this Gnoll Brute got it from.";
+	}
 }

@@ -50,4 +50,11 @@ public class Acidic extends Scorpio {
 		super.die( cause );
 		Badges.validateRare( this );
 	}
+
+	@Override
+	public String description() {
+		return
+			"A rare kind of Scorpio. It often sprays powerful corrosive acid when attacked, " +
+			"damaging its enemy in return.";
+	}
 }

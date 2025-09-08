@@ -54,6 +54,7 @@ import com.retrodevxp.pixeldungeon.actors.mobs.Bestiary;
 import com.retrodevxp.pixeldungeon.actors.mobs.Mob;
 import com.retrodevxp.pixeldungeon.effects.CellEmitter;
 import com.retrodevxp.pixeldungeon.effects.particles.PoisonParticle;
+import com.retrodevxp.pixeldungeon.items.weapon.melee.Falx;
 import com.retrodevxp.pixeldungeon.levels.Level;
 import com.retrodevxp.pixeldungeon.levels.Terrain;
 import com.retrodevxp.pixeldungeon.levels.features.Door;
@@ -148,6 +149,9 @@ public abstract class Char extends Actor {
 			// FIXME
 			//1.2.0, armor RNG for both enemies and the hero is 20% to 100% instead of 0% to 100%, for unlucky rolls to be less impactful.
 			int dr = Random.IntRange( (int)(enemy.dr() / 5f), enemy.dr() );
+			if (this instanceof Hero && ((Hero)this).meleeweapon instanceof Falx){
+				dr = Random.IntRange( (int)(enemy.dr() / 10f), enemy.dr() / 2 );
+			}
 			if (this instanceof Hero && ((Hero)this).rangedWeapon != null && ((Hero)this).subClass == HeroSubClass.DEADEYE){
 				dr = 0;
 				enemy.sprite.showStatus(CharSprite.NEGATIVE, "Pierced");

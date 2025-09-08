@@ -85,7 +85,8 @@ public class ScrollOfMirrorImage extends Scroll {
 	@Override
 	public String desc() {
 		return 
-			"The incantation on this scroll will summon several magical illusions of the reader. Each illusion, filled with condensed magical energy, will seek out nearby enemies and unleash that energy upon them.";
+			"The incantation on this scroll will summon several magical illusions of the reader. Each illusion, filled with condensed magical energy, will seek out nearby enemies and unleash that energy upon them. " +
+			"In the past, it is said that those who summon these illusions are able to teleport to them as if though linked by soul, but this technique has been lost to time.";
 	}
 
 	public static class Mirroring extends Pushing {

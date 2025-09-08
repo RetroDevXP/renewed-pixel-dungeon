@@ -110,8 +110,8 @@ public class Monk extends Mob {
 	@Override
 	public String description() {
 		return
-			"After the decline of the Dwarven Metropolis, these dwarven thugs freely roams their city. " +
-			"They don't use any armor or weapons, relying solely on their experienced hand-to-hand combat.";
+			"After the decline of the Dwarven Metropolis, these dwarven thugs freely roams their city, claiming many areas as their own territory. " +
+			"They don't use any armor or weapons, instead relying solely on their experienced hand-to-hand combat.";
 	}
 	
 	private static final HashSet<Class<?>> IMMUNITIES = new HashSet<Class<?>>();

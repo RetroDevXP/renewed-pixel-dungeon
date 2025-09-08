@@ -119,7 +119,7 @@ public class DwarfWarrior extends Mob {
 		return
 			"These dwarven warriors are the most experienced in combat among all dwarves. " +
 			"When the metropolis was at its peak, these powerful soldiers protected the most crutial parts of their kingdom. " +
-			"Their sturdy armor protects them as they swing their heavy axes at intruders.";
+			"Their sturdy armor protects them while their heavy axes deals with intruders.";
 	}
 	
 	private static final HashSet<Class<?>> IMMUNITIES = new HashSet<Class<?>>();

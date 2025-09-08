@@ -52,9 +52,10 @@ public class TitleScene extends PixelScene {
 	public void create() {
 		
 		super.create();
-		
+		Music.INSTANCE.volume( 1f * (PixelDungeon.musicVolume() * 0.01f) );
 		Music.INSTANCE.play( Assets.THEME, true );
-		Music.INSTANCE.volume( 1f );
+		Music.INSTANCE.volume( 1f * (PixelDungeon.musicVolume() * 0.01f) );
+		
 		
 		uiCamera.visible = false;
 		

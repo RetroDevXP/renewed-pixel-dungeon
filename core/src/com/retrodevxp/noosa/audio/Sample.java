@@ -22,6 +22,7 @@ import com.badlogic.gdx.Gdx;
 //*/
 import com.badlogic.gdx.audio.Sound;
 import com.retrodevxp.noosa.Game;
+import com.retrodevxp.pixeldungeon.PixelDungeon;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -119,11 +120,11 @@ public enum Sample {
 	public long play(Object id, float volume) {
 		return play( id, volume, volume, 1 );
 	}
-	
+	//TODO: Correct class for sound.
 	public long play(Object id, float leftVolume, float rightVolume, float rate) {
 		if (enabled && ids.containsKey( id )) {
 			Sound sound = ids.get(id);
-			return sound.play(leftVolume, rate, 0);
+			return sound.play(leftVolume * PixelDungeon.soundVolume() * 0.01f, rate, 0);
 		} else {
 			return -1;
 		}

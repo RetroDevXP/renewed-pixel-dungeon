@@ -47,9 +47,11 @@ public class BadgesScene extends PixelScene {
 	public void create() {
 		
 		super.create();
-		
+		Music.INSTANCE.volume( 1f * (PixelDungeon.musicVolume() * 0.01f) );
 		Music.INSTANCE.play( Assets.THEME, true );
-		Music.INSTANCE.volume( 1f );
+		Music.INSTANCE.volume( 1f * (PixelDungeon.musicVolume() * 0.01f) );
+		//TODO: Add Adjustable volume here.
+		
 		
 		uiCamera.visible = false;
 		
@@ -63,7 +65,8 @@ public class BadgesScene extends PixelScene {
 		int pw = (int)Math.min( w, (PixelDungeon.landscape() ? MIN_WIDTH_L : MIN_WIDTH_P) * 3 ) - 16;
 		int ph = (int)Math.min( h, (PixelDungeon.landscape() ? MIN_HEIGHT_L : MIN_HEIGHT_P) * 3 ) - 32;
 		
-		float size = (float)Math.sqrt( pw * ph / 27f );
+		float size = (float)Math.sqrt( pw * ph / 35f );
+		// float size = (float)Math.sqrt( pw * ph / 27f );
 		int nCols = (int)Math.ceil( pw / size );
 		int nRows = (int)Math.ceil( ph / size );
 		size = Math.min( pw / nCols, ph / nRows );

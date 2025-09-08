@@ -52,4 +52,11 @@ public class Albino extends Rat {
 		
 		return damage;
 	}
+
+	@Override
+	public String description() {
+		return
+			"This Marsupial Rat has white fur and significantly larger than the others. " +
+			"There are very few reported signtings of it.";
+	}
 }

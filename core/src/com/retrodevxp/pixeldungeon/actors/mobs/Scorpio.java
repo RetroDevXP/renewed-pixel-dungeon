@@ -110,7 +110,8 @@ public class Scorpio extends Mob {
 	public String description() {
 		return
 			"These huge arachnid-like demonic creatures avoid close combat by all means, " +
-			"firing crippling serrated spikes from long distances.";
+			"firing crippling serrated spikes from long distances. " +
+			"There is not enough information on this creature to conclude whether it keeping its distance is smartness or cowardice.";
 	}
 	
 	private static final HashSet<Class<?>> RESISTANCES = new HashSet<Class<?>>();

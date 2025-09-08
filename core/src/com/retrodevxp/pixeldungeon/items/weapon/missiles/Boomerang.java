@@ -114,6 +114,6 @@ public class Boomerang extends MissileWeapon {
 	@Override
 	public String desc() {
 		return 
-			"When thrown to the enemy, this flat curved wooden missile will return to the hands of its thrower.";
+			"When thrown to the enemy, this flat curved wooden missile will return to the hands of its thrower. Throwing it onto the floor won't make it return, however, so be warned.";
 	}
 }

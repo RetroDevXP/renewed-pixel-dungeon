@@ -117,7 +117,7 @@ public class Gnoll extends Mob {
 	public String description() {
 		return
 			"Gnolls are hyena-like humanoids. They dwell in sewers and dungeons, venturing up to raid the surface from time to time. " +
-			"Gnoll scouts are more commonly encountered in the upper parts of the dungeon where they are more likely to survive without protection from their pack. " + 
-			"While not as strong as brutes and not as intelligent as shamans, these scouts alerts their pack to the presence of intruders.";
+			"Gnoll scouts are commonly seen venturing up to the upper parts of the dungeon. On deeper depths, they are less likely to survive even with protection from their pack, and therefore more rare. " + 
+			"While not as strong as brutes and not as intelligent as shamans, these scouts alerts their pack to the presence of intruders upon being damaged.";
 	}
 }

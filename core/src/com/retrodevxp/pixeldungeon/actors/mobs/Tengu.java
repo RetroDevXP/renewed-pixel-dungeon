@@ -205,9 +205,9 @@ public class Tengu extends Mob {
 	@Override
 	public String description() {
 		return
-			"The demons that forms the Tengu clan have been tasked with sabotage and infiltration since ancient days. " +
-			"They are smart, stealthy and extensively use shurikens as well as traps. Despite their large, menacing appearance, " +
-			"they prefer to strike at enemies from a range, as their physical prowess isn't as strong as their appearance. " + 
+			"The demons that forms the Tengu clan have been tasked with sabotage, infiltration, and even assassination since ancient days. " +
+			"They are smart and stealthy, extensively using shurikens and traps. Despite their large, menacing appearance, " +
+			"they prefer to strike at enemies from a range, as their physical prowess isn't as strong as their appearance would suggest. " + 
 			"After they were hunted for their crimes, most of them went into hiding. " + 
 			"Others were locked up in maximum-security prisons. Being locked here for who knows how long, your arrival is the most exciting thing happening to it in a long time.";
 	}

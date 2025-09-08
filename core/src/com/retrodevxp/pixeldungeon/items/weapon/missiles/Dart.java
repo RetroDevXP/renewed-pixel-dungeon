@@ -56,7 +56,7 @@ public class Dart extends MissileWeapon {
 	public String desc() {
 		return 
 			"These simple metal spikes are weighted to fly true and " +
-			"sting their prey with a flick of the wrist. \n This thrown weapon is re-usable.";
+			"sting their prey with a flick of the wrist. \n This thrown weapon is reusable.";
 	}
 	
 	@Override

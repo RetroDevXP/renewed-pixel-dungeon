@@ -138,7 +138,7 @@ public class Shaman extends Mob implements Callback {
 		return
 			"The most intelligent gnolls can master shamanistic magic. Gnoll shamans prefer " +
 			"battle spells to compensate for lack of might, launching " +
-			"powerful lightning bolts at any who disrespects their status in a tribe.";
+			"powerful lightning bolts at any who dares disrespects their status in a tribe.";
 	}
 	
 	private static final HashSet<Class<?>> RESISTANCES = new HashSet<Class<?>>();

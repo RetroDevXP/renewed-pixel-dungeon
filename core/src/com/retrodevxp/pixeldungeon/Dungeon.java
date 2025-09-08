@@ -570,20 +570,20 @@ public class Dungeon {
 		String version = bundle.getString( VERSION );
 		
 		hero = null;
-		System.out.println("Debug: Hero is null");
+		// System.out.println("Debug: Hero is null");
 		Object obj = bundle.get( HERO );
 		if (obj != null){
-			System.out.println("Debug: Object isn't null");
+			// System.out.println("Debug: Object isn't null");
 		}
 		else{
-			System.out.println("Debug: Object is actually null");
+			// System.out.println("Debug: Object is actually null");
 		}
 		hero = (Hero)bundle.get( HERO );
 		if (hero != null){
-			System.out.println("Debug: Hero is not null");
+			// System.out.println("Debug: Hero is not null");
 		}
 		else{
-			System.out.println("Debug: Hero not successfully loaded");
+			// System.out.println("Debug: Hero not successfully loaded");
 			hero = new Hero();
 		}
 		// QuickSlot.compress();

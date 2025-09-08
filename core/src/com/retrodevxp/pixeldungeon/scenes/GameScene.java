@@ -155,8 +155,10 @@ public class GameScene extends PixelScene {
 	
 	@Override
 	public void create() {
+		Music.INSTANCE.volume( 1f * (PixelDungeon.musicVolume() * 0.01f) );
 		Music.INSTANCE.play( Assets.TUNE, true );
-		Music.INSTANCE.volume( 1f );
+		Music.INSTANCE.volume( 1f * (PixelDungeon.musicVolume() * 0.01f) );
+		System.out.println("Game volume");
 		
 		PixelDungeon.lastClass( Dungeon.hero.heroClass.ordinal() );
 		

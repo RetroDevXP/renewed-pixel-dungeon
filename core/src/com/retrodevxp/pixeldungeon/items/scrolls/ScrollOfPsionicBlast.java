@@ -68,8 +68,8 @@ public class ScrollOfPsionicBlast extends Scroll {
 	@Override
 	public String desc() {
 		return
-			"This scroll contains destructive energy, that can be psionically channeled to inflict a " +
-			"massive damage to all creatures within a field of view. An accompanying flash of light will " +
+			"This scroll contains destructive energy that can be psionically channeled to inflict " +
+			"massive damage to all creatures within the reader's field of view. An accompanying flash of light will " +
 			"temporarily blind everybody in the area of effect including the reader of the scroll.";
 	}
 	

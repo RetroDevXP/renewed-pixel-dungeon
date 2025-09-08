@@ -28,6 +28,7 @@ import com.retrodevxp.noosa.audio.Music;
 import com.retrodevxp.noosa.audio.Sample;
 import com.retrodevxp.pixeldungeon.Assets;
 import com.retrodevxp.pixeldungeon.Dungeon;
+import com.retrodevxp.pixeldungeon.PixelDungeon;
 import com.retrodevxp.pixeldungeon.Statistics;
 import com.retrodevxp.pixeldungeon.actors.Actor;
 import com.retrodevxp.pixeldungeon.items.Generator;
@@ -187,7 +188,7 @@ public class InterlevelScene extends PixelScene {
 		case FADE_OUT:
 			message.alpha( p );
 			if (mode == Mode.CONTINUE || (mode == Mode.DESCEND && Dungeon.depth == 1)) {
-				Music.INSTANCE.volume( p );
+				Music.INSTANCE.volume( p * (PixelDungeon.musicVolume() * 0.01f) );
 			}
 			if ((timeLeft -= Game.elapsed) <= 0) {
 				Game.switchScene( GameScene.class );

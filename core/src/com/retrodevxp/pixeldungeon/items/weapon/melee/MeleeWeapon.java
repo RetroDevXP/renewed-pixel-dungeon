@@ -21,7 +21,9 @@ package com.retrodevxp.pixeldungeon.items.weapon.melee;
 
 import com.retrodevxp.noosa.audio.Sample;
 import com.retrodevxp.pixeldungeon.Assets;
+import com.retrodevxp.pixeldungeon.Badges;
 import com.retrodevxp.pixeldungeon.Dungeon;
+import com.retrodevxp.pixeldungeon.Statistics;
 import com.retrodevxp.pixeldungeon.actors.Actor;
 import com.retrodevxp.pixeldungeon.actors.Char;
 import com.retrodevxp.pixeldungeon.actors.buffs.Blindness;
@@ -271,6 +273,8 @@ public class MeleeWeapon extends Weapon {
 				enemy.damage(effectiveDamage, Dungeon.hero);
 				Sample.INSTANCE.play(Assets.SND_HIT, 1, 1, Random.Float(0.7f,1.1f));
 				if (!enemy.isAlive()){
+					Statistics.thrownMeleeKills++;
+					Badges.validateThrownMelee();
 					GLog.i( TXT_DEFEAT, Dungeon.hero.name, enemy.name );
 				}
 			}

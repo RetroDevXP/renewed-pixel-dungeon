@@ -62,7 +62,7 @@ public class PotionOfFrost extends Potion {
 	public String desc() {
 		return 
 			"Upon exposure to open air, this chemical will evaporate into a freezing cloud, causing " +
-			"any creature that contacts it to be frozen in place briefly, unable to act and move.";
+			"any creature that it contacts to be frozen in place briefly, unable to act and move.";
 	}
 	
 	@Override

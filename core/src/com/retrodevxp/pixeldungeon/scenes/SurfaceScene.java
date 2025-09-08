@@ -24,6 +24,7 @@ import java.nio.FloatBuffer;
 import com.retrodevxp.pixeldungeon.Assets;
 import com.retrodevxp.pixeldungeon.Badges;
 import com.retrodevxp.pixeldungeon.Dungeon;
+import com.retrodevxp.pixeldungeon.PixelDungeon;
 import com.retrodevxp.pixeldungeon.actors.hero.HeroClass;
 import com.retrodevxp.pixeldungeon.ui.Archs;
 import com.retrodevxp.pixeldungeon.ui.RedButton;
@@ -68,9 +69,10 @@ public class SurfaceScene extends PixelScene {
 	public void create() {
 		
 		super.create();
-		
+		Music.INSTANCE.volume( 1f * (PixelDungeon.musicVolume() * 0.01f) );
 		Music.INSTANCE.play( Assets.HAPPY, true );
-		Music.INSTANCE.volume( 1f );
+		Music.INSTANCE.volume( 1f * (PixelDungeon.musicVolume() * 0.01f) );
+		
 		
 		uiCamera.visible = false;
 		

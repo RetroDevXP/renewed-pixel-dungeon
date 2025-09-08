@@ -226,7 +226,7 @@ public class Goo extends Mob {
 	@Override
 	public String description() {
 		return
-			"A conglomerate of many substances from the sewers has somehow became this creature. " +
+			"A conglomerate of many substances from the sewers has somehow formed into this creature. " +
 			"Some believed it to be the result of strong magic from the deeper levels. " +
 			"Many inexperienced adventurers have perished to its corrosive ooze.";
 	}

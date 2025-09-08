@@ -49,6 +49,6 @@ public class Knuckles extends MeleeWeapon {
 	
 	@Override
 	public String desc() {
-		return "A piece of iron shaped to fit around the knuckles.";
+		return "A piece of iron shaped to fit around the knuckles, empowering the wearer's punches. This weapon can't be disarmed.";
 	}
 }

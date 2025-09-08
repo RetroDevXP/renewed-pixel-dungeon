@@ -112,8 +112,8 @@ public class CursePersonification extends Mob {
 	@Override
 	public String description() {
 		return
-			"This creature resembles the sad ghost, but it swirls with darkness. " +
-			"Its face bears an expression of despair.";
+			"The sad ghost, bound by a horrible curse. It swirls with darkness and " +
+			"its face bears an expression of despair.";
 	}
 	
 	private static final HashSet<Class<?>> IMMUNITIES = new HashSet<Class<?>>();

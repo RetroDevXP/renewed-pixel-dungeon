@@ -35,6 +35,8 @@ public enum Sample {
 	protected HashMap<Object, Sound> ids = new HashMap<Object, Sound>();
 	
 	private boolean enabled = true;
+
+	public int soundVolume = 100;
 	
 	public void reset() {
 
@@ -115,7 +117,7 @@ public enum Sample {
 	public long play(Object id) {
 		return play( id, 1, 1, 1 );
 	}
-	
+	//TODO: Make adjustable sound FX here.
 	public long play(Object id, float volume) {
 		return play( id, volume, volume, 1 );
 	}

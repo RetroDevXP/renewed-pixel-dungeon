@@ -80,7 +80,7 @@ public class WndGame extends Window {
 				@Override
 				protected void onClick() {
 					Dungeon.hero = null;
-					System.out.println("Debug: Hero is null");
+					// System.out.println("Debug: Hero is null");
 					PixelDungeon.challenges( Dungeon.challenges );
 					InterlevelScene.mode = InterlevelScene.Mode.DESCEND;
 					InterlevelScene.noStory = true;
@@ -107,12 +107,12 @@ public class WndGame extends Window {
 					} catch (IOException e) {
 						System.out.println("Debug: Error occured while saving when returning to main menu, " + e.toString());
 					}
-					try{
-						Dungeon.refreshStatic();
-					}
-					catch(Exception e){
-						System.out.println("Debug: Error refreshing dungeon: " + e.toString());
-					}
+					// try{
+					// 	Dungeon.refreshStatic();
+					// }
+					// catch(Exception e){
+					// 	System.out.println("Debug: Error refreshing dungeon: " + e.toString());
+					// }
 					Game.switchScene( TitleScene.class );
 				}
 			}, new RedButton( TXT_EXIT ) {

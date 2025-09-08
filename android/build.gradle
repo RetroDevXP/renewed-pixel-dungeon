@@ -32,7 +32,8 @@ android {
 		applicationId appId
 		versionCode project.ext.versionCode
 		versionName version
-        targetSdk 33
+        minSdkVersion 21
+        targetSdk 35
 	}
     sourceSets {
         main {

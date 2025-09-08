@@ -21,34 +21,34 @@ package com.retrodevxp.pixeldungeon.items.weapon.melee;
 
 import com.retrodevxp.pixeldungeon.sprites.ItemSpriteSheet;
 
-public class Guandao extends MeleeWeapon {
-
+public class Sai extends MeleeWeapon {
+	
 	{
-		name = "Guandao";
-		image = ItemSpriteSheet.GUANDAO;
+		name = "sai";
+		image = ItemSpriteSheet.SAI;
 	}
 	
-	public Guandao() {
-		super( 5, 1f, 1.5f, 5, 2  );
+	public Sai() {
+		super( 3, 1.1f, 0.45f, -2, 0  );
 	}
-
+	
 	@Override
 	protected int rangemin(){
-		return 7;
+		return 6;
 	}
 	
 	@Override
 	protected int rangemax(){
-		return 17;
+		return 9;
 	}
 
 	@Override
 	protected int rangestr(){
-		return 21;
+		return 12;
 	}
 	
 	@Override
 	public String desc() {
-		return "This large polearm with a massive, heavy blade is extremely damaging but requires tremendous strength to effectively wield.";
+		return "While these pair of metallic weapons don't deal much damage, they can be swung extremely rapidly, perhaps even more than twice as fast as enemy attacks.";
 	}
 }

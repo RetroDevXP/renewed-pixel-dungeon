@@ -131,7 +131,7 @@ public class Piranha extends Mob {
 	public String description() {
 		return
 			"These carnivorous fish are not natural inhabitants of underground pools. " +
-			"They were bred specifically to protect flooded treasure vaults.";
+			"They were bred specifically to protect flooded treasure vaults. It is said that the deeper they are found, the more vicious they are.";
 	}
 	
 	private static final HashSet<Class<?>> IMMUNITIES = new HashSet<Class<?>>();

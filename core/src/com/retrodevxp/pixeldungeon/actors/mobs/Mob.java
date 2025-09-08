@@ -307,7 +307,9 @@ public abstract class Mob extends Char {
 				damage += Random.Int( Math.max((int)(damage * 0.1f), 1), Math.max((int)(damage * 0.75f), 1) );
 				Wound.hit( this );
 			}
-			this.sprite.emitter().burst( Speck.factory( Speck.FORGE ), 3 );
+			Statistics.surpriseAttacks++;
+			Badges.validateSurpriseAttack();
+			this.sprite.emitter().burst( Speck.factory( Speck.FORGE ), 5 );
 		}
 		return damage;
 	}

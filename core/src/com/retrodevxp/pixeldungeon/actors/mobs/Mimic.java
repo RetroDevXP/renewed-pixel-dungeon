@@ -124,8 +124,8 @@ public class Mimic extends Mob {
 	@Override
 	public String description() {
 		return
-			"Mimics are magical creatures which can take any shape they wish. In dungeons they almost always " +
-			"choose a shape of a treasure chest, because they know how to beckon an adventurer.";
+			"Mimics are magical creatures, which can take any shape they wish. In dungeons, they almost always " +
+			"choose a shape of a treasure chest because they know how to beckon an adventurer.";
 	}
 	
 	public static Mimic spawnAt( int pos, List<Item> items ) {

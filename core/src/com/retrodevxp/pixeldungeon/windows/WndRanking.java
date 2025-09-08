@@ -24,6 +24,7 @@ import java.util.Locale;
 import com.retrodevxp.pixeldungeon.Assets;
 import com.retrodevxp.pixeldungeon.Badges;
 import com.retrodevxp.pixeldungeon.Dungeon;
+import com.retrodevxp.pixeldungeon.PixelDungeon;
 import com.retrodevxp.pixeldungeon.Statistics;
 import com.retrodevxp.pixeldungeon.actors.hero.Belongings;
 import com.retrodevxp.pixeldungeon.input.GameAction;
@@ -55,7 +56,7 @@ public class WndRanking extends WndTabbed {
 	private static final String TXT_BADGES	= "Badges";
 	
 	private static final int WIDTH			= 112;
-	private static final int HEIGHT			= 174;
+	private static final int HEIGHT			= 194;
 	
 	private static final int TAB_WIDTH	= 40;
 	
@@ -68,7 +69,12 @@ public class WndRanking extends WndTabbed {
 		super();
 		try{
 
-		resize( WIDTH, HEIGHT );
+		if (!PixelDungeon.landscape()){
+			resize( WIDTH, HEIGHT );
+		}
+		else{
+			resize(HEIGHT + 30, WIDTH);
+		}
 		
 		thread = Game.instance.getPlatformSupport().newThread(new Runnable(){
 			@Override
@@ -194,6 +200,7 @@ public class WndRanking extends WndTabbed {
 			add( title );
 			
 			float pos = title.bottom();
+			float pos2 = title.bottom();
 			
 			if (Dungeon.challenges > 0) {
 				RedButton btnCatalogus = new RedButton( TXT_CHALLENGES ) {
@@ -208,6 +215,7 @@ public class WndRanking extends WndTabbed {
 				pos = btnCatalogus.bottom();
 			}
 			
+			if (!PixelDungeon.landscape()){
 			pos += GAP + GAP;
 			
 			pos = statSlot( this, TXT_STR, Integer.toString( Dungeon.hero.STR ), pos );
@@ -228,6 +236,33 @@ public class WndRanking extends WndTabbed {
 			pos = statSlot( this, TXT_FOOD, Integer.toString( Statistics.foodEaten ), pos );
 			pos = statSlot( this, TXT_ALCHEMY, Integer.toString( Statistics.potionsCooked ), pos );
 			pos = statSlot( this, TXT_ANKHS, Integer.toString( Statistics.ankhsUsed ), pos );
+			}
+			else{
+			pos += GAP + GAP;
+			pos2 += GAP + GAP;
+			
+			pos = statSlot( this, TXT_STR, Integer.toString( Dungeon.hero.STR ), pos );
+			pos2 = statSlotLandscape( this, TXT_HEALTH, Integer.toString( Dungeon.hero.HT ), pos2 );
+			
+			pos += GAP;
+			pos2 += GAP;
+			
+			pos = statSlot( this, TXT_DURATION, Integer.toString( (int)Statistics.duration ), pos );
+			
+			pos += GAP;
+			pos2 += GAP;
+			
+			pos2 = statSlotLandscape( this, TXT_DEPTH, Integer.toString( Statistics.deepestFloor ), pos2 );
+			pos = statSlot( this, TXT_ENEMIES, Integer.toString( Statistics.enemiesSlain ), pos );
+			pos2 = statSlotLandscape( this, TXT_GOLD, Integer.toString( Statistics.goldCollected ), pos2 );
+			
+			pos += GAP;
+			pos2 += GAP;
+			
+			pos = statSlot( this, TXT_FOOD, Integer.toString( Statistics.foodEaten ), pos );
+			pos2 = statSlotLandscape( this, TXT_ALCHEMY, Integer.toString( Statistics.potionsCooked ), pos2 );
+			pos = statSlot( this, TXT_ANKHS, Integer.toString( Statistics.ankhsUsed ), pos );
+			}
 		}
 		catch(Exception e){
 			
@@ -242,13 +277,33 @@ public class WndRanking extends WndTabbed {
 			
 			txt = PixelScene.createText( value, 7 );
 			txt.measure();
-			txt.x = PixelScene.align( WIDTH * 0.65f );
+			txt.x = PixelScene.align( WIDTH * 0.55f );
+			txt.y = pos;
+			parent.add( txt );
+			
+			return pos + GAP + txt.baseLine();
+		}
+
+		//Stats are displayed in 2 rows for landscape mode.
+		private float statSlotLandscape( Group parent, String label, String value, float pos ) {
+			
+			BitmapText txt = PixelScene.createText( label, 7 );
+			txt.x = PixelScene.align( WIDTH * 0.75f );
+			txt.y = pos;
+			parent.add( txt );
+			
+			txt = PixelScene.createText( value, 7 );
+			txt.measure();
+			txt.x = PixelScene.align( WIDTH * 1.55f );
 			txt.y = pos;
 			parent.add( txt );
 			
 			return pos + GAP + txt.baseLine();
 		}
 	}
+
+	
+
 	
 	public class ItemsTab extends Group {
 		
@@ -276,7 +331,8 @@ public class WndRanking extends WndTabbed {
 			Item secondary = getQuickslot( QuickSlot.secondaryValue );
 			Item tertiary = getQuickslot( QuickSlot.tertiaryValue );
 			
-			if (count >= 5 && primary != null && secondary != null && tertiary != null) {
+			if(!PixelDungeon.landscape()){
+				if (count >= 5 && primary != null && secondary != null && tertiary != null) {
 				
 				float size = ItemButton.SIZE;
 				
@@ -301,6 +357,7 @@ public class WndRanking extends WndTabbed {
 				if (tertiary != null) {
 					addItem( tertiary );
 				}
+			}
 			}
 		}
 		
@@ -341,7 +398,12 @@ public class WndRanking extends WndTabbed {
 			ScrollPane list = new BadgesList( false );
 			add( list );
 			
-			list.setSize( WIDTH, HEIGHT );
+			if(!PixelDungeon.landscape()){
+				list.setSize( WIDTH, HEIGHT );
+			}
+			else{
+				list.setSize( HEIGHT, WIDTH );
+			}
 		}
 	}
 	

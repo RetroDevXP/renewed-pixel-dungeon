@@ -50,17 +50,17 @@ public class Imp extends NPC {
 	
 	private static final String TXT_GOLEMS1	=
 		"Oh, are you an adventurer? Care to help me? For a bounty, of course ;)\n " +
-		"You see, I started a little business here, but these wandering lumps of granite keeps trampling my shop! \n" +
-		"These stupid golems are horrible for business! They don't buy anything either! \n" +
-		"Some of them needs to be killed before I re-open my shop. \n" +
+		"You see, I started a little business here a while ago, but these Golems keeps trampling my shop without even buying anything! \n" +
+		"These stupid lumps of granite are horrible for business! \n" +
+		"Some of them need to be killed before I can reopen my shop. \n" +
 		"So please, kill... about _6 of them_ and a reward is yours.";
 	
 	private static final String TXT_MONKS1	=
 		"Oh, are you an adventurer? Care to help me? For a bounty, of course ;)\n " +
-		"You see, I started a little business here, but these thugs don't buy anything themselves. \n" +
-		"Instead, they sometimes even take my stuff by force. \n" +
+		"You see, I started a little business here a while ago, but these thugs don't buy anything. \n" +
+		"Instead, they either take my stuff by force or sometimes even trash my shop! \n" +
 		"These stupid thugs are horrible for business! \n" +
-		"Some of them needs to be killed before I re-open my shop. \n" +
+		"Some of them need to be killed before I can reopen my shop. \n" +
 		"So please, kill... about _8 of them_ and a reward is yours.";
 	
 	private static final String TXT_GOLEMS2	=

@@ -21,34 +21,34 @@ package com.retrodevxp.pixeldungeon.items.weapon.melee;
 
 import com.retrodevxp.pixeldungeon.sprites.ItemSpriteSheet;
 
-public class Guandao extends MeleeWeapon {
-
+public class Falx extends MeleeWeapon {
+	
 	{
-		name = "Guandao";
-		image = ItemSpriteSheet.GUANDAO;
+		name = "Falx";
+		image = ItemSpriteSheet.FALX;
 	}
 	
-	public Guandao() {
-		super( 5, 1f, 1.5f, 5, 2  );
+	public Falx() {
+		super( 4, 1.2f, 1f, -1, -1  );
 	}
-
+	
 	@Override
 	protected int rangemin(){
-		return 7;
+		return 5;
 	}
 	
 	@Override
 	protected int rangemax(){
-		return 17;
+		return 9;
 	}
 
 	@Override
 	protected int rangestr(){
-		return 21;
+		return 16;
 	}
 	
 	@Override
 	public String desc() {
-		return "This large polearm with a massive, heavy blade is extremely damaging but requires tremendous strength to effectively wield.";
+		return "This curved blade is sharpened on the inside. Attacking with this weapon ignores part of the target's defenses.";
 	}
 }

@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 import com.retrodevxp.noosa.Camera;
+import com.retrodevxp.pixeldungeon.Badges;
 import com.retrodevxp.pixeldungeon.Challenges;
 import com.retrodevxp.pixeldungeon.Dungeon;
 import com.retrodevxp.pixeldungeon.ResultDescriptions;
@@ -75,7 +76,7 @@ public class Yog extends Mob {
 		"Yog-Dzewa is an old demon god, who once controlled a vast army of powerful demons. " +
 		"A century ago, Yog-Dzewa, along with its army of demons, tried to take over the Dwarven Metropolis. " +
 		"After a costly war, the Dwarves eradicated the majority of the demons from most parts of their city. " +
-		"The rest of the demons remained in the lower parts of the metropolis, eventually controlling it entirely. The demon god itself, mostly vaporized, was " +
+		"The rest of the demons, however, remained in the lower parts of the metropolis, eventually controlling it entirely. The demon god itself, mostly vaporized, was " +
 		"imprisoned in the deepest part of the halls below the dwarven city. The dwarves believed it to be too weak to rise ever again...";	
 	
 	private static int fistsCount = 0;
@@ -162,6 +163,7 @@ public class Yog extends Mob {
 	public void notice() {
 		super.notice();
 		yell( "Hope is an illusion..." );
+		Badges.validateYogEncounter();
 	}
 	
 	@Override

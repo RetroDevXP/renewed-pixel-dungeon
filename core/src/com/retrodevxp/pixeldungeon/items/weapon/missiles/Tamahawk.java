@@ -69,7 +69,7 @@ public class Tamahawk extends MissileWeapon {
 	public String desc() {
 		return 
 			"This sharp, powerful throwing axe " +
-			"requires significant strength to be used effectively. \n This thrown weapon is re-usable.";
+			"requires significant strength to be used effectively. \n This thrown weapon is reusable.";
 	}
 	
 	@Override

@@ -93,7 +93,7 @@ public class Bat extends Mob {
 	@Override
 	public String description() {
 		return
-			"Living high in cave domes, these bats are brisk and tenacious. They are much faster than most other cave inhabitants as they viciously hunt for victims. " +
+			"Living high in cave domes, these vampire bats are brisk and tenacious. They are much faster than most other cave inhabitants as they viciously hunt for victims. " +
 			"Despite their size, they may defeat much larger opponents by replenishing their health with each successful attack.";
 	}
 	

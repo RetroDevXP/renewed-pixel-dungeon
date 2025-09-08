@@ -146,8 +146,8 @@ public class Statue extends Mob {
 	@Override
 	public String description() {
 		return
-			"This looks like it's just another ugly statue of this dungeon, but its menacing glowing eyes say otherwise. " +
-			"While the statue itself seems to be made of stone, the _" + weapon.name() + "_ it's wielding most likely isn't.";
+			"At first glance, this looks like it's just another ugly statue of this dungeon, but its eyes glow faintly and it seems to move ever so slightly. " +
+			"It is unknown if driven by strong magic or complex mechanisms. Either way, it has somehow gotten hold of this _" + weapon.name() + "_.";
 	}
 	
 	private static final HashSet<Class<?>> RESISTANCES = new HashSet<Class<?>>();

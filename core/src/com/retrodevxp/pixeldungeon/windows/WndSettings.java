@@ -21,6 +21,8 @@ package com.retrodevxp.pixeldungeon.windows;
 
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Slider;
 import com.retrodevxp.pixeldungeon.Assets;
 import com.retrodevxp.pixeldungeon.PixelDungeon;
 import com.retrodevxp.pixeldungeon.scenes.PixelScene;
@@ -30,6 +32,7 @@ import com.retrodevxp.pixeldungeon.ui.Toolbar;
 import com.retrodevxp.pixeldungeon.ui.Window;
 import com.retrodevxp.noosa.Camera;
 import com.retrodevxp.noosa.Game;
+import com.retrodevxp.noosa.audio.Music;
 import com.retrodevxp.noosa.audio.Sample;
 import com.retrodevxp.noosa.ui.Button;
 
@@ -50,6 +53,8 @@ public class WndSettings extends Window {
 	private static final String TXT_BRIGHTNESS	= "Brightness";
 	
 	private static final String TXT_QUICKSLOT	= "Second quickslot";
+	private static final String TXT_VOLUME_SOUND	= "Sound FX Volume";
+	private static final String TXT_VOLUME_MUSIC	= "Music Volume";
 	
 	private static final String TXT_SWITCH_PORT	= "Switch to portrait";
 	private static final String TXT_SWITCH_LAND	= "Switch to landscape";
@@ -63,6 +68,12 @@ public class WndSettings extends Window {
 	
 	private RedButton btnZoomOut;
 	private RedButton btnZoomIn;
+	private RedButton btnSoundDown;
+	private RedButton btnSoundUp;
+	private RedButton btnMusicDown;
+	private RedButton btnMusicUp;
+	private RedButton btnSoundVolume;
+	private RedButton btnMusicVolume;
 	
 	public WndSettings( boolean inGame ) {
 		super();
@@ -133,10 +144,72 @@ public class WndSettings extends Window {
 		btnSound.setRect( 0, btnMusic.bottom() + GAP, WIDTH, BTN_HEIGHT );
 		btnSound.checked( PixelDungeon.soundFx() );
 		add( btnSound );
+		// Slider adjustSound = new Slider(0f, 1f, 0.1f, false, null);
+		// Slider adjustMusic = new Slider(0f, 1f, 0.1f, false, null);
 
+		// add( adjustSound );
+		// add( adjustMusic );
+
+		btnSoundDown = new RedButton( TXT_ZOOM_OUT ) {
+				@Override
+				protected void onClick() {
+					PixelDungeon.setSound(PixelDungeon.soundVolume() - 5);
+					btnSoundVolume.text("Sound FX Volume " + (PixelDungeon.soundVolume()));
+				}
+			};
+			add( btnSoundDown.setRect( 0, btnSound.bottom() + GAP, BTN_HEIGHT, BTN_HEIGHT) );
+			
+			btnSoundUp = new RedButton( TXT_ZOOM_IN ) {
+				@Override
+				protected void onClick() {
+					PixelDungeon.setSound(PixelDungeon.soundVolume() + 5);
+					btnSoundVolume.text("Sound FX Volume " + (PixelDungeon.soundVolume()));
+				}
+			};
+			add( btnSoundUp.setRect( WIDTH - BTN_HEIGHT, btnSound.bottom() + GAP, BTN_HEIGHT, BTN_HEIGHT) );
 		Application.ApplicationType type = Gdx.app.getType();
 
-		Button lastBtn = btnSound;
+		btnSoundVolume = new RedButton( "Sound FX Volume " + (PixelDungeon.soundVolume()) ) {
+				@Override
+				protected void onClick() {
+					PixelDungeon.setSound(100);
+					btnSoundVolume.text("Sound FX Volume " + (PixelDungeon.soundVolume()));
+				}
+			};
+		add( btnSoundVolume.setRect( btnSoundDown.right(), btnSound.bottom() + GAP, WIDTH - btnSoundDown.width() - btnSoundUp.width(), BTN_HEIGHT ) );
+
+
+		btnMusicDown = new RedButton( TXT_ZOOM_OUT ) {
+				@Override
+				protected void onClick() {
+					PixelDungeon.setMusic(PixelDungeon.musicVolume() - 5);
+					btnMusicVolume.text("Music Volume " + (PixelDungeon.musicVolume()));
+					Music.INSTANCE.volume( 1f * (PixelDungeon.musicVolume() * 0.01f) );
+				}
+			};
+			add( btnMusicDown.setRect( 0, btnSoundVolume.bottom() + GAP, BTN_HEIGHT, BTN_HEIGHT) );
+			
+			btnMusicUp = new RedButton( TXT_ZOOM_IN ) {
+				@Override
+				protected void onClick() {
+					PixelDungeon.setMusic(PixelDungeon.musicVolume() + 5);
+					btnMusicVolume.text("Music Volume " + (PixelDungeon.musicVolume()));
+					Music.INSTANCE.volume( 1f * (PixelDungeon.musicVolume() * 0.01f) );
+				}
+			};
+			add( btnMusicUp.setRect( WIDTH - BTN_HEIGHT, btnSoundVolume.bottom() + GAP, BTN_HEIGHT, BTN_HEIGHT) );
+
+		btnMusicVolume = new RedButton( "Music Volume " + (PixelDungeon.musicVolume()) ) {
+				@Override
+				protected void onClick() {
+					PixelDungeon.setMusic(100);
+					btnMusicVolume.text("Music Volume " + (PixelDungeon.musicVolume()));
+					Music.INSTANCE.volume( 1f * (PixelDungeon.musicVolume() * 0.01f) );
+				}
+			};
+		add( btnMusicVolume.setRect( btnSoundDown.right(), btnSoundVolume.bottom() + GAP, WIDTH - btnSoundDown.width() - btnSoundUp.width(), BTN_HEIGHT ) );
+
+		Button lastBtn = btnMusicVolume;
 		if (!inGame) {
 
 			if (type == Application.ApplicationType.Desktop) {

@@ -53,6 +53,8 @@ public class ItemSpriteSheet {
 	public static final int DWARVEN_AXE		= 152;
 	public static final int FLAIL			= 154;
 	public static final int CUTLASS			= 156;
+	public static final int SAI			= 157;
+	public static final int FALX			= 158;
 	
 
 

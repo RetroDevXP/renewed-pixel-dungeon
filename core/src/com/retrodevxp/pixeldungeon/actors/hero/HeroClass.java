@@ -161,6 +161,8 @@ public enum HeroClass {
 		new PlateArmor().identify().collect();
 		new ScrollOfMirrorImage().identify().collect();
 		new Cutlass().identify().collect();
+		new Sai().identify().collect();
+		new Falx().identify().collect();
 		// new Whip().identify().collect();
 		// new Flail().identify().collect();
 		// new Brandistock().identify().collect();
@@ -185,7 +187,7 @@ public enum HeroClass {
 		new Keyring().collect();
 
 		//Enable this to start with a bunch of items. Used to test stuff during development.
-		// initExtra();
+		initExtra();
 		
 	}
 	

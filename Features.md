@@ -3,9 +3,77 @@ Renewed Pixel Dungeon
 
 Renewed Pixel Dungeon adds or changes many features from Vanilla.
 
-This mod includes many new features, such as a new subclass for each class, new extra item choice mechanic, melee weapons dealing damage when thrown (to different degrees of effectiveness), some thrown weapons being re-usable, changed hunger system, new melee weapons, new thrown weapons, new items, new plants, new wand, new enchants, new enemy, etc.
+This mod includes many new features, such as a new subclass for each class, new extra item choice mechanic, melee weapons dealing damage when thrown (to different degrees of effectiveness), some thrown weapons being reusable, changed hunger system, new melee weapons, new thrown weapons, new items, new plants, new wand, new enchants, new enemy, etc.
 
-This file is for the features of 1.0.0 as well as later updates. Please see each version's sections.
+This file is for the features of 1.0.0 as well as the full list of changes made in later updates. Please see each version's sections.
+
+# 1.3.0
+
+Platforms
+----------
+
+Renewed Pixel Dungeon is out for Android on Google Play Store!
+
+The APK is also available on itch.io directly!
+
+Classes
+----------
+
+The Dungeon
+----------
+
+
+Calculations
+----------
+
+
+Challenges
+----------
+
+
+Items, Companions, and Enchants
+----------
+
+Added new weapons: Sai and Falx. Sai is a tier-3 weapon with weak damage but a very fast attack speed, great for activating Enchantments! Falx is a tier-4 weapon that ignores part of the enemy's defense!
+
+
+Enemies and NPCs
+----------
+
+
+Hunger System
+----------
+
+
+
+Buffs
+----------
+
+
+
+UI, Lore, and Others
+----------
+
+UI size in landscape mode isn't as small.
+
+Slightly adjusted portrait mode UI, hopefully fixing the overlapping buttons that occurs on some devices.
+
+Fixed layout issues on Landscape mode where the rankings details don't fit in the screen. Currently, quickslot items don't show in landscape mode Rankings, however.
+
+Slightly improved Surprise Attack effects to be more noticeable.
+
+Added adjustable Sound FX and Music volumes.
+
+Added 6 new Badges.
+
+Adjusted Badges layout.
+
+Added titles for each Badge.
+
+Changed some more texts.
+
+Revised the older version changes specified in this file for more details and readability.
+
 
 # 1.2.0
 
@@ -241,7 +309,7 @@ It is not required to defeat DM-300 to unlock Huntress.
 
 Items, Companions, and Enchants
 ----------
-Added extra items, a mechanic that grants you an item from a choice of 3 when beginning each game. Each class have different choices.
+Added extra items, a mechanic that grants you an item from a choice of 3 when starting each game. Each class have different choices.
 
 Darts that some classes start with are instead now a choice in extra items.
 
@@ -251,29 +319,29 @@ Melee weapons deal damage when thrown, with its own accuracy formula which inclu
 
 Removed item degradation.
 
-Added new weapon enchantments: Culling, Binding, and Initializing.
+Added new weapon enchantments: Culling, Binding, and Initializing. Culling deals more damage to already injured enemies. The more damaged they are, the stronger then enchantment. Binding has a chance to bind an enemy in place, preventing it from moving. Initializing (might have a better name in a future update) deals more damage to enemies at full health, being a stronger opening strike.
 
-Changed Tempered enchantment since degradation is removed.
+Changed Tempered enchantment to simply deal slightly more damage, since item degradation is removed.
 
-Added new Armor enchantments: Stealth and Charging.
+Added new Armor enchantments: Stealth and Charging. Stealth has a chance to make its wearer invisible upon taking damage. Charging has a chance to charge the wearer's wands upon taking damage.
 
 Removed Self-Repair enchantment since degradation is removed.
 
-Some thrown weapons are re-usable. Others, such as Curare Dart, aren't re-usable.
+Some thrown weapons are reusable. Others, such as Curare Dart, aren't reusable.
 
 Added new melee weapons: Brandistock, Spiked Knuckles, Dwarven Axe, Club, Whip, and Guandao.
 
-Added new thrown weapons: Wooden Dart, Frost Dart, and Serrated Spike. Wooden Darts are similar to the old metallic darts. The metallic darts are instead re-usable in this mod.
+Added new thrown weapons: Wooden Dart, Frost Dart, and Serrated Spike. Wooden Darts are similar to the old metallic darts. The metallic darts are instead reusable in this mod. Frost Darts freeze the target. Serrated Spikes are rare weapons dropped by Scorpio.
 
-Added new thrown items: Fire Bomb, Dizzy Bomb, and Smoke Bomb. 
+Added new thrown items: Fire Bomb, Dizzy Bomb, and Smoke Bomb. Fire Bomb deals damage and sets an area on fire. Dizzy Bomb releases gas that makes everything in the area dizzy. Smoke Bomb releases gas that blinds everything in the area.
 
-Added new Wands: Wand of Spirits and Wand of Blindness.
+Added new Wands: Wand of Spirits and Wand of Blindness. Wand of Spirits summons a Spirit Wolf to help fight enemies. Wand of Blindness blinds the target.
 
 Added new companion, Spirit Wolf, summoned by the Wand of Spirits.
 
 Some balance adjustments to some weapon stats.
 
-Added new Plants: The Bulbush and the Hardthorn. The Bulbush drops a food, the Hardthorn cripples any who steps on it while also making them bleed.
+Added new Plants: The Bulbush and the Hardthorn. The Bulbush drops a food. The Hardthorn cripples any who steps on it while also making them bleed.
 
 Added new food: The Bulbush fruit, along with its cooked versions.
 
@@ -281,7 +349,7 @@ Added new food: The Bulbush fruit, along with its cooked versions.
 Enemies and NPCs
 ----------
 
-Added new enemy: Dwarven Warrior, encountered in the Dwarven Metropolis.
+Added new enemy: Dwarven Warrior, encountered in the Dwarven Metropolis. A rare enemy with a powerful attack.
 
 Golems deal more damage but are slower, allowing you to run from them.
 
@@ -293,7 +361,7 @@ Goo's Pumped up attack is slightly weakened.
 
 DM-300 has a limit when healing itself.
 
-DM-300 takes slight damage from ice, more damage from fire.
+DM-300 takes some damage from being frozen, and more damage from being burned.
 
 Scorpio's serrated spikes are sometimes dropped to be usable as a thrown weapon.
 
@@ -325,18 +393,18 @@ UI, Lore, and Others
 
 There are always 2 quickslots available. Each has their own hotkey to use, as well as their own hotkey to assign items to.
 
-Added Donate to Main Menu.
+Added Donate page to Main Menu.
 
-Added an in-game guide to Main Menu.
+Added an in-game guide page to Main Menu.
 
 Modded the Logo.
 
 Modded the icon.
 
-Changed some lore, including some enemy names.
+Changed a lot of texts.
 
 Easter Eggs? Totally didn't add any Easter Eggs. None.
 
-End of Features. Thank you.
+End of Features. Thank you for playing Renewed Pixel Dungeon.
 
 

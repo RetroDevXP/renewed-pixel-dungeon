@@ -246,7 +246,7 @@ public class Hero extends Char {
 		catch(Exception e){
 			Dungeon.hero = new Hero();
 			System.out.println("Debug: Error loading Hero: " + e.toString());
-			e.printStackTrace();
+			// e.printStackTrace();
 		}
 		super.restoreFromBundle( bundle );
 		
@@ -268,7 +268,7 @@ public class Hero extends Char {
 		}
 		catch(Exception e){
 			System.out.println("Debug: Error loading hero items " + e.toString());
-			e.printStackTrace();
+			// e.printStackTrace();
 		}
 		// System.out.println("Debug: Loading hero items.");
 	}

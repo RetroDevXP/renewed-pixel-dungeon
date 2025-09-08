@@ -145,7 +145,7 @@ public class Swarm extends Mob {
 	@Override
 	public String description() {
 		return
-			"This swarm of flies is actually summoned by some sort of lingering magical energy from this place. Every non-magical attack " +
-			"will split it into two smaller but equally dangerous swarms.";
+			"This angrily buzzing creature is much bigger than expected. While lacking powerful attacks, it is affected by some sort of lingering magical energy from this place. It is tough, and every non-magical attack " +
+			"will split it into two smaller but equally dangerous swarms, earning it the name \"Swarm of Flies\".";
 	}
 }

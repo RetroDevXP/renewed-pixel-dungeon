@@ -60,7 +60,7 @@ public class Shuriken extends MissileWeapon {
 	public String desc() {
 		return 
 			"Star-shaped pieces of metal with razor-sharp blades do significant damage " +
-			"when they hit a target. They can be thrown at very high rate. \n This thrown weapon is re-usable.";
+			"when they hit a target. They can be thrown at very high rate. \n This thrown weapon is reusable.";
 	}
 	
 	@Override

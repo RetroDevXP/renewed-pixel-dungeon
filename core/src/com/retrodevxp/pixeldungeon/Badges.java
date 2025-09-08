@@ -20,8 +20,6 @@
 package com.retrodevxp.pixeldungeon;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -53,43 +51,44 @@ import com.retrodevxp.utils.Callback;
 public class Badges {
 	
 	public static enum Badge {
-		MONSTERS_SLAIN_1( "10 enemies slain", 0 ),
-		MONSTERS_SLAIN_2( "50 enemies slain", 1 ),
-		MONSTERS_SLAIN_3( "150 enemies slain", 2 ),
-		MONSTERS_SLAIN_4( "250 enemies slain", 3 ),
-		GOLD_COLLECTED_1( "100 gold collected", 4 ),
-		GOLD_COLLECTED_2( "500 gold collected", 5 ),
-		GOLD_COLLECTED_3( "2500 gold collected", 6 ),
-		GOLD_COLLECTED_4( "7500 gold collected", 7 ),
-		LEVEL_REACHED_1( "Level 6 reached", 8 ),
-		LEVEL_REACHED_2( "Level 12 reached", 9 ),
-		LEVEL_REACHED_3( "Level 18 reached", 10 ),
-		LEVEL_REACHED_4( "Level 24 reached", 11 ),
-		ALL_POTIONS_IDENTIFIED( "All potions identified", 16 ),
-		ALL_SCROLLS_IDENTIFIED( "All scrolls identified", 17 ),
-		ALL_RINGS_IDENTIFIED( "All rings identified", 18 ),
-		ALL_WANDS_IDENTIFIED( "All wands identified", 19 ),
-		ALL_ITEMS_IDENTIFIED( "All potions, scrolls, rings & wands identified", 35, true ),
+		MONSTERS_SLAIN_1( "10 enemies slain", 0, "Hunter" ),
+		MONSTERS_SLAIN_2( "50 enemies slain", 1, "Hunter" ),
+		MONSTERS_SLAIN_3( "150 enemies slain", 2, "Hunter" ),
+		MONSTERS_SLAIN_4( "250 enemies slain", 3, "Hunter" ),
+		GOLD_COLLECTED_1( "100 gold collected", 4, "Gold Collector" ),
+		GOLD_COLLECTED_2( "500 gold collected", 5, "Gold Collector" ),
+		GOLD_COLLECTED_3( "2500 gold collected", 6, "Gold Collector" ),
+		GOLD_COLLECTED_4( "7500 gold collected", 7, "Gold Collector" ),
+		LEVEL_REACHED_1( "Level 6 reached", 8, "Experienced" ),
+		LEVEL_REACHED_2( "Level 12 reached", 9, "Experienced" ),
+		LEVEL_REACHED_3( "Level 18 reached", 10, "Experienced" ),
+		LEVEL_REACHED_4( "Level 24 reached", 11, "Experienced" ),
+		ALL_POTIONS_IDENTIFIED( "All potions identified", 16, "Potion Identifier" ),
+		ALL_SCROLLS_IDENTIFIED( "All scrolls identified", 17, "Scroll Identifier" ),
+		ALL_RINGS_IDENTIFIED( "All rings identified", 18, "Ring Identifier" ),
+		ALL_WANDS_IDENTIFIED( "All wands identified", 19, "Wand Identifier" ),
+		ALL_ITEMS_IDENTIFIED( "All potions, scrolls, rings & wands identified", 35, "All-Knowing", true ),
 		BAG_BOUGHT_SEED_POUCH,
 		BAG_BOUGHT_SCROLL_HOLDER,
 		BAG_BOUGHT_WAND_HOLSTER,
-		ALL_BAGS_BOUGHT( "All bags bought", 23 ),
-		DEATH_FROM_FIRE( "Death from fire", 24 ),
-		DEATH_FROM_POISON( "Death from poison", 25 ),
-		DEATH_FROM_GAS( "Death from toxic gas", 26 ),
-		DEATH_FROM_HUNGER( "Death from hunger", 27 ),
-		DEATH_FROM_GLYPH( "Death from an enchantment", 57 ),
-		DEATH_FROM_FALLING( "Death from falling down", 59 ),
-		YASD( "Death from fire, poison, toxic gas & hunger", 34, true ),
+		ALL_BAGS_BOUGHT( "All bags bought", 23, "Backpacker" ),
+		DEATH_FROM_FIRE( "Death from fire", 24, "In Flames" ),
+		DEATH_FROM_POISON( "Death from poison", 25, "Poisonous Demise" ),
+		DEATH_FROM_GAS( "Death from toxic gas", 26, "Too Toxic" ),
+		DEATH_FROM_HUNGER( "Death from hunger", 27, "Starved" ),
+		DEATH_FROM_GLYPH( "Death from an enchantment", 57, "Double Edged" ),
+		DEATH_FROM_FALLING( "Death from falling down", 59, "Fatal Fall" ),
+		SURVIVE_FALLING( "Take fall damage and survive", 75, "Survived The Fall" ),
+		YASD( "Death from fire, poison, toxic gas & hunger", 34, "Yet Another Stupid Death", true ),
 		BOSS_SLAIN_1_WARRIOR,
 		BOSS_SLAIN_1_MAGE,
 		BOSS_SLAIN_1_ROGUE,
 		BOSS_SLAIN_1_HUNTRESS,
-		BOSS_SLAIN_1( "1st boss slain", 12 ),
-		BOSS_SLAIN_2( "2nd boss slain", 13 ),
-		BOSS_SLAIN_3( "3rd boss slain", 14 ),
-		BOSS_SLAIN_4( "4th boss slain", 15 ),
-		BOSS_SLAIN_1_ALL_CLASSES( "1st boss slain by Warrior, Mage, Rogue & Huntress", 32, true ),
+		BOSS_SLAIN_1( "1st boss slain", 12, "Glurp...Glurp..." ),
+		BOSS_SLAIN_2( "2nd boss slain", 13, "No More Espionage" ),
+		BOSS_SLAIN_3( "3rd boss slain", 14, "Shut Down" ),
+		BOSS_SLAIN_4( "4th boss slain", 15, "To The Grave" ),
+		BOSS_SLAIN_1_ALL_CLASSES( "1st boss slain by Warrior, Mage, Rogue & Huntress", 32, "Goo is Gone", true ),
 		BOSS_SLAIN_3_GLADIATOR,
 		BOSS_SLAIN_3_BERSERKER,
 		BOSS_SLAIN_3_KNIGHT,
@@ -103,71 +102,85 @@ public class Badges {
 		BOSS_SLAIN_3_WARDEN,
 		BOSS_SLAIN_3_CHASER,
 		BOSS_SLAIN_3_ALL_SUBCLASSES( 
-			"3rd boss slain by all subclasses", 33, true ),
-		RING_OF_HAGGLER( "Ring of Haggler obtained", 20 ),
-		RING_OF_THORNS( "Ring of Thorns obtained", 21 ),
-		STRENGTH_ATTAINED_1( "13 points of Strength attained", 40 ),
-		STRENGTH_ATTAINED_2( "15 points of Strength attained", 41 ),
-		STRENGTH_ATTAINED_3( "17 points of Strength attained", 42 ),
-		STRENGTH_ATTAINED_4( "19 points of Strength attained", 43 ),
-		FOOD_EATEN_1( "10 pieces of food eaten", 44 ),
-		FOOD_EATEN_2( "20 pieces of food eaten", 45 ),
-		FOOD_EATEN_3( "30 pieces of food eaten", 46 ),
-		FOOD_EATEN_4( "40 pieces of food eaten", 47 ),
+			"3rd boss slain by all subclasses", 33, "Subclass Specialist", true ),
+		RING_OF_HAGGLER( "Ring of Haggler obtained", 20, "Haggler's Path" ),
+		RING_OF_THORNS( "Ring of Thorns obtained", 21, "Mutual Damage" ),
+		STRENGTH_ATTAINED_1( "13 points of Strength attained", 40, "Growing Strong" ),
+		STRENGTH_ATTAINED_2( "15 points of Strength attained", 41, "Growing Strong" ),
+		STRENGTH_ATTAINED_3( "17 points of Strength attained", 42, "Growing Strong" ),
+		STRENGTH_ATTAINED_4( "19 points of Strength attained", 43, "Growing Strong" ),
+		FOOD_EATEN_1( "10 pieces of food eaten", 44, "Hungry Hero" ),
+		FOOD_EATEN_2( "20 pieces of food eaten", 45, "Hungry Hero" ),
+		FOOD_EATEN_3( "30 pieces of food eaten", 46, "Hungry Hero" ),
+		FOOD_EATEN_4( "40 pieces of food eaten", 47, "Hungry Hero" ),
 		MASTERY_WARRIOR,
 		MASTERY_MAGE,
 		MASTERY_ROGUE,
 		MASTERY_HUNTRESS,
-		ITEM_LEVEL_1( "Item of level 3 acquired", 48 ),
-		ITEM_LEVEL_2( "Item of level 6 acquired", 49 ),
-		ITEM_LEVEL_3( "Item of level 9 acquired", 50 ),
-		ITEM_LEVEL_4( "Item of level 12 acquired", 51 ),
+		ITEM_LEVEL_1( "Item of level 3 acquired", 48, "Artifact" ),
+		ITEM_LEVEL_2( "Item of level 6 acquired", 49, "Artifact" ),
+		ITEM_LEVEL_3( "Item of level 9 acquired", 50, "Artifact" ),
+		ITEM_LEVEL_4( "Item of level 12 acquired", 51, "Artifact" ),
 		RARE_ALBINO,
 		RARE_BANDIT,
 		RARE_SHIELDED,
 		RARE_SENIOR,
 		RARE_ACIDIC,
-		RARE( "All rare monsters slain", 37, true ),
+		RARE( "All rare monsters slain", 37, "", true ),
 		VICTORY_WARRIOR,
 		VICTORY_MAGE,
 		VICTORY_ROGUE,
 		VICTORY_HUNTRESS,
-		VICTORY( "Amulet of Yendor obtained", 22 ),
-		VICTORY_ALL_CLASSES( "Amulet of Yendor obtained by Warrior, Mage, Rogue & Huntress", 36, true ),
-		MASTERY_COMBO( "7-hit combo", 56 ),
-		POTIONS_COOKED_1( "3 potions cooked", 52 ),
-		POTIONS_COOKED_2( "6 potions cooked", 53 ),
-		POTIONS_COOKED_3( "9 potions cooked", 54 ),
-		POTIONS_COOKED_4( "12 potions cooked", 55 ),
-		NO_MONSTERS_SLAIN( "Level completed without killing any monsters", 28 ),
-		GRIM_WEAPON( "Monster killed by a Grim weapon", 29 ),
-		PIRANHAS( "6 piranhas killed", 30 ),
-		NIGHT_HUNTER( "15 monsters killed at nighttime", 58 ),
-		GAMES_PLAYED_1( "10 games played", 60, true ),
-		GAMES_PLAYED_2( "100 games played", 61, true ),
-		GAMES_PLAYED_3( "500 games played", 62, true ),
-		GAMES_PLAYED_4( "2000 games played", 63, true ),
-		HAPPY_END( "Happy end", 38 ),
-		CHAMPION( "Challenge won", 39, true ),
-		SUPPORTER( "Thanks for your support!", 31, true );
+		VICTORY( "Amulet of Yendor obtained", 22, "The Ultimate Goal" ),
+		VICTORY_ALL_CLASSES( "Amulet of Yendor obtained by Warrior, Mage, Rogue & Huntress", 36, "", true ),
+		MASTERY_COMBO( "7-hit combo with Gladiator", 56, "Combo Master" ),
+		WARLOCK_SOUL( "Get down to 1 HP with Warlock's ability", 74, "Tempting Fate" ),
+		POTIONS_COOKED_1( "3 potions cooked", 52, "Alchemist" ),
+		POTIONS_COOKED_2( "6 potions cooked", 53, "Alchemist" ),
+		POTIONS_COOKED_3( "9 potions cooked", 54, "Alchemist" ),
+		POTIONS_COOKED_4( "12 potions cooked", 55, "Alchemist" ),
+		THROW_MELEE_1( "Enemy defeated by throwing a melee weapon.", 68, "Improvised Throw" ),
+		THROW_MELEE_2( "5 enemies defeated by throwing a melee weapon in one dungeon run.", 69, "Improvised Throw" ),
+		THROW_MELEE_3( "10 enemies defeated by throwing a melee weapon in one dungeon run.", 70, "Improvised Throw" ),
+		THROW_MELEE_4( "25 enemies defeated by throwing a melee weapon in one dungeon run.", 71, "Improvised Throw" ),
+		SURPRISE_1( "Land 10 surprise attacks in one dungeon run.", 64, "Assassin" ),
+		SURPRISE_2( "Land 20 surprise attacks in one dungeon run.", 65, "Assassin" ),
+		SURPRISE_3( "Land 35 surprise attacks in one dungeon run.", 66, "Assassin" ),
+		SURPRISE_4( "Land 50 surprise attacks in one dungeon run.", 67, "Assassin" ),
+		YOG_DZEWA_ENCOUNTER( "Reach the deepest depth and encounter Yog-Dezwa", 72, "Hope Is An Illusion" ),
+		RESURRECT( "Return from death", 73, "Second Chance" ),
+		NO_MONSTERS_SLAIN( "Level completed without killing any monsters", 28, "Pacifist" ),
+		GRIM_WEAPON( "Monster killed by a Grim weapon", 29, "Grim Reaper" ),
+		PIRANHAS( "6 piranhas killed", 30, "Dangerous Fisher" ),
+		NIGHT_HUNTER( "15 monsters killed at nighttime", 58, "Dark Hunter" ),
+		GAMES_PLAYED_1( "10 games played in total", 60, "Dedicated Dungeoneer", true ),
+		GAMES_PLAYED_2( "100 games played in total", 61, "Dedicated Dungeoneer", true ),
+		GAMES_PLAYED_3( "500 games played in total", 62, "Dedicated Dungeoneer", true ),
+		GAMES_PLAYED_4( "2000 games played in total", 63, "Dedicated Dungeoneer", true ),
+		HAPPY_END( "Achieved the Happy Ending", 38, "Happy Ending" ),
+		CHAMPION( "Won with a Challenge activated", 39, "Champion", true ),
+		SUPPORTER( "Thank you for checking the donate page!", 31, "Donator", true );
 		
 		public boolean meta;
 		
 		public String description;
 		public int image;
+		public String title;
+
 		
-		private Badge( String description, int image ) {
-			this( description, image, false );
+		private Badge( String description, int image , String title) {
+			this( description, image, title, false );
 		}
 		
-		private Badge( String description, int image, boolean meta ) {
+		private Badge( String description, int image, String title, boolean meta ) {
 			this.description = description;
 			this.image = image;
 			this.meta = meta;
+			this.title = title;
 		}
 		
 		private Badge() {
-			this( "", -1 );
+			this( "", -1, "" );
 		}
 	}
 	
@@ -523,6 +536,8 @@ public class Badges {
 		
 		validateYASD();
 	}
+
+	
 	
 	public static void validateDeathFromPoison() {
 		Badge badge = Badge.DEATH_FROM_POISON;
@@ -570,6 +585,77 @@ public class Badges {
 			local.add( badge );
 			displayBadge( badge );
 		}
+	}
+
+	public static void validateSurviveFalling() {
+		Badge badge = Badge.SURVIVE_FALLING;
+		local.add( badge );
+		displayBadge( badge );
+		
+	}
+	public static void validateResurrect() {
+		Badge badge = Badge.RESURRECT;
+		local.add( badge );
+		displayBadge( badge );
+		
+	}
+	public static void validateYogEncounter() {
+		Badge badge = Badge.YOG_DZEWA_ENCOUNTER;
+		local.add( badge );
+		displayBadge( badge );
+		
+	}
+	public static void validate1HPWarlock() {
+		Badge badge = Badge.WARLOCK_SOUL;
+		local.add( badge );
+		displayBadge( badge );
+		
+	}
+
+	public static void validateSurpriseAttack() {
+		Badge badge = null;
+		
+		if (!local.contains( Badge.SURPRISE_1 ) && Statistics.surpriseAttacks >= 10) {
+			badge = Badge.SURPRISE_1;
+			local.add( badge );
+		}
+		if (!local.contains( Badge.SURPRISE_2 ) && Statistics.surpriseAttacks >= 20) {
+			badge = Badge.SURPRISE_2;
+			local.add( badge );
+		}
+		if (!local.contains( Badge.SURPRISE_3 ) && Statistics.surpriseAttacks >= 35) {
+			badge = Badge.SURPRISE_3;
+			local.add( badge );
+		}
+		if (!local.contains( Badge.SURPRISE_4 ) && Statistics.surpriseAttacks >= 50) {
+			badge = Badge.SURPRISE_4;
+			local.add( badge );
+		}
+		
+		displayBadge( badge );
+	}
+
+	public static void validateThrownMelee() {
+		Badge badge = null;
+		
+		if (!local.contains( Badge.THROW_MELEE_1 ) && Statistics.thrownMeleeKills >= 1) {
+			badge = Badge.THROW_MELEE_1;
+			local.add( badge );
+		}
+		if (!local.contains( Badge.THROW_MELEE_2 ) && Statistics.thrownMeleeKills >= 5) {
+			badge = Badge.THROW_MELEE_2;
+			local.add( badge );
+		}
+		if (!local.contains( Badge.THROW_MELEE_3 ) && Statistics.thrownMeleeKills >= 10) {
+			badge = Badge.THROW_MELEE_3;
+			local.add( badge );
+		}
+		if (!local.contains( Badge.THROW_MELEE_4 ) && Statistics.thrownMeleeKills >= 25) {
+			badge = Badge.THROW_MELEE_4;
+			local.add( badge );
+		}
+		
+		displayBadge( badge );
 	}
 	
 	public static void validateBossSlain() {

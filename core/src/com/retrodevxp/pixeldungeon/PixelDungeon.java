@@ -257,6 +257,53 @@ public class PixelDungeon extends Game<GameAction> {
 		return Preferences.INSTANCE.getInt( Preferences.KEY_ZOOM, 0 );
 	}
 	
+	public static void setSound( int value ) {
+		if (value < 5){
+			value = 5;
+		}
+		else if (value > 100){
+			value = 100;
+		}
+		Preferences.INSTANCE.put( Preferences.KEY_SOUNDVOLUME, (int)(value) );
+	}
+	public static void setMusic( float value ) {
+		if (value < 5){
+			value = 5;
+		}
+		else if (value > 100){
+			value = 100;
+		}
+		Preferences.INSTANCE.put( Preferences.KEY_MUSICVOLUME, (int)(value) );
+	}
+
+	public static int soundVolume() {
+		int soundFloat = 100;
+		try{
+			soundFloat = Preferences.INSTANCE.getInt( Preferences.KEY_SOUNDVOLUME, 100 );
+			if (soundFloat > 100){
+				return 100;
+			}
+			return soundFloat;
+		}
+		catch(Exception e){
+			return 100;
+		}
+	}
+
+	public static int musicVolume() {
+		int musicFloat = 100;
+		try{
+			musicFloat = Preferences.INSTANCE.getInt( Preferences.KEY_MUSICVOLUME, 100 );
+			if (musicFloat > 100){
+				return 100;
+			}
+			return musicFloat;
+		}
+		catch(Exception e){
+			return 100;
+		}
+	}
+	
 	public static void music( boolean value ) {
 		Music.INSTANCE.enable( value );
 		Preferences.INSTANCE.put( Preferences.KEY_MUSIC, value );
@@ -273,6 +320,16 @@ public class PixelDungeon extends Game<GameAction> {
 	
 	public static boolean soundFx() {
 		return Preferences.INSTANCE.getBoolean( Preferences.KEY_SOUND_FX, true );
+	}
+
+	public static void soundAdjust( boolean value ) {
+		Sample.INSTANCE.enable( value );
+		Preferences.INSTANCE.put( Preferences.KEY_SOUND_FX, value );
+	}
+
+	public static void musicAdjust( boolean value ) {
+		Sample.INSTANCE.enable( value );
+		Preferences.INSTANCE.put( Preferences.KEY_SOUND_FX, value );
 	}
 	
 	public static void brightness( boolean value ) {

@@ -31,7 +31,7 @@ import com.retrodevxp.utils.Random;
 public class Senior extends Monk {
 
 	{
-		name = "dwarven brawler";
+		name = "dwarf brawler";
 		spriteClass = SeniorSprite.class;
 
 		EXP = 17;
@@ -58,5 +58,12 @@ public class Senior extends Monk {
 	public void die( Object cause ) {
 		super.die( cause );
 		Badges.validateRare( this );
+	}
+
+	@Override
+	public String description() {
+		return
+			"This aggressive dwarf seems tougher and more experienced than the other thugs. " +
+			"A swift, powerful strike from it seems like it could paralyze anyone who dares mess with it.";
 	}
 }

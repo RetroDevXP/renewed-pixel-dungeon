@@ -456,6 +456,7 @@ public abstract class Wand extends KindOfWeapon {
 				Dungeon.hero.sprite.emitter().burst( ShadowParticle.UP, 7 );
 				Buff.prolong( Dungeon.hero, Weakness.class, Random.Float( 3.5f, 9.5f ) );
 				Buff.prolong( Dungeon.hero, Cripple.class, Random.Float( 1.5f, 5.5f ) );
+				Badges.validate1HPWarlock();
 			}
 
 			updateQuickslot();

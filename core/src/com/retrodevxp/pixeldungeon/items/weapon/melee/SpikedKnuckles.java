@@ -49,6 +49,6 @@ public class SpikedKnuckles extends MeleeWeapon {
 	
 	@Override
 	public String desc() {
-		return "A piece of brass shaped to fit around the knuckles. It has sharp spikes on its edges.";
+		return "A piece of brass shaped to fit around the knuckles. It has sharp spikes on its edges for the extra damage when punching. This weapon can't be disarmed.";
 	}
 }

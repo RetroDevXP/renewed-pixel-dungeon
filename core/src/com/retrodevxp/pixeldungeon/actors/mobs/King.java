@@ -217,7 +217,7 @@ public class King extends Mob {
 			"The last king of dwarves was known for his deep understanding of the processes of life and death. " +
 			"He has persuaded members of his court to participate in a ritual of immortality. This granted him eternal youthfulness. " +
 			"However, his court members lacked the strong will required to withstand the ritual, and they turned into undead. " +
-			"Without his court, he descended into his throne room in the deepest part of the city, abandoning his people " +
+			"Without his court, he descended into his throne room in the deepest part of the city, abandoning everything " +
 			"as his once mighty kingdom started crumbling above him. ";
 	}
 	

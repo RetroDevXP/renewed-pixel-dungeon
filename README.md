@@ -9,9 +9,9 @@ It was then [updated to 1.9.2](https://github.com/gnojus/pixel-dungeon-gdx) by g
 
 This mod is built from that updated port.
 
-This mod was compiled with Java 21.0.6 2025-01-21 LTS, using gradle-8.9.
+This mod was compiled with Java 21.0.6 2025-01-21 LTS, using gradle-8.11.
 
-This mod includes many new features, such as a new subclass for each class, new extra item choice mechanic, melee weapons dealing damage when thrown (to different degrees of effectiveness), some thrown weapons are re-usable, changed hunger system, new melee weapons, new thrown weapons, new items, new plants, new wand, new enchants, new enemy, etc. For full list of new features, see Features.md file.
+This mod includes many new features, such as a new subclass for each class, new extra item choice mechanic, melee weapons dealing damage when thrown (to different degrees of effectiveness), some thrown weapons are reusable, changed hunger system, new melee weapons, new thrown weapons, new items, new plants, new wand, new enchants, new enemy, etc. For full list of new features, see Features.md file.
 
 The compiled version is available at https://retrodevxp.itch.io/renewed-pixel-dungeon
 The source code is available at https://github.com/RetroDevXP/renewed-pixel-dungeon

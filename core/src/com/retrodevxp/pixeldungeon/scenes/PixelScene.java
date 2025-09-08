@@ -33,13 +33,15 @@ import com.retrodevxp.utils.BitmapCache;
 public class PixelScene extends Scene {
 	
 	// Minimum virtual display size for portrait orientation. Adjusted to fit 3rd quickslot.
-	public static final float MIN_WIDTH_P		= 140;
+	public static final float MIN_WIDTH_P		= 148;
+	// public static final float MIN_WIDTH_P		= 140;
 	// public static final float MIN_WIDTH_P		= 128;
 	public static final float MIN_HEIGHT_P		= 224;
 	
 	// Minimum virtual display size for landscape orientation
 	public static final float MIN_WIDTH_L		= 224;
-	public static final float MIN_HEIGHT_L		= 160;
+	public static final float MIN_HEIGHT_L		= 148;
+	// public static final float MIN_HEIGHT_L		= 160;
 	
 	public static float defaultZoom = 0;
 	public static float minZoom;
@@ -92,6 +94,9 @@ public class PixelScene extends Scene {
 		Camera.reset( new PixelCamera( defaultZoom ) );
 		
 		float uiZoom = defaultZoom;
+		if (PixelDungeon.landscape()){
+			uiZoom = defaultZoom * 1.25f;
+		}
 		uiCamera = Camera.createFullscreen( uiZoom );
 		Camera.add( uiCamera );
 		
